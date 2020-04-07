@@ -1,0 +1,327 @@
+.vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ivu-modal {
+    top: 0;
+  }
+}
+
+.divder {
+  height: 2px;
+  border: none;
+  border-top: 2px ridge rgba(17, 82, 148, 0.1);
+  margin-bottom: 10px;
+
+}
+
+.main {
+  // background-image: url(/static/images/background7.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  // background-color: #f9fafc;
+ 
+  .head {
+    margin-top: 10px !important;
+    position: relative;
+
+    left: 51%;
+    width: 1020px;
+    transform: translate(-50%, 0%);
+    // height: #{'var(--headHeight)'};
+    // background-color: rgba(255, 255, 255, 0.1);
+    // box-shadow: 0px 0px 10px 0 rgba(61, 60, 60, 0.3) inset;
+
+    .font {
+      position: relative;
+      float: left;
+      // width:85%;
+      left: 15%;
+      top: 10%;
+
+      h2 {
+        position: absolute;
+        width: 10%;
+        left: 30%;
+        top: 32%;
+      }
+    }
+
+    .search {
+      position: relative;
+      padding: 5vh;
+      width: 100%;
+
+
+      #campus {
+        position: relative;
+        margin-bottom: 10px;
+        display: flex;
+
+       
+      }
+
+      #helpintention {
+        position: relative;
+        margin-bottom: 10px;
+        display: flex;
+
+      }
+
+      #college {
+        position: relative;
+        margin-bottom: 10px;
+        display: flex;
+
+        // margin-top:15px;
+        .choose {
+          overflow: hidden; //超出部分影藏
+          -webkit-line-clamp: 1; //限制行数
+          // text-overflow: ellipsis; //超过部分用省略号显示
+          display: -webkit-box; //盒子模型
+          -webkit-box-orient: vertical; //从顶部向底部垂直布置子元素
+
+        }
+
+        .ivu-btn {
+          // font-size: 1px;
+          height: 22px;
+        }
+
+
+
+      }
+
+      #name {
+        position: relative;
+        margin-bottom: -10px;
+        display: flex;
+      }
+
+      --titlevw:calc(3vw);
+
+      .choose_title {
+        position: relative;
+        width: var(--titlevw);
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 1vw;
+        font-size: 15px;
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      .choose {
+        position: relative;
+
+      }
+
+    }
+  }
+
+  .exhibit {
+    position: relative;
+    width: 1100px;
+    // height: 1000px;
+
+    // background-color: rgb(180, 38, 38);
+    left: 50%;
+
+    transform: translate(-50%, 0%);
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // flex-direction: row;
+
+
+    ul {
+      position: relative;
+
+      margin-top: 20px;
+      width: 96%;
+      left: 2%;
+      // height: 100%;
+
+      display: flex;
+      flex-wrap: wrap;
+      // background-color: #1673ff;
+
+
+
+      li {
+
+        width: 190px;
+        height: 376px;
+        margin: 0px 0% 0px 6%;
+        position: relative;
+        // left: calc(2vw);
+        float: left;
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        .list:hover {
+          box-shadow: 0 0 0 2px rgb(160, 152, 152),
+            0 0 0 3px rgb(202, 201, 204),
+            0 2px 5px 4px rgba(0, 0, 0, .6);
+          transform: scale(1.01);
+
+          // background-color: #009e96;
+          .message {
+            background-color: #009e96;
+          }
+
+          .teachername {
+            color: #fff;
+          }
+
+          .content {
+            color: #fff;
+          }
+
+          .action {
+            position: relative;
+
+          }
+        }
+
+        .list {
+          transition: all 0.6s;
+
+          box-shadow: 0 0 0 1px rgb(187, 186, 186),
+            0 0 0 2px rgb(218, 216, 216),
+            0 2px 2px 3px rgba(218, 218, 221, 0.6);
+          border-bottom: 2px solid #009e96;
+
+          .image {
+            position: relative;
+            background-color: rgb(56, 58, 58);
+            width: 100%;
+            height: 210px;
+          }
+
+          .message {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            // padding: 10px 0 0 20px;
+            background: #efefef;
+            transition: all 0.4s ease;
+
+            .teachername {
+              top: 10px;
+              left: 30px;
+              position: relative;
+              // height:20px;
+              font-size: 19px;
+              text-align: left;
+              text-decoration: none;
+              font-weight: bold;
+              font-style: normal;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            .content {
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              text-align: left;
+              margin-top: 5px;
+              font-size: 14px;
+              position: relative;
+              left: 30px;
+              top: 10px;
+              font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            .action {
+              position: relative;
+
+              top: 17%;
+
+              width: 100%;
+
+            }
+          }
+
+
+        }
+      }
+    }
+
+
+  }
+
+}
+
+.stitle {
+  margin-left: 3px;
+  margin-bottom: -8px;
+
+  font-size: 22px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+}
+
+.expand-row {
+  margin-bottom: 16px;
+}
+
+.expand-key {
+  font-weight: lighter;
+}
+
+#rate {
+  position: relative;
+  float: right;
+  right: 4%;
+
+}
+
+.tui-checkbox:checked {
+  background: #1673ff;
+  border: solid 1px #1673ff;
+}
+
+.tui-checkbox {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #ffffff;
+  border: solid 1px #dddddd;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  cursor: default;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-transition: background-color ease 0.6s;
+  transition: background-color ease 0.6s;
+}
+
+.tui-checkbox:checked::after {
+  content: '';
+  top: 0.1rem;
+  left: 0.09rem;
+  position: absolute;
+  background: transparent;
+  border: #fff solid 2px;
+  border-top: none;
+  border-right: none;
+  height: 0.12rem;
+  width: 0.25rem;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+
