@@ -16,9 +16,7 @@
         <div id="college">
           <span class="choose_title">学院:</span>
           <RadioGroup v-model="choose.academy" :class="{choose:academyactive}" class="choosetrue">
-            <Radio label="计算机工程与科学学院"></Radio>
-            <Radio label="图书馆"></Radio>
-            <Radio label="理学院"></Radio>
+          <Radio label="理学院"></Radio>
             <Radio label="生命科学学院"></Radio>
             <Radio label="文学院"></Radio>
             <Radio label="法学院"></Radio>
@@ -26,17 +24,20 @@
             <Radio label="社会学院"></Radio>
             <Radio label="马克思主义学院"></Radio>
             <Radio label="新闻传播学院"></Radio>
+            <Radio label="计算机工程与科学学院"></Radio>
             <Radio label="机电工程与自动化学院"></Radio>
-            <Radio label="翔英学院"></Radio>
+            <Radio label="通信与信息工程学院（翔英学院）"></Radio>
             <Radio label="环境与化学工程学院"></Radio>
             <Radio label="材料科学与工程学院"></Radio>
             <Radio label="中欧工程技术学院"></Radio>
             <Radio label="土木工程系"></Radio>
             <Radio label="力学与工程科学学院"></Radio>
             <Radio label="经济学院"></Radio>
+            <Radio label="管理学院"></Radio>
             <Radio label="图书情报档案系"></Radio>
             <Radio label="悉尼工商学院"></Radio>
             <Radio label="MBA教学管理中心"></Radio>
+            <Radio label="医学院"></Radio>
             <Radio label="上海电影学院"></Radio>
             <Radio label="上海美术学院"></Radio>
             <Radio label="音乐学院"></Radio>
@@ -46,6 +47,8 @@
             <Radio label="钱伟长学院"></Radio>
             <Radio label="体育学院"></Radio>
             <Radio label="人才学院"></Radio>
+            <Radio label="继续教育学院 巴黎国际时装艺术学院"></Radio>
+            <Radio label="国际教育学院"></Radio>
           </RadioGroup>
           <div>
             <Button
