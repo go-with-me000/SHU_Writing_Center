@@ -261,63 +261,35 @@
         </div>
       </Sider>
     </Layout>
-    <Modal
-      v-model="modal"
-      width="525"
-      :styles="{top: '100px'}"
-      :mask-closable="false"
-      :closable="false"
-      class="loginmodal"
-    >
+    <Modal v-model="modal" width="525" :styles="{top: '100px'}" :mask-closable="false" :closable="false">
+     
       <div class="jq22-container">
         <div class="login-wrap">
           <div class="login-html">
             <input id="tab-1" type="radio" name="tab" class="sign-in" checked />
             <label for="tab-1" class="tab">登录</label>
             <input id="tab-2" type="radio" name="tab" class="sign-up" />
-            <label for="tab-2" class="tab"></label>
+            <label for="tab-2" class="tab">注册</label>
             <div class="login-form">
               <form>
                 <div class="sign-in-htm">
                   <div class="group">
                     <label for="user" class="label">用户名</label>
-
-                    <input
-                      v-model="username"
-                      id="username"
-                      name="username"
-                      placeholder="学/工号"
-                      type="text"
-                      class="input"
-                    />
+                    <input id="username" name="username" value="admin" type="text" class="input" />
                   </div>
                   <div class="group">
                     <label for="pass" class="label">密码</label>
-                    <input
-                      v-model="password"
-                      type="password"
-                      class="input"
-                      data-type="password"
-                      id="password"
-                      placeholder="密码"
-                    />
+                    <input id="password" type="password" class="input" data-type="password" />
                   </div>
-
                   <div class="group">
                     <div class="container">
                       <div id="captcha" style="position: relative" data-type="password"></div>
                       <div id="msg"></div>
                     </div>
                   </div>
+
                   <div class="group" id="buttonlogin">
-                    <input
-                      type="button"
-                      class="button"
-                      value="登录"
-                      @click="handleOnClickLogin()"
-                      @keyup.enter="handleOnClickLogin()"
-                      style="cursor:pointer"
-                    />
+                    <input type="button" class="button" value="登录" onclick="sub()" />
                   </div>
                 </div>
               </form>
@@ -325,7 +297,38 @@
           </div>
         </div>
       </div>
-      <div slot="footer" class="footers"></div>
+      
+      <!-- <div style="text-align:center">
+        <div class="login-box">
+          <form>
+            <Input
+              v-model="username"
+              style="margin-bottom: 10px"
+              size="large"
+              prefix="md-person"
+              placeholder="学/工号"
+            />
+            <Input
+              v-model="password"
+              type="password"
+              style="margin-bottom: 7px"
+              prefix="md-lock"
+              size="large"
+              placeholder="密码"
+            />
+          </form>
+        </div>
+      </div> -->
+      <div slot="footer" id="footer">
+        <!-- <Button
+          size="large"
+          type="primary"
+          long
+          @click="handleOnClickLogin()"
+          @keyup.enter="handleOnClickLogin()"
+          ghost
+        >登录</Button> -->
+      </div>
     </Modal>
 
     <Modal
@@ -472,7 +475,6 @@ export default {
   },
   created() {
     this.keyupSubmit();
-    
   },
   mounted() {
     this.initMenuActive();
@@ -485,7 +487,6 @@ export default {
       this.identity = localStorage.getItem("authority");
       this.isLogout = false;
     }
-    
   },
   methods: {
     keyupSubmit() {
@@ -522,12 +523,6 @@ export default {
     handleOnClickLogin() {
       // this.loading = true;
       var params = new URLSearchParams();
-      if (this.username == "" || this.password == "") {
-        this.$Message.warning({
-          content: `请填写完整的登录信息`
-        });
-        return;
-      }
       params.append("username", this.username);
       params.append("password", this.password);
       axios
@@ -823,15 +818,7 @@ export default {
 <style lang="scss">
 @import "../group";
 @import "./common/css/styles.css";
-.loginmodal .ivu-modal-footer {
-  padding: 0px 0px 0px 0px !important;
-  border-top: 0px;
-}
-.loginmodal {
-  .ivu-modal-body {
-    padding: 0px 0px 0px 0px !important;
-  }
-}
+@import "./common/css/jigsaw.css";
 </style>
 <style scoped lang="scss">
 .questionfoot {
@@ -882,5 +869,11 @@ export default {
   vertical-align: middle;
   font-size: 16px;
 }
+
 </style>
 
+<style>
+/* .ivu-modal-footer{
+  padding:0px;
+} */
+</style>

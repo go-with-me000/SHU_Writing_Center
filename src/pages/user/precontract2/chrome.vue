@@ -16,7 +16,7 @@
         <div id="college">
           <span class="choose_title">学院:</span>
           <RadioGroup v-model="choose.academy" :class="{choose:academyactive}" class="choosetrue">
-          <Radio label="理学院"></Radio>
+            <Radio label="理学院"></Radio>
             <Radio label="生命科学学院"></Radio>
             <Radio label="文学院"></Radio>
             <Radio label="法学院"></Radio>
@@ -26,7 +26,7 @@
             <Radio label="新闻传播学院"></Radio>
             <Radio label="计算机工程与科学学院"></Radio>
             <Radio label="机电工程与自动化学院"></Radio>
-            <Radio label="通信与信息工程学院（翔英学院）"></Radio>
+            <Radio label="通信与信息工程学院"></Radio>
             <Radio label="环境与化学工程学院"></Radio>
             <Radio label="材料科学与工程学院"></Radio>
             <Radio label="中欧工程技术学院"></Radio>
@@ -36,7 +36,7 @@
             <Radio label="管理学院"></Radio>
             <Radio label="图书情报档案系"></Radio>
             <Radio label="悉尼工商学院"></Radio>
-            <Radio label="MBA教学管理中心"></Radio>
+            <Radio label="MBA教育管理中心"></Radio>
             <Radio label="医学院"></Radio>
             <Radio label="上海电影学院"></Radio>
             <Radio label="上海美术学院"></Radio>
@@ -88,24 +88,26 @@
         <li style="display:block;" v-for="(item,index) in data" :key="index">
           <div class="list">
             <div class="img">
-              <img :src="item.imagesrc" alt="name" style="width:290px;height:210px;" />
+              <img :src="item.imagesrc" alt="name" style="width:270px;height:198px;" />
             </div>
             <div class="introduce">
               <h3>{{item.stteachername}}</h3>
-              <span>教职工</span>
-              <p>辅导方向：{{item.helpintention}}</p>
+              <h4>教职工</h4>
+              <p>{{item.helpintention}}</p>
               <ul>
                 <li>
                   <Button
                     @click="specifics(item)"
+                    ghost
+                    type="default"
                     style="margin-top:-10px;margin-left:13px;"
-                    size="large"
                   >详情</Button>
                 </li>
                 <li>
                   <Button
-                    size="large"
-                    style="margin-top:-10px;margin-right:13px;"
+                    ghost
+                    type="default"
+                    style="margin-top:-10px;margin-right:66px;position:absolute"
                     @click="precontract(item)"
                   >预约</Button>
                 </li>
@@ -366,7 +368,9 @@ export default {
               content: "验证码已发出，请注意查收"
             });
           } else {
-            this.$Notice.warning({ title: `${res.data.msg}` });
+            this.$Message.warning({
+              content: `请正确填写填写邮箱信息，否则无法发送邮件`
+            });
           }
         })
         .catch(err => {
@@ -447,7 +451,6 @@ export default {
         })
           .then(res => {
             if (res.data.code === 200) {
-            
               if (res.data.data != "暂时没有小教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
@@ -455,16 +458,26 @@ export default {
                   this.data[i].satisfaction = parseFloat(
                     this.data[i].satisfaction
                   );
-                  for(let j = 0;j<this.data[i].timeList.length;j++){
-                     
-                     var reg =/-/
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(reg,"年")
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(reg,"月")
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(/\s/,"日 ")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(reg,"年")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(reg,"月")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(/\s/,"日 ")
-                     
+                  for (let j = 0; j < this.data[i].timeList.length; j++) {
+                    var reg = /-/;
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "年");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "月");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(/\s/, "日 ");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "年");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "月");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(/\s/, "日 ");
                   }
                 }
               } else {
@@ -506,16 +519,26 @@ export default {
                   this.data[i].satisfaction = parseFloat(
                     this.data[i].satisfaction
                   );
-                  for(let j = 0;j<this.data[i].timeList.length;j++){
-                     
-                     var reg =/-/
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(reg,"年")
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(reg,"月")
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(/\s/,"日 ")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(reg,"年")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(reg,"月")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(/\s/,"日 ")
-                     
+                  for (let j = 0; j < this.data[i].timeList.length; j++) {
+                    var reg = /-/;
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "年");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "月");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(/\s/, "日 ");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "年");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "月");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(/\s/, "日 ");
                   }
                 }
               } else {
@@ -553,17 +576,27 @@ export default {
             this.totalteacher = 1;
             for (let i = 0; i < this.data.length; i++) {
               this.data[i].satisfaction = parseFloat(this.data[i].satisfaction);
-              for(let j = 0;j<this.data[i].timeList.length;j++){
-                     
-                     var reg =/-/
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(reg,"年")
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(reg,"月")
-                     this.data[i].timeList[j].startTime=this.data[i].timeList[j].startTime.replace(/\s/,"日 ")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(reg,"年")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(reg,"月")
-                     this.data[i].timeList[j].endTime=this.data[i].timeList[j].endTime.replace(/\s/,"日 ")
-                     
-                  }
+              for (let j = 0; j < this.data[i].timeList.length; j++) {
+                var reg = /-/;
+                this.data[i].timeList[j].startTime = this.data[i].timeList[
+                  j
+                ].startTime.replace(reg, "年");
+                this.data[i].timeList[j].startTime = this.data[i].timeList[
+                  j
+                ].startTime.replace(reg, "月");
+                this.data[i].timeList[j].startTime = this.data[i].timeList[
+                  j
+                ].startTime.replace(/\s/, "日 ");
+                this.data[i].timeList[j].endTime = this.data[i].timeList[
+                  j
+                ].endTime.replace(reg, "年");
+                this.data[i].timeList[j].endTime = this.data[i].timeList[
+                  j
+                ].endTime.replace(reg, "月");
+                this.data[i].timeList[j].endTime = this.data[i].timeList[
+                  j
+                ].endTime.replace(/\s/, "日 ");
+              }
             }
           } else {
             this.$Notice.warning({ title: `查无此老师` });
@@ -588,7 +621,6 @@ export default {
         this.item = item;
         this.essaymodal = true;
       } else {
-       
         this.$Notice.warning({
           title: "未填邮箱",
           desc: "请先进入个人信息页面填写个人信息，再进行预约"
@@ -596,7 +628,7 @@ export default {
       }
     },
     handleBeforeUpload(file) {
-          const extension1 = /.pdf/.test(file.name)
+      const extension1 = /.pdf/.test(file.name);
       const extension2 = /.doc/.test(file.name);
       const extension3 = /.docx/.test(file.name);
       const isLt5M = file.size / 1024 / 1024 < 5;
@@ -720,6 +752,25 @@ export default {
 }
 .ivu-select-item {
   padding: 7px 6.8px;
+}
+</style>
+<style lang="scss">
+
+.exhibit {
+  li {
+    .list:hover {
+      .ivu-btn-ghost.ivu-btn-dashed,
+      .ivu-btn-ghost.ivu-btn-default {
+        border-color: rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+}
+ul li .ivu-btn-ghost.ivu-btn-dashed,
+.ivu-btn-ghost.ivu-btn-default {
+  border-color: rgb(131, 131, 131);
+  color: rgb(121, 120, 120);
 }
 </style>
 

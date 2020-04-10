@@ -20,7 +20,7 @@
 
       <Carousel v-model="newspicture" loop autoplay id="carousel" dots="inside" radius-dot>
         <CarouselItem v-for="(item,index) in imgs" :key="index">
-          <img :src="item.picturesrc" @click="imgnews(index)" />
+          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;height:360px" />
         </CarouselItem>
         <div class="back"></div>
       </Carousel>

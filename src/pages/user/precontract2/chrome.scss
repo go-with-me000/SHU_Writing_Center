@@ -119,21 +119,28 @@
     li {
       width: 23%;
       padding: 1%;
-      margin-left:2%;
+      margin-left: 2%;
       float: left;
       flex-grow: 0;
       flex-shrink: 0;
 
       .list:hover {
-        box-shadow: 0 0 0 2px rgb(160, 152, 152), 0 0 0 3px rgb(202, 201, 204), 0 2px 5px 4px rgba(0, 0, 0, 0.6);
-        transform: scale(1.05);
-        translate: 0.5s;
+        // box-shadow: 0 0 0 1px rgb(160, 152, 152), 0 0 0 1.2px rgb(202, 201, 204);
+        // transform: scale(1.01);
+        translate: 1s;
         transition: all 0.3s ease-in;
+        .introduce{
+          background:#009e96;
+          color:#fff !important;
+          h3,h4,p{
+            color:#fff;
+          }
+        }
       }
 
       .list:hover .img img {
-        -webkit-transform: scale(1.01);
-        transform: scale(1.01);
+        // -webkit-transform: scale(1.01);
+        // transform: scale(1.01);
         translate: 0.5s;
         transition: all 0.3s ease-in;
       }
@@ -141,7 +148,7 @@
       .list {
         background-color: #f1f1f1;
         display: inline-block;
-
+        border-bottom: 2px solid #009e96;
         .img img {
           -webkit-transition: all 0.3s ease-in;
           transition: all 0.3s ease-in;
@@ -149,16 +156,42 @@
 
         .introduce {
           padding: 10%;
+          height: 200px;
+          background: #EFEFEF;
+          transition:background .7s;
+          // transition:color .7s;
+          
         }
+
         .introduce h3 {
-          font-weight: 700;
+          font-weight:bold;
           letter-spacing: 3px;
+          font-size:22px;
+          color:#000;
+          position: absolute;
+          margin-top:-10px;
+          margin-left:0px;
+        }
+        .introduce h4 {
+          font-weight:600;
+          letter-spacing: 3px;
+          font-size:16px;
+          color:rgb(167, 164, 164);
+          position: absolute;
+          margin-top:30px;
+          margin-left:0px;
         }
 
         .introduce p {
-          font-weight: 400;
+          font-weight: 550;
           letter-spacing: 1px;
-          margin-bottom: 20px;
+          // margin-bottom: 20px;
+          position:absolute;
+          color:rgb(94, 94, 94);
+          margin-top:65px;
+          margin-left:0px;
+          width:200px;
+          text-align:left;
         }
 
         .introduce span {
@@ -171,11 +204,16 @@
 
         .introduce ul li {
           display: inline;
-          margin:10px 28px;
+          margin: 10px 28px;
           text-align: center;
-     
+          // position:absolute;
+          margin-top:125px;
+          margin-left:-17px;
+
         }
       }
+
+     
     }
   }
 }
