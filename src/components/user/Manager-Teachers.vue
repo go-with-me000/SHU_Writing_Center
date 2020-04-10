@@ -368,6 +368,7 @@ export default {
       },
 
       items: [],
+       items2: [],
 
       htmla: "",
       famousTeacherName: "",
@@ -599,7 +600,7 @@ export default {
 
   methods: {
 
-       //学生节目删除数据
+       //学生删除数据
      deleteStTeacher() {
       if (this.checkboxSelected.length == 0) {
         this.$Message.info("请选择删除的对象");
@@ -722,14 +723,22 @@ export default {
         title: "确认修改辅导时间吗？",
         onOk: () => {
           //先删除所有status为0的对象
-          for(var  item in this.items)
+        
+      
+         for(var item in this.items)
           {
-            if(this.items[item].status ==0)
+        
+            if(this.items[item].status ==1)
             {
-              this.items.pop(this.items[item]);
+              
+               this.items2.push(this.items[item]);
             }
-
           }
+          
+        
+             this.items= this.items2;
+             this.items2=[];
+          
           for (var item in this.items) {
               
             if (
@@ -791,6 +800,7 @@ export default {
               if(res.data.msg=="200")
               {
                 this.$Message.info("设置成功");
+      
                
               }else{
                  this.$Message.info("设置失败，请检查时间");
@@ -814,6 +824,8 @@ export default {
       });
     },
     sTdeleteTime(index) {
+      
+     
       this.items[index].status = 0;
     },
 
