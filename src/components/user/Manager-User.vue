@@ -10,6 +10,7 @@
           <Button @click="selectUserById" type="primary">查找</Button>
           <Button @click="deleteUser" type="error">删除</Button>
           <Button style @click="addToStTeacher">添加为学生教师</Button>
+          <Button style @click="addWeiXinId">添加到公众号</Button>
         </div>
         <div class="table">
           <Table :columns="tableHead" :data="userMsg" @on-selection-change="selectChange"></Table>
@@ -19,6 +20,30 @@
         </div>
       </Tab-pane>
     </Tabs>
+
+      <Modal
+      width="600px"
+      v-model="modal"
+      class-name="vertical-center-modal"
+      title="添加公众号openid"
+      @on-ok="ok"
+    >
+      <div class="context">
+        <Form>
+          <i-input v-model="selectWeiXin" readonly  ></i-input>
+          <i-input
+          v-model="weixinId"
+            size="large"
+            style="align:center"
+            id="weixinId"
+            name="weixinId"
+            placeholder="openid"
+          ></i-input>
+        </Form>
+      
+      </div>
+    </Modal>
+
   </div>
 </template>
 
@@ -27,6 +52,9 @@ import axios from "axios";
 export default {
   data() {
     return {
+      selectWeiXin:"",
+      modal: false,
+      weixinId:"",
       userType: ["普通用户信息", "失信人员情况"],
       checkBox: "普通用户信息",
       selected: [],
@@ -92,20 +120,28 @@ export default {
         {
           title: "职业",
           key: "duty",
+           sortable: true,
           width: 120,
           align: "center"
         },
         {
           title: "学院",
           key: "organization",
-          width: 300,
+          width: 270,
           align: "center"
         },
         {
           title: "违约次数",
           key: "brokenrecord",
           sortable: true,
-          width: 260,
+          width: 120,
+          align: "center"
+        },
+          {
+          title: "微信openid",
+          key: "weixinid",
+          sortable: true,
+          width: 360,
           align: "center"
         }
       ]
@@ -127,6 +163,75 @@ export default {
   },
   methods: {
 
+   //点击增加openid
+    ok() {
+      if(this.selectWeiXin==null || this.selectWeiXin=="")
+      {
+         this.$Message.info("输入不能为空");
+         return;
+      }
+   
+          this.$Modal.confirm({
+              title:"确定添加openId吗？",
+              onOk:()=>{
+
+              axios({
+                url: "http://localhost:8080/monitor/addOpenId",
+                method: "get",
+                params: {OpenId:this.weixinId,teacherId:this.selectWeiXin}
+              }).then(res => {
+              
+                if(res.data.code==200)
+                {
+                    this.$Message.info("添加成功");
+                }else{
+                   this.$Message.info("添加失败，请检查添加信息");
+                }
+                this.weixinId = null;
+              });
+
+              }
+          })
+    },
+
+    //添加教师的公众号ID
+  addWeiXinId()
+  {
+     if(this.checkBox!="普通用户信息")
+      {
+        this.$Message.info("请在用户信息界面设置");
+      
+       }else
+       {
+         if(this.selected.length!=1)
+         {
+             this.$Message.info("一次只能设置一个");
+             return;
+         }
+        else
+        {
+            //校验只有学生职业能被添加为学生教师
+            for(var index in this.userMsg)
+            {
+              for(var selectindex in this.selected)
+              {
+                      if(this.userMsg[index].adminid==this.selected[selectindex])
+                      {
+                        if(this.userMsg[index].duty=="教职工" || this.userMsg[index].duty=="离退休" || this.userMsg[index].duty=="学生教师")
+                        {
+                          this.selectWeiXin=this.userMsg[index].adminid;
+                        
+                            this.modal = true;  
+    
+
+                        }
+                      }
+              }
+            }
+      
+        }    
+       }
+  },
     //添加为学生教师
     addToStTeacher()
     {
