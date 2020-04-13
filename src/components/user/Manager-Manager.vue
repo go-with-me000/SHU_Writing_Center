@@ -98,25 +98,31 @@ export default {
         {
           title: "姓名",
           key: "name",
-          width: 200,
+          width: 170,
           align: "center"
         },
         {
           title: "职业",
           key: "duty",
-          width: 200,
+          width: 150,
           align: "center"
         },
         {
           title: "学院",
           key: "organization",
-          width: 220,
+          width: 200,
+          align: "center"
+        },
+          {
+          title: "电话",
+          key: "phone",
+          width: 180,
           align: "center"
         },
         {
           title: "权限",
           key: "auth",
-          width: 280,
+          width: 250,
           align: "center"
         }
       ]
