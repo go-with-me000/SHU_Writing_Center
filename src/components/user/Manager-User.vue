@@ -105,43 +105,49 @@ export default {
           align: "center"
         },
         {
-          title: "用户id",
+          title: "用户",
           key: "adminid",
           sortable: true,
-          width: 170,
+          width: 150,
           align: "center"
         },
         {
           title: "姓名",
           key: "name",
-          width:140,
+          width:110,
           align: "center"
         },
         {
           title: "职业",
           key: "duty",
            sortable: true,
-          width: 120,
+          width: 100,
           align: "center"
         },
         {
           title: "学院",
           key: "organization",
-          width: 270,
+          width: 220,
+          align: "center"
+        },
+           {
+          title: "电话",
+          key: "phone",
+          width: 170,
           align: "center"
         },
         {
-          title: "违约次数",
-          key: "brokenrecord",
+          title: "邮箱",
+          key: "email",
           sortable: true,
-          width: 120,
+          width: 200,
           align: "center"
         },
           {
           title: "微信openid",
           key: "weixinid",
           sortable: true,
-          width: 360,
+          width: 220,
           align: "center"
         }
       ]
@@ -176,7 +182,7 @@ export default {
               onOk:()=>{
 
               axios({
-                url: "http://localhost:8080/monitor/addOpenId",
+                url: "http://114.55.93.118:8080/monitor/addOpenId",
                 method: "get",
                 params: {OpenId:this.weixinId,teacherId:this.selectWeiXin}
               }).then(res => {
