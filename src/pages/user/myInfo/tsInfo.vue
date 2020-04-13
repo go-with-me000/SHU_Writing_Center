@@ -119,7 +119,7 @@
         </div>
       </Col>
 
-      <Col span="4" style="text-align:center;">
+      <Col span="2" style="text-align:center;">
         <div class="displayimg">
           <Upload
             :before-upload="handleBeforeUpload"
@@ -131,6 +131,11 @@
           <div class="display">
             <img :src="person_info.imagesrc" style="width: 95%;height:100%;" />
           </div>
+        </div>
+        <div class="qrcode">
+          <img src="@/common/img/public.jpg"  />
+          <p style="font-weight:bold;font-size:14px;">请老师扫码二维码，关注公众号</p>
+          <p style="font-weight:bold;font-size:16px;">更快获取最新预约信息</p>
         </div>
       </Col>
     </Row>
@@ -793,6 +798,11 @@ export default {
 .ivu-btn-primary {
   color: #fff;
 
-  border-color: rgba(216, 218, 218, 0.4);
+  border-color: rgba(216, 218, 218, 0.1);
+}
+.ivu-btn-primary:hover {
+  color: #fff;
+
+  border-color: rgba(216, 218, 218, 0.1);
 }
 </style>

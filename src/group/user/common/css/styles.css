@@ -26,7 +26,7 @@ input, button {
 	height:470px;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(40,57,101,.9);
+	background:rgba(84, 100, 138, 0.9);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
@@ -84,22 +84,22 @@ input, button {
 .login-form .group .input,
 .login-form .group .button{
 	width:100%;
-	color:#fff;
+	/* color:#fff; */
 	display:block;
 }
 .login-form .group .input,
 .login-form .group .button{
 	border:none;
-	padding:15px 20px;
+	padding:8px 15px;
 	border-radius:25px;
-	background:rgba(255,255,255,.1);
+	background:#E8F0FE;
 }
 .login-form .group input[data-type="password"]{
 	text-security:circle;
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
+	color:#fff;
 	font-size:12px;
 }
 .login-form .group .button{

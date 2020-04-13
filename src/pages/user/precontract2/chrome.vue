@@ -17,7 +17,7 @@
           <span class="choose_title">学院:</span>
           <RadioGroup v-model="choose.academy" :class="{choose:academyactive}" class="choosetrue">
             <Radio label="理学院"></Radio>
-            <Radio label="生命科学学院"></Radio>
+            
             <Radio label="文学院"></Radio>
             <Radio label="法学院"></Radio>
             <Radio label="外国语学院"></Radio>
@@ -29,25 +29,30 @@
             <Radio label="通信与信息工程学院"></Radio>
             <Radio label="环境与化学工程学院"></Radio>
             <Radio label="材料科学与工程学院"></Radio>
+            <Radio label="材料基因组工程研究院"></Radio>
             <Radio label="中欧工程技术学院"></Radio>
             <Radio label="土木工程系"></Radio>
-            <Radio label="力学与工程科学学院"></Radio>
+            <Radio label="力学所"></Radio>
+            <Radio label="纳米科学与技术中心"></Radio>
             <Radio label="经济学院"></Radio>
             <Radio label="管理学院"></Radio>
             <Radio label="图书情报档案系"></Radio>
             <Radio label="悉尼工商学院"></Radio>
-            <Radio label="MBA教育管理中心"></Radio>
+            <Radio label="MBA中心"></Radio>
             <Radio label="医学院"></Radio>
             <Radio label="上海电影学院"></Radio>
             <Radio label="上海美术学院"></Radio>
+            <Radio label="上海研究院"></Radio>
+            <Radio label="生命科学学院"></Radio>
             <Radio label="音乐学院"></Radio>
             <Radio label="数码艺术学院"></Radio>
             <Radio label="上海温哥华电影学院"></Radio>
             <Radio label="社区学院"></Radio>
+            <Radio label="社会科学学部"></Radio>
             <Radio label="钱伟长学院"></Radio>
             <Radio label="体育学院"></Radio>
             <Radio label="人才学院"></Radio>
-            <Radio label="继续教育学院 巴黎国际时装艺术学院"></Radio>
+            <Radio label="微电子中心"></Radio>
             <Radio label="国际教育学院"></Radio>
           </RadioGroup>
           <div>
@@ -92,7 +97,7 @@
             </div>
             <div class="introduce">
               <h3>{{item.stteachername}}</h3>
-              <h4>教职工</h4>
+              <h4>同伴辅导者</h4>
               <p>{{item.helpintention}}</p>
               <ul>
                 <li>
@@ -289,6 +294,7 @@
                 size="large"
                 @click="captcha()"
                 style="margin-left:10px;position:relative"
+                :disabled="article.emailSubmit"
               >邮箱验证</Button>
             </Col>
           </Row>
@@ -332,6 +338,7 @@ export default {
         essaySubmit: true, //是否提交了论文
         essayfile: "", //论文文件
         time: "",
+        emailSubmit:true,
         captchacode: ""
       },
       totalteacher: 0,
@@ -616,6 +623,10 @@ export default {
       this.modal1 = true;
     },
     precontract(item) {
+      if(item.timeList.length==0){
+        this.$Message.warning("老师还没做好准备，请稍后再来亲");
+        return;
+      }
       let email = localStorage.getItem("email");
       if (email != "") {
         this.item = item;
@@ -707,6 +718,7 @@ export default {
         this.article.description = "";
         this.article.essayfile = "";
         this.article.essaySubmit = false;
+        this.article.emailSubmit = false;
         this.article.essaysrc = "";
         this.article.time = "";
         this.article.captchacode = "";
@@ -724,6 +736,16 @@ export default {
           this.article.essaySubmit = false;
         } else {
           this.article.essaySubmit = true;
+        }
+        if (
+          this.article.essayname != "" &&
+          this.article.essaysrc != "" &&
+          this.article.description != "" &&
+          this.article.time != ""
+        ) {
+          this.article.emailSubmit = false;
+        } else {
+          this.article.emailSubmit = true;
         }
       },
       deep: true

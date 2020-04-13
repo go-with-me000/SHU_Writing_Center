@@ -123,7 +123,7 @@
         </div>
       </Col>
 
-      <Col span="4" style="text-align:center;">
+      <Col span="2" style="text-align:center;">
         <div class="displayimg">
           <Upload
             :before-upload="handleBeforeUpload"
@@ -134,6 +134,11 @@
           </Upload>
           <div class="display">
             <img :src="person_info.imagesrc" style="width: 95%;height:100%;" />
+          </div>
+          <div class="qrcode">
+            <img src="@/common/img/public.jpg" />
+            <p style="font-weight:bold;font-size:14px;">请老师扫码二维码，关注公众号</p>
+            <p style="font-weight:bold;font-size:16px;">更快获取最新预约信息</p>
           </div>
         </div>
       </Col>
@@ -192,7 +197,6 @@
               :options="options3"
               :time-picker-options="optionend"
               ref="deleteend"
-              
             ></DatePicker>
           </FormItem>
         </Form>
@@ -618,10 +622,9 @@ export default {
       if (email != "") {
         this.modal1 = true;
       } else {
-          this.$Notice.warning({
+        this.$Notice.warning({
           title: "未填邮箱",
-          desc:
-            "请先填写个人信息，再进行预约"
+          desc: "请先填写个人信息，再进行预约"
         });
       }
     },
