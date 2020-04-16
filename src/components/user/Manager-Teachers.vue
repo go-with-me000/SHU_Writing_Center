@@ -609,7 +609,7 @@ export default {
           title: "确认删除吗？",
           onOk: () => {
             axios({
-              url: "http://202.120.117.43:8080/monitor/deleteStTeacher",
+              url: `${apiPath}/monitor/deleteStTeacher`,
               method: "post",
               data: "deleteids=" + this.checkboxSelected
             }).then(res => {
@@ -648,7 +648,7 @@ export default {
         if(this.DrawerData.stteacherid!=null && this.DrawerData!=null)
         {
           axios({
-            url:"http://202.120.117.43:8080/monitor/upDateStTeacher",
+            url:`${apiPath}/monitor/upDateStTeacher`,
             method:"post",
             data:this.DrawerData,
           }).then(res=>
@@ -685,7 +685,7 @@ export default {
       StEditTime() {
       if (this.checkboxSelected.length==1) {
         axios({
-          url: "http://202.120.117.43:8080/monitor/searchEditTimes",
+          url: `${apiPath}/monitor/searchEditTimes`,
           method: "get",
           params: {
             teacherid: this.checkboxSelected[0]
@@ -776,7 +776,7 @@ export default {
           ) {
            
             axios({
-              url: "http://202.120.117.43:8080/monitor/saveNullTimes",
+              url:`${apiPath}/monitor/saveNullTimes`,
               method: "get",
               params: {
                 teacherid: this.checkboxSelected[0]
@@ -792,7 +792,7 @@ export default {
             });
           } else {
             axios({
-              url: "http://202.120.117.43:8080/monitor/saveTimes",
+              url: `${apiPath}/monitor/saveTimes`,
               method: "post",
               data: this.items
             }).then(res => {
@@ -845,7 +845,7 @@ export default {
     searchStTeacher(stPage) {
       //查询学生教师的信息
       axios({
-        url: "http://202.120.117.43:8080/monitor/searchStteacher",
+        url: `${apiPath}/monitor/searchStteacher`,
         method: "get",
         params: {
           curr: stPage
@@ -867,7 +867,7 @@ export default {
           title: "确定删除名师：" + this.famousTeacherName + "吗？",
           onOk: () => {
             axios({
-              url: "http://202.120.117.43:8080/monitor/deleteFamouTeacher",
+              url: `${apiPath}/monitor/deleteFamouTeacher`,
               method: "get",
               params: {
                 teacherName: this.famousTeacherName
@@ -895,7 +895,7 @@ export default {
         onOk: () => {
           this.htmla = editor.txt.html();
           axios({
-            url: "http://202.120.117.43:8080/monitor/uploadFamouTeacher",
+            url: `${apiPath}/monitor/uploadFamouTeacher`,
             method: "post",
             data: {
               teacherName: this.famousTeacherName,
@@ -915,7 +915,7 @@ export default {
     geteditor() {
       editor = new E("#editor");
       editor.customConfig.uploadImgServer =
-        "http://202.120.117.43:8080/WangUploadfile";
+       `${apiPath}/WangUploadfile`;
       editor.customConfig.uploadFileName = "uploadfile";
       editor.customConfig.withCredentials = true;
       editor.customConfig.customAlert = function(info) {
@@ -935,7 +935,7 @@ export default {
       item.loading = true;
       setTimeout(() => {
         axios({
-          url: "http://202.120.117.43:8080/monitor/selectTeacherInFamous",
+          url: `${apiPath}/monitor/selectTeacherInFamous`,
           method: "get",
           params: {
             departmentid: item.value
@@ -1021,7 +1021,7 @@ export default {
             this.formDynamic.items.length == 0
           ) {
             axios({
-              url: "http://202.120.117.43:8080/monitor/saveNullTimes",
+              url: `${apiPath}/monitor/saveNullTimes`,
               method: "get",
               params: {
                 teacherid: this.teacherid
@@ -1032,7 +1032,7 @@ export default {
             });
           } else {
             axios({
-              url: "http://202.120.117.43:8080/monitor/saveTimes",
+              url:`${apiPath}/monitor/saveTimes`,
               method: "post",
               data: this.formDynamic.items
             }).then(res => {
@@ -1052,7 +1052,7 @@ export default {
     editTimes() {
       if (this.formItem.teacherID != "") {
         axios({
-          url: "http://202.120.117.43:8080/monitor/searchEditTimes",
+          url: `${apiPath}/monitor/searchEditTimes`,
           method: "get",
           params: {
             teacherid: this.formItem.teacherID
@@ -1072,7 +1072,7 @@ export default {
     editTimesInTable(teacherid) {
       if (teacherid != null) {
         axios({
-          url: "http://202.120.117.43:8080/monitor/searchEditTimes",
+          url: `${apiPath}/monitor/searchEditTimes`,
           method: "get",
           params: {
             teacherid: teacherid
@@ -1098,7 +1098,7 @@ export default {
           title: "确认修改教师状态吗？",
           onOk: () => {
             axios({
-              url: "http://202.120.117.43:8080/monitor/updateTeacherStatus",
+              url: `${apiPath}/monitor/updateTeacherStatus`,
               params: {
                 teacherid: updateTeacherid,
                 teacherstatus: free
@@ -1146,7 +1146,7 @@ export default {
           title: "确认删除吗？",
           onOk: () => {
             axios({
-              url: "http://202.120.117.43:8080/monitor/deleteteacherdata",
+              url: `${apiPath}/monitor/deleteteacherdata`,
               method: "post",
               data: "deleteids=" + this.checkboxSelected
             }).then(res => {
@@ -1215,7 +1215,7 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", this.$refs.file.files[0]);
       axios
-        .post("http://202.120.117.43:8080/uploadfile", formData, {
+        .post(`${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
@@ -1242,7 +1242,7 @@ export default {
           onOk: () => {
             axios
               .post(
-                "http://202.120.117.43:8080/monitor/addteacher",
+               `${apiPath}/monitor/addteacher`,
                 this.formItem
               )
               .then(result => {
@@ -1266,7 +1266,7 @@ export default {
         return;
       }
       axios
-        .get("http://202.120.117.43:8080/monitor/searchteacherbyid", {
+        .get(`${apiPath}/monitor/searchteacherbyid`, {
           params: {
             inputtexts: this.inputteacherMsg
           },
@@ -1294,7 +1294,7 @@ export default {
     //选择框变动时候触发
     changeSelect(selected, curr) {
       axios
-        .get("http://202.120.117.43:8080/monitor/searchteacherbydepid", {
+        .get(`${apiPath}/monitor/searchteacherbydepid`, {
           params: {
             category1id: selected,
             curr: curr,
@@ -1311,7 +1311,7 @@ export default {
   },
   created: function() {
     axios
-      .get("http://202.120.117.43:8080/monitor/searchdep")
+      .get(`${apiPath}/monitor/searchdep`)
       .then(response => {
         this.department = response.data.data;
         for (var item in this.department) {

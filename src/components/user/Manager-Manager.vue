@@ -130,7 +130,7 @@ export default {
   },
   mounted() {
     axios({
-      url: "http://202.120.117.43:8080/monitor/searchManager",
+      url: `${apiPath}/monitor/searchManager`,
       method: "get",
       params: {
         curr: this.page,
@@ -151,7 +151,7 @@ export default {
       this.modal = true;   
     
     axios
-      .get("http://202.120.117.43:8080/monitor/searchdep")
+      .get(`${apiPath}/monitor/searchdep`)
       .then(response => {
         this.department = response.data.data;
       })
@@ -164,7 +164,7 @@ export default {
       if(this.ManagerForm.teacherID!=null && this.ManagerForm.teachername!=null)
       {
         axios({
-          url:"http://202.120.117.43:8080/monitor/addMangers",
+          url:`${apiPath}/monitor/addMangers`,
           method:"post",
           data:this.ManagerForm,
         }).then(res=>{
@@ -184,7 +184,7 @@ export default {
           title: "确定删除吗？",
           onOk: () => {
             axios({
-              url: "http://202.120.117.43:8080/monitor/deleteMangers",
+              url: `${apiPath}/monitor/deleteMangers`,
               method: "post",
               data: "requestiId=" + this.selected
             }).then(res => {
@@ -208,7 +208,7 @@ export default {
     //发起查询管理员请求
     selectMangers() {
       axios({
-        url: "http://202.120.117.43:8080/monitor/searchManager",
+        url:`${apiPath}/monitor/searchManager`,
         method: "get",
         params: {
           curr: this.page,

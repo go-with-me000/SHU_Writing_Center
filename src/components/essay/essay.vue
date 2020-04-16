@@ -132,7 +132,7 @@ export default {
   },
   mounted() {
     axios({
-      url: "http://202.120.117.43:8080/monitor/searchEssayonapplying",
+      url:  `${apiPath}/monitor/searchEssayonapplying`,
       method: "get",
       params: {
         curr: 1,
@@ -162,8 +162,8 @@ export default {
         this.$Modal.confirm({
           title: "确定删除吗？",
           onOk: () => {
-            axios({
-              url: "http://202.120.117.43:8080/monitor/deleteessay",
+            axios({ 
+              url: `${apiPath}/monitor/deleteessay`,
               method: "post",
               data: "deleteids=" + this.getSelectedNow
             }).then(res => {
@@ -196,7 +196,7 @@ export default {
     selectEssayById() {
       if (this.inputEssayMsg != null) {
         axios({
-          url: "http://202.120.117.43:8080/monitor/searchEssays",
+          url: `${apiPath}/monitor/searchEssays`,
           method: "get",
           params: {
             essayid: this.inputEssayMsg
@@ -227,7 +227,7 @@ export default {
     selecteEssay(page, status) {
       if (status != null) {
         axios({
-          url: "http://202.120.117.43:8080/monitor/searchEssayonapplying",
+          url: `${apiPath}/monitor/searchEssayonapplying`,
           method: "get",
           params: {
             curr: page,

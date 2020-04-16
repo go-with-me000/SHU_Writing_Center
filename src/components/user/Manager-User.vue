@@ -155,7 +155,7 @@ export default {
   },
   mounted() {
     axios({
-      url: "http://202.120.117.43:8080/monitor/searchStudent",
+      url: `${apiPath}/monitor/searchStudent`,
       method: "get",
       params: {
         curr: this.page,
@@ -182,7 +182,7 @@ export default {
               onOk:()=>{
 
               axios({
-                url: "http://202.120.117.43:8080/monitor/addOpenId",
+                url: `${apiPath}/monitor/addOpenId`,
                 method: "get",
                 params: {OpenId:this.weixinId,teacherId:this.selectWeiXin}
               }).then(res => {
@@ -266,7 +266,7 @@ export default {
               onOk:()=>{
 
               axios({
-                url: "http://202.120.117.43:8080/monitor/addToStteacher",
+                url: `${apiPath}/monitor/addToStteacher`,
                 method: "post",
                 data: "requestiId=" + this.selected
               }).then(res => {
@@ -295,7 +295,7 @@ export default {
             title: "确定删除吗？",
             onOk: () => {
               axios({
-                url: "http://202.120.117.43:8080/monitor/deleteStudent",
+                url: `${apiPath}/monitor/deleteStudent`,
                 method: "post",
                 data: "requestiId=" + this.selected
               }).then(res => {
@@ -320,7 +320,7 @@ export default {
 
             onOk: () => {
               axios({
-                url: "http://202.120.117.43:8080/monitor/deleteDishonest",
+                url: `${apiPath}/monitor/deleteDishonest`,
                 method: "post",
                 data: "requestiId=" + this.selected
               }).then(res => {
@@ -373,7 +373,7 @@ export default {
     //点击查找按钮后
     selectUserById() {
       axios({
-        url: "http://202.120.117.43:8080/monitor/searchStudentById",
+        url: `${apiPath}/monitor/searchStudentById`,
         method: "get",
         params: {
           UserId: this.inputteacherMsg
@@ -393,7 +393,7 @@ export default {
     //发起查询失信人员请求
     selectBrokenUser() {
       axios({
-        url: "http://202.120.117.43:8080/monitor/searchDishonestPerson",
+        url: `${apiPath}/monitor/searchDishonestPerson`,
         method: "get",
         params: {
           curr: this.page,
@@ -415,7 +415,7 @@ export default {
     //发起查询用户请求
     selectUser() {
       axios({
-        url: "http://202.120.117.43:8080/monitor/searchStudent",
+        url: `${apiPath}/monitor/searchStudent`,
         method: "get",
         params: {
           curr: this.page,

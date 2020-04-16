@@ -66,7 +66,7 @@ export default {
     this.readNews(11);
 
     axios({
-      url: "http://202.120.117.43:8080/monitor/searchNewsForLatest",
+      url: `${apiPath}/monitor/searchNewsForLatest`,
       method: "get"
     }).then(res => {
       this.latestNews = res.data.data[0];
@@ -76,7 +76,7 @@ export default {
   methods: {
     readNews(index) {
       axios({
-        url: "http://202.120.117.43:8080/monitor/searchNews",
+        url: `${apiPath}/monitor/searchNews`,
         method: "get",
         params: {
           newsId: index

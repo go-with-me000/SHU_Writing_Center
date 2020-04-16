@@ -182,7 +182,7 @@ export default {
   },
   mounted() {
     axios({
-      url: "http://202.120.117.43:8080/monitor/selectAllAppoinments",
+      url: `${apiPath}/monitor/selectAllAppoinments`,
       method: "get",
       params: {
         curr: 1,
@@ -212,7 +212,7 @@ export default {
             title: "确认删除吗？",
               onOk: () => {
                 axios({
-                  url: "http://202.120.117.43:8080/monitor/deleteAppointments",
+                  url: `${apiPath}/monitor/deleteAppointments`,
                   method: "post",
                   data: "deleteids=" + this.selected
                 }).then(res => {
@@ -225,8 +225,7 @@ export default {
                         this.EssayMsg.splice(item, 1);
                       }
                       }
-                     
-                  
+                    
                   }
                   this.selected = [];
                 });
@@ -240,7 +239,7 @@ export default {
     selectAppointmentByDate(page) {
       if (this.endTime > this.startTime) {
         axios({
-          url: "http://202.120.117.43:8080/monitor/selectAppointmentByDate",
+          url: `${apiPath}/monitor/selectAppointmentByDate`,
           method: "get",
           params: {
             inputstartdate: this.startTime,
@@ -273,7 +272,7 @@ export default {
       {
 
              axios({
-        url: "http://202.120.117.43:8080/monitor/selectAllAppoinments",
+        url: `${apiPath}/monitor/selectAllAppoinments`,
         method: "get",
         params: {
           curr: page,
