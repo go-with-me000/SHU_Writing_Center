@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family: "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Roboto, Arial, sans-serif; */
+    /* color: #333; */
+  }
+  
+  
+  
+  .img img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .sectTwo>h3 {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 42px
+  }
+  
+  .sectTwo>.intro {
+    font-size: 14px;
+    color: #666;
+    line-height: 28px;
+    max-height: 48px;
+    overflow: hidden;
+    text-align: center;
+  
+  }
+  
+  
+  #sectTwo .swiper-pagination {
+    bottom: 30px
+  }
+  
+  #sectTwo .swiper-pagination-bullet {
+    width: 20px;
+    height: 6px;
+    border-radius: 5px;
+    background: #fff;
+  }
+  
+  #sectTwo .swiper-pagination-bullet-active {
+    background: #e51c60;
+    width: 50px;
+  }
+  
+  .swiper-option2 {
+    position: relative;
+    width: 1300px;
+    margin: 0 auto;
+    z-index:0;
+    /* background: #666; */
+    margin-top:300px;
+    /* background:#000; */
+  }
+  
+  
+  #sectTwo .swiper-button-next {
+    
+    display: block;
+    outline: none
+  }
+  #sectTwo .swiper-button-prev{
+    display: block;
+    outline: none
+  }
+  
+  
+  @media screen and (max-width:1200px) {
+  
+    #sectTwo .swiper-pagination {
+      bottom: 30px
+    }
+  
+    #sectTwo .swiper-pagination-bullet {
+      width: 12px;
+      height: 5px;
+      border-radius: 5px;
+      background: #fff;
+    }
+  
+    #sectTwo .swiper-pagination-bullet-active {
+      background: #e51c60;
+      width: 30px;
+    }
+  
+    #sectTwo .swiper-button-prev,
+    #sectTwo .swiper-button-next {
+      display: none;
+    }
+  }
+  
+  
+  #sectTwo .sectTwo {
+    text-align: center;
+    margin: 0 auto
+  }
+  
+  .sectTwo>h3 {
+    color: #fff
+  }
+  
+  .sectTwo>.intro * {
+    color: #fff
+  }
+  
+  
+  .sectTwo .swiper-container {
+    width: 1370px;
+    margin: 0 auto;
+   margin-top:30px;
+    overflow: hidden;
+    padding-bottom:15px;
+    left:-40px;
+    /* padding-left:100px; */
+    /* padding-right:100px; */
+  }
+  
+  .sectTwo .swiper-container a {
+    display: block;
+    width: 386px;
+    height: 540px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    /* margin-right:50px; */
+  }
+  
+  .sectTwo .swiper-container a .img {
+    width: 100%;
+    height: 310px;
+    overflow: hidden;
+    line-height: 310px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .sectTwo .swiper-container a .img img {
+    transition: all .4s ease;
+    position: absolute;
+  }
+  
+  #content{
+    position: relative;
+    top:-280px;
+    margin-bottom:-220px;
+    margin-left:20px;
+  }
+  .sectTwo .swiper-container a .content {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0 25px;
+    text-align: left;
+    transition: all .4s ease;
+    overflow: hidden;
+    background-color: #aaa;
+    /*  */
+  }
+  
+ 
+  
+  
+ 
+  
+  
+  /*定义滚动条轨道 内阴影+圆角*/
+ 
+  
+  /*定义滑块 内阴影+圆角*/
+ 
+  
+  
+  .sectTwo .content h4 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 2;
+    padding-top:3px;
+    /* height: 44px; */
+    overflow: hidden;
+  
+  }
+  
+  .sectTwo .content p {
+    font-size: 1px;
+    line-height: 21px;
+    color: #aaa;
+  
+  }
+  
+  .sectTwo .content p i {
+    color: #aaa;
+    padding-right: 5px;
+  
+  }
+  
+  .sectTwo .content .intro {
+    font-size: 16px;
+    line-height: 28px;
+    color: #777;
+    padding-top: 10px;
+    height: 140px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  
+  }
+  
+  
+  .sectTwo #more {
+    border: 1px solid #fff;
+    color: #fff;
+    transition: all .4s ease
+  }
+  
+ 
+  
+  @media screen and (max-width:768px) {
+    #sectTwo .sectTwo {
+      box-sizing: border-box;
+      padding: 0 15px
+    }
+  
+    .sectTwo .swiper-container {
+      width: 98%;
+      
+    }
+  
+    .sectTwo .swiper-container a {
+      width: 100%;
+      height: auto;
+      margin: 0
+    }
+  
+    .sectTwo .swiper-container a .img {
+      height: auto;
+      line-height: 1
+    }
+  
+    .sectTwo .swiper-container a .content {
+      padding: 0 12px
+    }
+  
+    .sectTwo .content h4 {
+      padding-top: 5px;
+      font-size: 18px;
+  
+    }
+  
+    .sectTwo .content p {
+      line-height: 28px
+    }
+  
+    .sectTwo .content .intro {
+      font-size: 14px;
+      line-height: 24px;
+      height: 120px;
+      overflow: hidden;
+  
+    }
+  
+  
+  }
+  
+  
+  
+  
+  
+  @media screen and (max-width:1310px) {
+  
+  
+    .swiper-option2 {
+      width: 100%;
+    }
+  
+    .sectTwo .swiper-container {
+      width: 94%;
+    }
+  }
+  

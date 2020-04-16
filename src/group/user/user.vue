@@ -131,7 +131,7 @@
             <div
               class="uppage"
               :style="{margin: '0px', minHeight: '220px',
-              backgroundImage:'url(http://114.55.93.118/group1/M00/00/00/rBA7015h37CAf9jGAAItI9WGwp8717.jpg)',
+              backgroundImage:'url(http://202.120.117.43/group1/M00/00/00/ynh1K16YWCuAPaTKAAItI9WGwp8345.jpg)',
               backgroundRepeat:'no-repeat',backgroundSize:'100% 100%',
           }"
             >
@@ -538,7 +538,7 @@ export default {
       params.append("username", this.username);
       params.append("password", this.password);
       axios
-        .post("http://202.120.117.43:8080/login", params)
+        .post(`http:${apiPath}/login`, params)
         .then(res => {
           if (res.status == 200) {
             localStorage.setItem("authority", res.data.data[0].authority);

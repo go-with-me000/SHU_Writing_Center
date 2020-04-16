@@ -40,133 +40,46 @@
           <h3>服务内容/服务体系</h3>
           <h3>service content / service system</h3>
           <p style="text-align: left; text-indent: 2em; color: #fff;">{{introduce2}}</p>
-      
-          <div id="works">
-            <div class="container">
-              <!-- Container -->
-              <div class="row">
-                <div class="portfolio-items">
-                  <div class="col-sm-6">
-                    <div class="portfolio-item">
-                      <div class="hover-bg">
-                        <div class="hover-text">
-                          <h4>专家问诊</h4>
 
-                          <p>“专家问诊”是上海大学写作中心聘请的海内外资深专家为学生提供的一对一指导服务。</p>
-                          <div class="clearfix"></div>
-                        </div>
-                        <span>专家问诊</span>
-                        <img src="@/common/img/portfolio/onebyone.jpg" class="img-responsive" alt="Project Title">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                      <div class="hover-bg">
-                        <div class="hover-text">
-                          <h4>同伴辅导</h4>
-                          <p>“同伴辅导”是上海大学写作中心筛选并培训的高年级硕博研究生，通过与学生面对面沟通，帮助解决其写作层面的基础问题的个性化服务。</p>
-                          <div class="clearfix"></div>
-
-                        </div>
-                        <span>同伴辅导</span>
-                        <img src="@/common/img/portfolio/friend.jpg" class="img-responsive" alt="Project Title">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="portfolio-item">
-                      <div class="hover-bg">
-                        <div class="hover-text">
-                          <h4>信息素养培训</h4>
-                          <p>“信息素养培训”是图书馆馆员针对全校师生开展不同层次和类型的专题讲座，包括数据库检索与利用、文献管理与写作工具、学术工具利用，以及写作规范等。</p>
-                          <div class="clearfix"></div>
-
-                        </div>
-                        <span>信息素养培训</span>
-                        <img src="@/common/img/portfolio/train.jpg" class="img-responsive" alt="Project Title">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                      <div class="hover-bg">
-                        <div class="hover-text">
-                          <h4>英语写作工作坊</h4>
-                          <p>“英语写作工作坊”是由外国语学院资深教师滚动开展的初、中、高级的英语写作辅导，每个工作坊持续三周，小班教授，每月一次。</p>
-                          <div class="clearfix"></div>
-                        </div>
-                        <span>英语写作工作坊</span>
-                        <img src="@/common/img/portfolio/work.jpg" class="img-responsive" alt="Project Title">
-                      </div>
-                    </div>
-                  </div>
-                  
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section5">
-          <h3>工作团队</h3>
-          <h3 style="margin-bottom:50px">work team</h3>
-
-          <div id="hero-slides">
-            <div id="slides-cont">
+           <Row >
+            <Col span="10" offset="2" style="text-align:center">
+                <h1 style="color:#fff">专家问诊</h1>
+              <p>
+                <img src="@/common/img/portfolio/onebyone.jpg" style="width:100%;height:100%;" />
+              </p>
+              <p>“专家问诊”是上海大学写作中心聘请的海内外资深专家为学生提供的一对一指导服务。</p>
+            </Col>
+            <Col span="10" offset="1" style="text-align:center">
+              <h1  style="color:#fff">同伴辅导</h1>
+              <p>
+                <img src="@/common/img/portfolio/friend.jpg" style="width:100%;height:100%;" />
             
-              <div id="slides">
-                <div class="slide" id="cehua">
-                  <div class="number">策划</div>
-                  <div class="body">
-                
-                    <div class="headline">策划部</div>
-                      <div class="link"><p>调研师生需求，形成活动策划；对接其他部门，了解现有资源和限制条件，推进策划实现。</p></div>
-                      
-                  </div>
-                </div>
-                <div class="slide" id="lianluo">
-                  <div class="number">联络</div>
-                  <div class="body">
-                   
-                    <div class="headline">联络部</div>  
-                    <div class="link"><p>联合师生，构建桥梁，优化预约服务，推进网站预约建设。</p></div>
-                      
-                  </div>
-                </div>
-                <div class="slide" id="zhixing">
-                  <div class="number">执行</div>
-                  <div class="body">
-                    
-                    <div class="headline">执行部</div>
-                      <div class="link"><p>对接各部门的策划方案，根据实际情况执行线下活动，监控活动质量。</p></div>
-                      
-                  </div>
-                </div>
-                <div class="slide" id="xuanchuan">
-                  <div class="number">宣传</div>
-                  <div class="body">
-                 
-                    <div class="headline">宣传部</div>
-                      <div class="link"><p>抓好中心品牌建设，实时撰写新闻稿和微信推送，发布有效信息，提升写作中心的知名度和影响力。</p></div>
-                      
-                  </div>
-                </div>
-                <div class="slide" id="shiju">
-                  <div class="number">视觉</div>
-                  <div class="body">
-                 
-                    <div class="headline">视觉部</div>
-                      <div class="link"><p>利用图片、视频等新媒体方式，辅助建设微信公众号平台，提升写作中心的受众参与度。</p></div>
-                      
-                  </div>
-                </div>
-              
-              </div>
-              
-            </div>
-          </div>
+              </p>
+               <p>“同伴辅导”是上海大学写作中心筛选并培训的高年级硕博研究生，通过与学生面对面沟通，帮助解决其写作层面的基础问题的个性化服务。</p>
+                         
+            </Col>
+          </Row>
+            <Row >
+            <Col span="10" offset="2" style="text-align:center">
+                <h1 style="color:#fff">信息素养培训</h1>
+              <p>
+                <img src="@/common/img/portfolio/train.jpg" style="width:100%;height:100%;" />
+              </p>
+                <p>“信息素养培训”是图书馆馆员针对全校师生开展不同层次和类型的专题讲座，包括数据库检索与利用、文献管理与写作工具、学术工具利用，以及写作规范等。</p>
+                        </Col>
+            <Col span="10" offset="1" style="text-align:center">
+              <h1  style="color:#fff">英语写作工作坊</h1>
+              <p>
+                <img src="@/common/img/portfolio/work.jpg" style="width:100%;height:100%;" />
+            
+              </p>
+               <p>“同伴辅导”是上海大学写作中心筛选并培训的高年级硕博研究生，通过与学生面对面沟通，帮助解决其写作层面的基础问题的个性化服务。</p>
+                         
+            </Col>
+          </Row>
+         
         </div>
+        
         
         <div id="section3">
           <h3>写作交流</h3>
@@ -254,7 +167,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./login";
+@import "./ie";
 @import "./style.css";
 @import "./style2.css";
 @import "./bootstrap.css";

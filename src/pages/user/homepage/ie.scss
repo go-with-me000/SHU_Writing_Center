@@ -1,0 +1,297 @@
+#background {
+    position: relative;
+    left: 50%;
+  
+    width: 100%;
+    transform: translate(-50%, 0%);
+  
+    .bigpic {
+  
+      width: 100%;
+      height: 60vh;
+      position: relative;
+    }
+  
+  }
+  
+  .box {
+    position: relative;
+    width: 1300px;
+    height: 440px;
+    left: 50%;
+    // background-color: #1b1a1a;
+    transform: translate(-50%, 0%);
+    border-radius: 2px;
+    z-index: 1;
+    top: 15px;
+  
+    p {
+      /* text-align: center; */
+      font-family: "微软雅黑";
+      padding: 0px;
+      /* margin-bottom: -10px; */
+      font-size: 24px;
+      color: rgb(5, 5, 5);
+    }
+  
+    #news {
+      position: relative;
+      width: 95%;
+      top: 2%;
+      left: 5%;
+      font-size: 32px;
+      font-weight: normal;
+      font-family: inherit;
+      color: rgb(36, 80, 134);
+    }
+  
+    .more {
+      position: relative;
+      top: -10%;
+      right: 10px;
+  
+      span {
+  
+        font-size: 24px;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        //   font-weight: bold;
+        color: rgb(36, 80, 134);
+        cursor: pointer;
+        transition: all 0.6s;
+      }
+  
+      span:hover {
+        transform: scale(1.1);
+        //   color: rgb(19, 19, 20);
+      }
+  
+    }
+  
+    #carousel {
+      background-color: #1b1a1a;
+      position: relative;
+      height: 360px;
+      width: 600px;
+      left: 1%;
+      // top: 39%;
+      top: 4%;
+      transform: translate(5%, 0%);
+      cursor: pointer;
+      z-index: 1;
+  
+  
+      .back {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 12%;
+        top: 88%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+  
+  
+    }
+  
+    .information {
+      position: relative;
+      height: 360px;
+      width: 47%;
+      top: -78%;
+      float: right;
+      right: 1%;
+      -moz-box-shadow: 20px 20px 10px #1b1a1a;
+      -webkit-box-shadow: 2px 2px 10px #242222;
+      box-shadow: 1px 1px 1px rgb(196, 197, 197), -1px -1px 1px rgb(196, 197, 197), 0 -3px 0 #245086;
+  
+      // box-shadow:  0 -2px 0 red;
+  
+  
+      #inform {
+        position: relative;
+        display: flex;
+        top: 6%;
+        z-index:999;
+        ul {
+          position: relative;
+          width: 100%;
+          height: 100%;
+  
+          li {
+            position: relative;
+            width: 100%;
+            height: 110px;
+          }
+        }
+  
+        p {
+          position: relative;
+          top: 12px;
+          font-size: 16px;
+          font-weight: normal;
+          color: rgb(14, 13, 13);
+  
+        }
+  
+        span {
+          position: relative;
+          font-size: 17px;
+  
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: #2f8ac1;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          // font-weight: bold;
+          word-wrap: break-word;
+          white-space: normal !important;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          cursor: pointer;
+          transition: all 0.6s;
+        }
+  
+        span:hover {
+          transform: scale(1.01);
+          color: rgb(39, 82, 143);
+          // font-weight: bold;
+        }
+  
+      }
+    }
+  }
+  
+  #recommend {
+    position: relative;
+  
+    width: 1300px;
+    left: 50%;
+    top: 16px;
+  
+    transform: translate(-50%, 0%);
+    //  background-color: rgb(216, 187, 25); 
+    // background-color: rgba(39, 82, 143, .1);
+    border-radius: 2px;
+    z-index: 1;
+  
+    .more {
+      position: absolute;
+      display:block;
+      // margin-top:-45%;
+      right: 20px;
+      top:-5%;
+      z-index: 3;
+  
+      span {
+  
+        font-size: 24px;
+        position: relative;
+        right: 15px;
+        top: 80px;
+        color: rgb(36, 80, 134);
+        cursor: pointer;
+        transition: all 0.6s;
+      }
+  
+      span:hover {
+        transform: scale(1.1);
+        //   color: rgb(19, 19, 20);
+      }
+  
+    }
+  
+    p {
+      /* text-align: center; */
+      font-family: "微软雅黑";
+      padding: 0px;
+      /* margin-bottom: -10px; */
+      font-size: 24px;
+      color: rgb(14, 12, 12);
+    }
+  
+    #news {
+      position: relative;
+      top: 15px;
+      left: 5%;
+      font-size: 34px;
+      // font-weight: bold;
+      color: rgb(39, 82, 143);
+      // background-color: #009e96;
+    }
+  
+    #display {
+      position: relative;
+      width: 100%;
+      top: 1px;
+      min-height: 600px;
+  
+      .sectTwo .swiper-container a .content .intro .black {
+        opacity: 1;
+        color: #fff;
+      }
+  
+   
+  
+      .sectTwo .swiper-container a .content {
+        h4 {
+          color: #fff;
+          font-weight: bold;
+        }
+  
+        p{
+          color:#fff;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+     
+  
+  
+    }
+  
+  
+  
+  
+  }
+  
+  #questionheader {
+    text-align: center;
+    color: #1f5fbe;
+    font-size: 20px;
+  }
+  
+  .questionfoot {
+    position: relative;
+    width: 30%;
+    left: 35%
+  }
+  
+  .ivu-divider-horizontal {
+    margin: 20px 0;
+  }
+  
+  .stitle {
+    margin-left: 3px;
+    margin-bottom: -8px;
+  
+    font-size: 22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+  }
+  
+  .expand-row {
+    margin-bottom: 16px;
+  }
+  
+  .expand-key {
+    font-weight: lighter;
+  }
+  
+  #rate {
+    position: relative;
+    float: right;
+    right: 4%;
+  
+  }
+  

@@ -86,7 +86,7 @@
       </div>
     </Row>
 
-    <div class="lines"></div>
+    
 
     <Row class="exhibit">
       <ul>
@@ -136,12 +136,7 @@
       </Col>
       <Col span="2"></Col>
     </Row>
-    <!-- <div style="position:relative;text-align: center;overflow:hidden;width:74%;left:13%">
-      <img
-        src="http://114.55.93.118/group1/M00/00/02/rBA7015HjjSAU0n5AAPZI0s6s4I050.jpg"
-        id="imgback"
-      />
-    </div>-->
+ 
     <Row>
       <Modal v-model="modal1" :closable="false" width="50%" :styles="{top: '40px'}">
         <Card>
@@ -457,8 +452,9 @@ export default {
           }
         })
           .then(res => {
+            console.log(res)
             if (res.data.code === 200) {
-              if (res.data.data != "暂时没有小教师") {
+              if (res.data.data != "暂时没有教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
                 for (let i = 0; i < this.data.length; i++) {
@@ -519,7 +515,7 @@ export default {
         })
           .then(res => {
             if (res.data.code === 200) {
-              if (res.data.data != "暂时没有小教师") {
+              if (res.data.data != "暂时没有教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
                 for (let i = 0; i < this.data.length; i++) {
@@ -666,14 +662,14 @@ export default {
       this.loading = true;
       // this.$Loading.start();
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
           // this.$Loading.finish();
           this.loading = false;
           this.$Message.success("论文上传成功");
-          this.article.essaysrc = "http://114.55.93.118/" + res.data;
+          this.article.essaysrc = "http://202.120.117.43/" + res.data;
         });
       return false;
     }

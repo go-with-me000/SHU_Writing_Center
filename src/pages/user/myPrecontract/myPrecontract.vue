@@ -850,12 +850,12 @@ export default {
       formData.append("uploadfile", file);
       this.loading = true;
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
           this.loading = false;
-          this.article.essaysrc = "http://114.55.93.118/" + res.data;
+          this.article.essaysrc = "http://202.120.117.43/" + res.data;
           this.$Message.success("论文上传成功");
         });
       return false;

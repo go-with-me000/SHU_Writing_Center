@@ -29,12 +29,12 @@ var router = new Router({
         {
           path:'login',
           name:'login',
-          component:resolve=>require(['@/pages/user/login/login.vue'],resolve)
+          component:resolve=>require(['@/pages/user/login/choose.vue'],resolve)
         },
         {
           path:'homepage',
           name:'homepage',
-          component:resolve => require(['@/pages/user/homepage/homepage.vue'], resolve),
+          component:resolve => require(['@/pages/user/homepage/choose.vue'], resolve),
         },{
           path:'precontract',
           name:'precontract',

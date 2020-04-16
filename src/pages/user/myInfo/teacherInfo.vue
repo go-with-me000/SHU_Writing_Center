@@ -486,6 +486,13 @@ export default {
           // let free = true ? false : this.person_info.free == "是";
           let online = 1 ? 0 : this.person_info.online == "是";
           this.loading = true;
+          if(this.person_info.phone.length>=11){
+            this.$Message.warning({
+                  content: `请输入正确的手机位数`
+                });
+                this.loading = false;
+                return;
+          }
           axios({
             url: URL,
             method: "POST",
@@ -751,11 +758,11 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", file);
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-          this.person_info.imagesrc = "http://114.55.93.118/" + res.data;
+          this.person_info.imagesrc = "http://202.120.117.43" + res.data;
           console.log(this.person_info.imagesrc);
           this.changeimg(this.person_info.imagesrc);
         });

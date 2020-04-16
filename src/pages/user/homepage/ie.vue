@@ -18,12 +18,10 @@
         </span>
       </div>
 
-      <Carousel v-model="newspicture" loop autoplay id="carousel" dots="inside" radius-dot>
-        <CarouselItem v-for="(item,index) in imgs" :key="index">
-          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;height:360px" />
-        </CarouselItem>
-        <div class="back"></div>
-      </Carousel>
+      <div id="carousel">
+        <img :src="imgs[0].picturesrc" @click="imgnews(0)" style="width:100%;height:360px" />
+      </div>
+
       <div class="information">
         <div id="inform">
           <ul ref="con1" style="list-style:none;">
@@ -85,23 +83,7 @@
                             <div class="black">
                               <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.description}}</div>
                             </div>
-                            <div class="white">
-                              <div v-html="item.introductions"></div>
-                              <div class="action">
-                                <Button
-                                  type="info"
-                                  ghost
-                                  style="margin-left:6%;"
-                                  @click="specifics(item)"
-                                >详情</Button>
-                                <Button
-                                  type="success"
-                                  ghost
-                                  style="margin-left:6%;"
-                                  @click="precontract(item)"
-                                >预约</Button>
-                              </div>
-                            </div>
+                            
                           </div>
                         </div>
                       </a>
@@ -184,101 +166,101 @@
       </div>
     </Modal>
     <Modal
-        title="上传论文"
-        v-model="essaymodal"
-        class-name="vertical-center-modal"
-        width="30"
-        :mask-closable="false"
-        :styles="{top: '20px'}"
-      >
-        <p slot="header" style="color:#000;text-align:center;height:30px;">
-          <span style="position:relative;font-size:24px;font-weight:bold;top:20%">上传论文</span>
-        </p>
-        <div style="width:100%;position:relative">
-          <Form ref="article" :model="article" :label-width="80">
-            <FormItem label="论文题目" class="formitem">
-              <Input v-model="article.essayname" placeholder="请输入论文题目" />
-            </FormItem>
-            <FormItem label="论文介绍" class="formitem">
-              <Input
-                v-model="article.description"
-                type="textarea"
-                :autosize="{minRows: 3,maxRows: 5}"
-                placeholder="请写下对论文的介绍（200字之内）"
-              />
-            </FormItem>
-            <FormItem label="选择时段" class="formitem">
-              <Select v-model="article.time" placeholder="请选择时段">
-                <Option
-                  v-for="it in item.timeList"
-                  :value="it.id"
-                  :key="it.id"
-                  v-if="it.occupy==0"
-                >{{ it.startTime }}--{{it.endTime}}</Option>
-              </Select>
-            </FormItem>
-          </Form>
+      title="上传论文"
+      v-model="essaymodal"
+      class-name="vertical-center-modal"
+      width="30"
+      :mask-closable="false"
+      :styles="{top: '20px'}"
+    >
+      <p slot="header" style="color:#000;text-align:center;height:30px;">
+        <span style="position:relative;font-size:24px;font-weight:bold;top:20%">上传论文</span>
+      </p>
+      <div style="width:100%;position:relative">
+        <Form ref="article" :model="article" :label-width="80">
+          <FormItem label="论文题目" class="formitem">
+            <Input v-model="article.essayname" placeholder="请输入论文题目" />
+          </FormItem>
+          <FormItem label="论文介绍" class="formitem">
+            <Input
+              v-model="article.description"
+              type="textarea"
+              :autosize="{minRows: 3,maxRows: 5}"
+              placeholder="请写下对论文的介绍（200字之内）"
+            />
+          </FormItem>
+          <FormItem label="选择时段" class="formitem">
+            <Select v-model="article.time" placeholder="请选择时段">
+              <Option
+                v-for="it in item.timeList"
+                :value="it.id"
+                :key="it.id"
+                v-if="it.occupy==0"
+              >{{ it.startTime }}--{{it.endTime}}</Option>
+            </Select>
+          </FormItem>
+        </Form>
 
-          <div>
-            <div style="position:relative;width:100%;right:0%">
-              <Upload
-                ref="upload"
-                type="drag"
-                action="//jsonplaceholder.typicode.com/posts/"
-                :before-upload="handleBeforeUpload"
-              >
-                <div style="padding: 10px 0">
-                  <Icon type="ios-cloud-upload" size="30" style="color: #3399ff"></Icon>
-                  <p>
-                    请选择你要上传的论文
-                    <br />（pdf格式或者word格式）
-                  </p>
-                </div>
-              </Upload>
-            </div>
-            <div
-              style="position:relative;font-size:15px;font-weight:normal;left:3%;diaplay:flex;top:5px;"
+        <div>
+          <div style="position:relative;width:100%;right:0%">
+            <Upload
+              ref="upload"
+              type="drag"
+              action="//jsonplaceholder.typicode.com/posts/"
+              :before-upload="handleBeforeUpload"
             >
-              上传的文件名:
-              <span
-                style="position:relative;font-size:15px;font-weight:bold;top:5%;"
-              >{{ article.essayfile.name }}</span>
-            </div>
+              <div style="padding: 10px 0">
+                <Icon type="ios-cloud-upload" size="30" style="color: #3399ff"></Icon>
+                <p>
+                  请选择你要上传的论文
+                  <br />（pdf格式或者word格式）
+                </p>
+              </div>
+            </Upload>
           </div>
-          <Divider style="position:relative;margin-top:18px;margin-bottom:15px"></Divider>
-          <Row type="flex" class="code-row-bg">
-            <Col span="17">
-              <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
-            </Col>
-            <Col span="4" offset="1">
-              <Button
-                type="primary"
-                size="large"
-                @click="captcha()"
-                style="margin-left:20px;position:relative"
-              >邮箱验证</Button>
-            </Col>
-          </Row>
+          <div
+            style="position:relative;font-size:15px;font-weight:normal;left:3%;diaplay:flex;top:5px;"
+          >
+            上传的文件名:
+            <span
+              style="position:relative;font-size:15px;font-weight:bold;top:5%;"
+            >{{ article.essayfile.name }}</span>
+          </div>
         </div>
+        <Divider style="position:relative;margin-top:18px;margin-bottom:15px"></Divider>
+        <Row type="flex" class="code-row-bg">
+          <Col span="17">
+            <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
+          </Col>
+          <Col span="4" offset="1">
+            <Button
+              type="primary"
+              size="large"
+              @click="captcha()"
+              style="margin-left:20px;position:relative"
+            >邮箱验证</Button>
+          </Col>
+        </Row>
+      </div>
 
-        <div slot="footer" style="text-align:center">
-          <Button
-            type="primary"
-            size="large"
-            @click="hangbefore()"
-            style="margin-right:1vh;"
-            :disabled="article.essaySubmit"
-            :loading="loading"
-          >确认预约</Button>
-          <Button
-            type="primary"
-            size="large"
-            ghost
-            @click="essaymodal=false"
-            style="margin-right:1vh;"
-          >取消</Button>
-        </div>
-      </Modal>
+      <div slot="footer" style="text-align:center">
+        <Button
+          type="primary"
+          size="large"
+          @click="hangbefore()"
+          style="margin-right:1vh;"
+          :disabled="article.essaySubmit"
+          :loading="loading"
+        >确认预约</Button>
+        <Button
+          type="primary"
+          size="large"
+          ghost
+          @click="essaymodal=false"
+          style="margin-right:1vh;"
+        >取消</Button>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -429,7 +411,7 @@ export default {
           this.$Notice.warning({ title: `出错，提示：${err}` });
         });
     },
-    
+
     moreNews() {
       this.$router.push({ name: "newsFront" });
     },
@@ -569,9 +551,9 @@ export default {
     },
     hang() {
       let URL = `${apiPath}/user/userConfirmsAppointment`;
-      let userID = localStorage.getItem("userID")
+      let userID = localStorage.getItem("userID");
       let teacherid = this.item.teacherId;
-     
+
       axios({
         url: URL,
         method: "post",
@@ -597,8 +579,7 @@ export default {
         });
     },
     handleBeforeUpload(file) {
-      
-      const extension1 = /.pdf/.test(file.name)
+      const extension1 = /.pdf/.test(file.name);
       const extension2 = /.doc/.test(file.name);
       const extension3 = /.docx/.test(file.name);
       const isLt5M = file.size / 1024 / 1024 < 5;
@@ -656,7 +637,7 @@ export default {
         this.article.essaySubmit = false;
         this.article.essaysrc = "";
         this.article.time = "";
-        this.article.captchacode = ""
+        this.article.captchacode = "";
       }
     },
     article: {
@@ -665,7 +646,7 @@ export default {
           this.article.essayname != "" &&
           this.article.essayfile != "" &&
           this.article.description != "" &&
-          this.article.time != ""&&
+          this.article.time != "" &&
           this.article.captchacode != ""
         ) {
           this.article.essaySubmit = false;
@@ -680,9 +661,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "homepage";
+@import "ie";
 @import "css/swiper.css";
-@import "css/chrome.css";
+@import "css/ie.css";
 </style>
 <style lang="scss">
 .ivu-carousel-dots li button.radius {
@@ -753,12 +734,12 @@ export default {
 .ivu-select-item {
   padding: 7px 6.8px;
 }
-.formitem{
-  position:relative;
-  margin-bottom:15px;
+.formitem {
+  position: relative;
+  margin-bottom: 15px;
 }
-.ivu-btn-large{
-  padding-left:15px;
-  padding-right:15px;
+.ivu-btn-large {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 </style>
