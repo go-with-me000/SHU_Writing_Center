@@ -538,7 +538,7 @@ export default {
       params.append("username", this.username);
       params.append("password", this.password);
       axios
-        .post("http://114.55.93.118:8080/login", params)
+        .post("http://202.120.117.43:8080/login", params)
         .then(res => {
           if (res.status == 200) {
             localStorage.setItem("authority", res.data.data[0].authority);

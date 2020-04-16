@@ -238,7 +238,7 @@ export default {
   mounted: function() {
     let that = this;
     axios({
-      url: "http://114.55.93.118:8080/monitor/searchCircle",
+      url: "http://202.120.117.43:8080/monitor/searchCircle",
       method: "get"
     }).then(res => {
       (this.katonNumber = res.data.data[0]),
@@ -252,7 +252,7 @@ export default {
     });
 
     axios
-      .get("http://114.55.93.118:8080/monitor/getAppointmentsin14days")
+      .get("http://202.120.117.43:8080/monitor/getAppointmentsin14days")
       .then(response => {
         this.week = response.data.time1;
         this.courseList = response.data.time2;
@@ -304,7 +304,7 @@ export default {
           title: "确认删除预约吗？",
           onOk: () => {
             axios({
-              url: "http://114.55.93.118:8080/monitor/deleteAppointments",
+              url: "http://202.120.117.43:8080/monitor/deleteAppointments",
               method: "post",
               data: "deleteids=" + this.checkboxSelected
             }).then(res => {
@@ -366,7 +366,7 @@ export default {
       if (myweek != null && myindex != null) {
         //发起请求查询当天预约
         axios({
-          url: "http://114.55.93.118:8080/monitor/getApplicationByOneTime",
+          url: "http://202.120.117.43:8080/monitor/getApplicationByOneTime",
           method: "get",
           params: {
             hourtime: myweek,

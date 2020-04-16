@@ -224,7 +224,7 @@ export default {
     var nowDate = new Date();
 
     axios({
-      url: "http://114.55.93.118:8080/monitor/searchNewsName",
+      url: "http://202.120.117.43:8080/monitor/searchNewsName",
       method: "get"
     })
       .then(res => {
@@ -266,7 +266,7 @@ export default {
         title: "确定上传轮播图吗？",
         onOk: () => {
           axios({
-            url: "http://114.55.93.118:8080/monitor/uploadFamPic",
+            url: "http://202.120.117.43:8080/monitor/uploadFamPic",
             method: "post",
             data: {
               "picNum": this.selectedNum,
@@ -310,11 +310,11 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", file);
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post("http://202.120.117.43:8080/uploadfile", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-          this.picsrc = "http://114.55.93.118/" + res.data;
+          this.picsrc = "http://202.120.117.43/" + res.data;
         });
       return false;
     },
@@ -323,7 +323,7 @@ export default {
       editor = new E("#editor");
 
       editor.customConfig.uploadImgServer =
-        "http://114.55.93.118:8080/WangUploadfile";
+        "http://202.120.117.43:8080/WangUploadfile";
       editor.customConfig.uploadFileName = "uploadfile";
       editor.customConfig.withCredentials = true;
       editor.customConfig.customAlert = function(info) {
@@ -448,7 +448,7 @@ export default {
         //});
 
         var newPage = window.open();
-        newPage.location.href = "http://114.55.93.118:8081/#/manager/preView";
+        newPage.location.href = "http://202.120.117.43:8081/#/manager/preView";
       }
     },
 
@@ -458,7 +458,7 @@ export default {
         this.publishLoading = true;
         this.htmla = editor.txt.html();
         axios({
-          url: "http://114.55.93.118:8080/monitor/uploadNews",
+          url: "http://202.120.117.43:8080/monitor/uploadNews",
           method: "post",
           data: {
             newsname: this.articleTitle,

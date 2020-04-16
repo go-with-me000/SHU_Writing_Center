@@ -61,7 +61,7 @@ export default {
       params.append("password", this.password);
       // this.$router.push({ path: "/user/login" });
       axios
-        .post("http://localhost:8080/loginShu", params)
+        .post("http://202.120.117.43:8080/loginShu", params)
         .then(res => {
           if (res.status == 200) {
             
