@@ -3,7 +3,7 @@
     <Layout
       style="height: calc(100vh - 60px);"
       :style="{margin: '0px', background: '#fff', minHeight: '220px',
-         backgroundImage:'url(http://114.55.93.118/group1/M00/00/00/rBA7015hBzqATVEgAAGCweLpcpo381.jpg)',
+         backgroundImage:'url(http://202.120.117.43/group1/M00/00/00/ynh1K16YWOSAZ_dbAAGCweLpcpo664.jpg)',
          backgroundRepeat:'no-repeat',backgroundSize:'100% 100%',
           }"
     >

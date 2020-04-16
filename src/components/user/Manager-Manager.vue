@@ -98,25 +98,31 @@ export default {
         {
           title: "姓名",
           key: "name",
-          width: 200,
+          width: 170,
           align: "center"
         },
         {
           title: "职业",
           key: "duty",
-          width: 200,
+          width: 150,
           align: "center"
         },
         {
           title: "学院",
           key: "organization",
-          width: 220,
+          width: 200,
+          align: "center"
+        },
+          {
+          title: "电话",
+          key: "phone",
+          width: 180,
           align: "center"
         },
         {
           title: "权限",
           key: "auth",
-          width: 280,
+          width: 250,
           align: "center"
         }
       ]
@@ -124,7 +130,7 @@ export default {
   },
   mounted() {
     axios({
-      url: "http://114.55.93.118:8080/monitor/searchManager",
+      url: "http://202.120.117.43:8080/monitor/searchManager",
       method: "get",
       params: {
         curr: this.page,
@@ -145,7 +151,7 @@ export default {
       this.modal = true;   
     
     axios
-      .get("http://114.55.93.118:8080/monitor/searchdep")
+      .get("http://202.120.117.43:8080/monitor/searchdep")
       .then(response => {
         this.department = response.data.data;
       })
@@ -158,7 +164,7 @@ export default {
       if(this.ManagerForm.teacherID!=null && this.ManagerForm.teachername!=null)
       {
         axios({
-          url:"http://114.55.93.118:8080/monitor/addMangers",
+          url:"http://202.120.117.43:8080/monitor/addMangers",
           method:"post",
           data:this.ManagerForm,
         }).then(res=>{
@@ -178,7 +184,7 @@ export default {
           title: "确定删除吗？",
           onOk: () => {
             axios({
-              url: "http://114.55.93.118:8080/monitor/deleteMangers",
+              url: "http://202.120.117.43:8080/monitor/deleteMangers",
               method: "post",
               data: "requestiId=" + this.selected
             }).then(res => {
@@ -202,7 +208,7 @@ export default {
     //发起查询管理员请求
     selectMangers() {
       axios({
-        url: "http://114.55.93.118:8080/monitor/searchManager",
+        url: "http://202.120.117.43:8080/monitor/searchManager",
         method: "get",
         params: {
           curr: this.page,

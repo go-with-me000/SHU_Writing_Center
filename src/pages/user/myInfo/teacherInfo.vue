@@ -123,7 +123,7 @@
         </div>
       </Col>
 
-      <Col span="4" style="text-align:center;">
+      <Col span="2" style="text-align:center;">
         <div class="displayimg">
           <Upload
             :before-upload="handleBeforeUpload"
@@ -134,6 +134,11 @@
           </Upload>
           <div class="display">
             <img :src="person_info.imagesrc" style="width: 95%;height:100%;" />
+          </div>
+          <div class="qrcode">
+            <img src="@/common/img/public.jpg" />
+            <p style="font-weight:bold;font-size:14px;">请老师扫码二维码，关注公众号</p>
+            <p style="font-weight:bold;font-size:16px;">更快获取最新预约信息</p>
           </div>
         </div>
       </Col>
@@ -192,7 +197,6 @@
               :options="options3"
               :time-picker-options="optionend"
               ref="deleteend"
-              
             ></DatePicker>
           </FormItem>
         </Form>
@@ -482,6 +486,13 @@ export default {
           // let free = true ? false : this.person_info.free == "是";
           let online = 1 ? 0 : this.person_info.online == "是";
           this.loading = true;
+          if(this.person_info.phone.length>=11){
+            this.$Message.warning({
+                  content: `请输入正确的手机位数`
+                });
+                this.loading = false;
+                return;
+          }
           axios({
             url: URL,
             method: "POST",
@@ -618,10 +629,9 @@ export default {
       if (email != "") {
         this.modal1 = true;
       } else {
-          this.$Notice.warning({
+        this.$Notice.warning({
           title: "未填邮箱",
-          desc:
-            "请先填写个人信息，再进行预约"
+          desc: "请先填写个人信息，再进行预约"
         });
       }
     },
@@ -748,11 +758,11 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", file);
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-          this.person_info.imagesrc = "http://114.55.93.118/" + res.data;
+          this.person_info.imagesrc = "http://202.120.117.43" + res.data;
           console.log(this.person_info.imagesrc);
           this.changeimg(this.person_info.imagesrc);
         });

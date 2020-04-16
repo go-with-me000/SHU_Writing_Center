@@ -272,9 +272,13 @@
         color:#fff;
       }
       .intro{
+        .black{
+          height:0px;
+        }
         .white{
+          // background:#000;
           position:relative;
-          top:-25%;
+          
           .title{
             font-weight: bold;
             font-size:18px;

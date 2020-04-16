@@ -10,6 +10,7 @@
           <Button @click="selectUserById" type="primary">查找</Button>
           <Button @click="deleteUser" type="error">删除</Button>
           <Button style @click="addToStTeacher">添加为学生教师</Button>
+          <Button style @click="addWeiXinId">添加到公众号</Button>
         </div>
         <div class="table">
           <Table :columns="tableHead" :data="userMsg" @on-selection-change="selectChange"></Table>
@@ -19,6 +20,30 @@
         </div>
       </Tab-pane>
     </Tabs>
+
+      <Modal
+      width="600px"
+      v-model="modal"
+      class-name="vertical-center-modal"
+      title="添加公众号openid"
+      @on-ok="ok"
+    >
+      <div class="context">
+        <Form>
+          <i-input v-model="selectWeiXin" readonly  ></i-input>
+          <i-input
+          v-model="weixinId"
+            size="large"
+            style="align:center"
+            id="weixinId"
+            name="weixinId"
+            placeholder="openid"
+          ></i-input>
+        </Form>
+      
+      </div>
+    </Modal>
+
   </div>
 </template>
 
@@ -27,6 +52,9 @@ import axios from "axios";
 export default {
   data() {
     return {
+      selectWeiXin:"",
+      modal: false,
+      weixinId:"",
       userType: ["普通用户信息", "失信人员情况"],
       checkBox: "普通用户信息",
       selected: [],
@@ -77,35 +105,49 @@ export default {
           align: "center"
         },
         {
-          title: "用户id",
+          title: "用户",
           key: "adminid",
           sortable: true,
-          width: 170,
+          width: 150,
           align: "center"
         },
         {
           title: "姓名",
           key: "name",
-          width:140,
+          width:110,
           align: "center"
         },
         {
           title: "职业",
           key: "duty",
-          width: 120,
+           sortable: true,
+          width: 100,
           align: "center"
         },
         {
           title: "学院",
           key: "organization",
-          width: 300,
+          width: 220,
+          align: "center"
+        },
+           {
+          title: "电话",
+          key: "phone",
+          width: 170,
           align: "center"
         },
         {
-          title: "违约次数",
-          key: "brokenrecord",
+          title: "邮箱",
+          key: "email",
           sortable: true,
-          width: 260,
+          width: 200,
+          align: "center"
+        },
+          {
+          title: "微信openid",
+          key: "weixinid",
+          sortable: true,
+          width: 220,
           align: "center"
         }
       ]
@@ -113,7 +155,7 @@ export default {
   },
   mounted() {
     axios({
-      url: "http://114.55.93.118:8080/monitor/searchStudent",
+      url: "http://202.120.117.43:8080/monitor/searchStudent",
       method: "get",
       params: {
         curr: this.page,
@@ -127,6 +169,75 @@ export default {
   },
   methods: {
 
+   //点击增加openid
+    ok() {
+      if(this.selectWeiXin==null || this.selectWeiXin=="")
+      {
+         this.$Message.info("输入不能为空");
+         return;
+      }
+   
+          this.$Modal.confirm({
+              title:"确定添加openId吗？",
+              onOk:()=>{
+
+              axios({
+                url: "http://202.120.117.43:8080/monitor/addOpenId",
+                method: "get",
+                params: {OpenId:this.weixinId,teacherId:this.selectWeiXin}
+              }).then(res => {
+              
+                if(res.data.code==200)
+                {
+                    this.$Message.info("添加成功");
+                }else{
+                   this.$Message.info("添加失败，请检查添加信息");
+                }
+                this.weixinId = null;
+              });
+
+              }
+          })
+    },
+
+    //添加教师的公众号ID
+  addWeiXinId()
+  {
+     if(this.checkBox!="普通用户信息")
+      {
+        this.$Message.info("请在用户信息界面设置");
+      
+       }else
+       {
+         if(this.selected.length!=1)
+         {
+             this.$Message.info("一次只能设置一个");
+             return;
+         }
+        else
+        {
+            //校验只有学生职业能被添加为学生教师
+            for(var index in this.userMsg)
+            {
+              for(var selectindex in this.selected)
+              {
+                      if(this.userMsg[index].adminid==this.selected[selectindex])
+                      {
+                        if(this.userMsg[index].duty=="教职工" || this.userMsg[index].duty=="离退休" || this.userMsg[index].duty=="学生教师")
+                        {
+                          this.selectWeiXin=this.userMsg[index].adminid;
+                        
+                            this.modal = true;  
+    
+
+                        }
+                      }
+              }
+            }
+      
+        }    
+       }
+  },
     //添加为学生教师
     addToStTeacher()
     {
@@ -155,7 +266,7 @@ export default {
               onOk:()=>{
 
               axios({
-                url: "http://114.55.93.118:8080/monitor/addToStteacher",
+                url: "http://202.120.117.43:8080/monitor/addToStteacher",
                 method: "post",
                 data: "requestiId=" + this.selected
               }).then(res => {
@@ -184,7 +295,7 @@ export default {
             title: "确定删除吗？",
             onOk: () => {
               axios({
-                url: "http://114.55.93.118:8080/monitor/deleteStudent",
+                url: "http://202.120.117.43:8080/monitor/deleteStudent",
                 method: "post",
                 data: "requestiId=" + this.selected
               }).then(res => {
@@ -209,7 +320,7 @@ export default {
 
             onOk: () => {
               axios({
-                url: "http://114.55.93.118:8080/monitor/deleteDishonest",
+                url: "http://202.120.117.43:8080/monitor/deleteDishonest",
                 method: "post",
                 data: "requestiId=" + this.selected
               }).then(res => {
@@ -262,7 +373,7 @@ export default {
     //点击查找按钮后
     selectUserById() {
       axios({
-        url: "http://114.55.93.118:8080/monitor/searchStudentById",
+        url: "http://202.120.117.43:8080/monitor/searchStudentById",
         method: "get",
         params: {
           UserId: this.inputteacherMsg
@@ -282,7 +393,7 @@ export default {
     //发起查询失信人员请求
     selectBrokenUser() {
       axios({
-        url: "http://114.55.93.118:8080/monitor/searchDishonestPerson",
+        url: "http://202.120.117.43:8080/monitor/searchDishonestPerson",
         method: "get",
         params: {
           curr: this.page,
@@ -304,7 +415,7 @@ export default {
     //发起查询用户请求
     selectUser() {
       axios({
-        url: "http://114.55.93.118:8080/monitor/searchStudent",
+        url: "http://202.120.117.43:8080/monitor/searchStudent",
         method: "get",
         params: {
           curr: this.page,

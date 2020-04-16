@@ -20,7 +20,7 @@
 
       <Carousel v-model="newspicture" loop autoplay id="carousel" dots="inside" radius-dot>
         <CarouselItem v-for="(item,index) in imgs" :key="index">
-          <img :src="item.picturesrc" @click="imgnews(index)" />
+          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;height:360px" />
         </CarouselItem>
         <div class="back"></div>
       </Carousel>
@@ -86,7 +86,7 @@
                               <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.description}}</div>
                             </div>
                             <div class="white">
-                              <div v-html="item.introductions" class="books"></div>
+                              <div v-html="item.introductions"></div>
                               <div class="action">
                                 <Button
                                   type="info"
@@ -624,11 +624,11 @@ export default {
       formData.append("uploadfile", file);
       this.loading = true;
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-          this.article.essaysrc = "http://114.55.93.118/" + res.data;
+          this.article.essaysrc = "http://202.120.117.43/" + res.data;
           this.$Message.success("论文上传成功");
           this.loading = false;
         });
