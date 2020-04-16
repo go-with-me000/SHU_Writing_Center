@@ -134,7 +134,7 @@ export default {
     searchNews(pages) {
       this.page = pages;
       axios({
-        url: "http://114.55.93.118:8080/monitor/searchNewsManager",
+        url: "http://202.120.117.43:8080/monitor/searchNewsManager",
         method: "get",
         params: {
           curr: this.page
@@ -165,7 +165,7 @@ export default {
           title: "确认删除吗？",
           onOk: () => {
             axios({
-              url: "http://114.55.93.118:8080/monitor/deleteNews",
+              url: "http://202.120.117.43:8080/monitor/deleteNews",
               method: "post",
               data: "deleteids=" + this.selected
             }).then(res => {
@@ -202,7 +202,7 @@ export default {
       if (this.endTime > this.startTime) {
          this.page=1;
         axios({
-          url: "http://114.55.93.118:8080/monitor/selectNewsByDate",
+          url: "http://202.120.117.43:8080/monitor/selectNewsByDate",
           method: "get",
           params: {
             inputstartdate: this.startTime,
@@ -228,7 +228,7 @@ export default {
      handlePreview(index) {
 
          axios({
-          url: "http://114.55.93.118:8080/monitor/searchNews",
+          url: "http://202.120.117.43:8080/monitor/searchNews",
           method: "get",
           params: {
         "newsId":index,
@@ -257,7 +257,7 @@ export default {
         //});
 
         var newPage=window.open();
-        newPage.location.href="http://114.55.93.118:8081/#/manager/preView"
+        newPage.location.href="http://202.120.117.43:8443/#/manager/preView"
 
 
          })

@@ -71,7 +71,7 @@ export default {
     this.type = localStorage.type;
   alert(this.title);
     axios({
-      url: "http://114.55.93.118:8080/monitor/searchNewsForLatest",
+      url: "http://202.120.117.43:8080/monitor/searchNewsForLatest",
       method: "get"
     }).then(res => {
       this.latestNews = res.data.data[0];
