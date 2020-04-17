@@ -137,7 +137,13 @@ export default {
           let userId = this.person_info.studentId;
           let telephone = this.person_info.telephone;
           this.loading = true;
-         
+         if(this.person_info.phone.length>=11){
+            this.$Message.warning({
+                  content: `请输入正确的手机位数`
+                });
+                this.loading = false;
+                return;
+          }
           axios({
             url: URL,
             method: "POST",

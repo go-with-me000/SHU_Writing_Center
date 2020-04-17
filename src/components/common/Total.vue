@@ -1,12 +1,7 @@
 <template>
   <div>
 
- <router-view></router-view>
- 
-  </div>
-</template>
-  
-    <Head></Head>
+  <Head></Head>
     <table>
       <tr>
         <td class="td">
@@ -17,6 +12,11 @@
     </td>
       </tr>
     </table>
+ 
+  </div>
+</template>
+  
+  
  
 <script>
 import Left from "./Left.vue";

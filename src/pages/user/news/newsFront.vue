@@ -51,9 +51,7 @@
       </Col>
       <Col span="2"></Col>
     </Row>
-    <!-- <div style="position:relative;text-align: center;overflow:hidden;width:90%;left:5%">
-      <img src="http://114.55.93.118/group1/M00/00/02/rBA7015HjjSAU0n5AAPZI0s6s4I050.jpg" id="imgback" />
-    </div> -->
+   
   </div>
 </template>
 

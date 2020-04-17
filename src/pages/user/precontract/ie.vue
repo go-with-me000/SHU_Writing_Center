@@ -17,7 +17,7 @@
           <span class="choose_title">学院:</span>
           <RadioGroup v-model="choose.academy" :class="{choose:academyactive}" class="choosetrue">
             <Radio label="理学院"></Radio>
-            <Radio label="生命科学学院"></Radio>
+
             <Radio label="文学院"></Radio>
             <Radio label="法学院"></Radio>
             <Radio label="外国语学院"></Radio>
@@ -26,118 +26,97 @@
             <Radio label="新闻传播学院"></Radio>
             <Radio label="计算机工程与科学学院"></Radio>
             <Radio label="机电工程与自动化学院"></Radio>
-            <Radio label="翔英学院"></Radio>
+            <Radio label="通信与信息工程学院"></Radio>
             <Radio label="环境与化学工程学院"></Radio>
-            <Radio label="材料工程与工程学院"></Radio>
+            <Radio label="材料科学与工程学院"></Radio>
+            <Radio label="材料基因组工程研究院"></Radio>
             <Radio label="中欧工程技术学院"></Radio>
             <Radio label="土木工程系"></Radio>
-            <Radio label="力学与工程科学学院"></Radio>
+            <Radio label="力学所"></Radio>
+            <Radio label="纳米科学与技术中心"></Radio>
             <Radio label="经济学院"></Radio>
+            <Radio label="管理学院"></Radio>
             <Radio label="图书情报档案系"></Radio>
             <Radio label="悉尼工商学院"></Radio>
-            <Radio label="MBA教学管理中心"></Radio>
+            <Radio label="MBA中心"></Radio>
+            <Radio label="医学院"></Radio>
             <Radio label="上海电影学院"></Radio>
             <Radio label="上海美术学院"></Radio>
+            <Radio label="上海研究院"></Radio>
+            <Radio label="生命科学学院"></Radio>
             <Radio label="音乐学院"></Radio>
             <Radio label="数码艺术学院"></Radio>
             <Radio label="上海温哥华电影学院"></Radio>
             <Radio label="社区学院"></Radio>
+            <Radio label="社会科学学部"></Radio>
             <Radio label="钱伟长学院"></Radio>
             <Radio label="体育学院"></Radio>
             <Radio label="人才学院"></Radio>
-            <Radio label="人才学院"></Radio>
-            <Radio label="图书馆"></Radio>
-            <Radio label="计算机学院"></Radio>
+            <Radio label="微电子中心"></Radio>
+            <Radio label="国际教育学院"></Radio>
           </RadioGroup>
-          <div v-if="browser!=null">
-            <Button
-              type="info"
-              ghost
-              style="position:relative;float:right; flex-grow: 0;;
-        flex-shrink: 0;"
-              @click="academyactive = !academyactive;"
-            >
-              <div v-if="this.academyactive">
-                <Icon
-                  type="ios-arrow-down"
-                  style="margin-left:-10px;padding:0px;position:relative"
-                />
-                <span style="margin-right:-10px;position:relative">展开</span>
-              </div>
-              <div v-else>
-                <Icon type="ios-arrow-up" style="margin-left:-10px;padding:0px;position:relative" />
-                <span style="margin-right:-10px;position:relative">收起</span>
-              </div>
-            </Button>
-          </div>
+         
         </div>
 
-        <!-- <div id="helpintention">
-          <span class="choose_title">方向:</span>
-          <CheckboxGroup v-model="counselList" class="choose">
-            <Checkbox label="宝山">
-              <span>宝山校区</span>
-            </Checkbox>
-            <Checkbox label="嘉定">
-              <span>嘉定校区</span>
-            </Checkbox>
-            <Checkbox label="延长">
-              <span>延长校区</span>
-            </Checkbox>
-          </CheckboxGroup>
-        </div>-->
-        
         <div id="name">
           <span class="choose_title">姓名:</span>
-          <Input v-model="teacherName" placeholder="请输入老师的姓名查找" style="width: 300px" />
-          <Button type="info" ghost style="margin-left:10px;font-size:宋体" @click="loadDataName()">查询</Button>
+          <Input v-model="teacherName" placeholder="请输入老师的姓名查找" style="width: 500px" />
+          <!-- <Button type="info" ghost style="margin-left:10px;font-size:宋体" @click="loadDataName()">查询</Button> -->
         </div>
       </div>
     </Row>
+
+    
 
     <Row class="exhibit">
       <ul>
         <li style="display:block;" v-for="(item,index) in data" :key="index">
           <div class="list">
-            <div class="image">
-              <img :src="item.imagesrc" alt="name" style="width:100%;height:100%;" />
+            <div class="img">
+              <img :src="item.imagesrc" alt="name" style="width:270px;height:198px;" />
             </div>
-            <div class="message">
-              <div class="teachername">老师：{{item.teachername}}</div>
-              <div class="content">辅导方向：{{item.helpintention}}</div>
-
-              <div class="action">
-                <Button
-                  type="info"
-                  style="position:absolute;left:15%;"
-                  @click="specifics(item)"
-                  class="button"
-                >详情</Button>
-                <Button
-                  type="success"
-                  style="position:absolute;right:15%;"
-                  @click="precontract(item)"
-                >预约</Button>
-              </div>
+            <div class="introduce">
+              <h3>{{item.teachername}}</h3>
+              <h4>教职工</h4>
+              <p>{{item.helpintention}}</p>
+              <ul>
+                <li>
+                  <Button
+                    @click="specifics(item)"
+                    ghost
+                    type="default"
+                    style="margin-top:-10px;margin-left:13px;"
+                  >详情</Button>
+                </li>
+                <li>
+                  <Button
+                    ghost
+                    type="default"
+                    style="margin-top:-10px;position:relative;left:20px"
+                    @click="precontract(item)"
+                  >预约</Button>
+                </li>
+              </ul>
             </div>
           </div>
         </li>
       </ul>
     </Row>
+
     <Row type="flex" justify="space-between" class="code-row-bg">
       <Col span="2"></Col>
       <Col span="18" style="text-align:center;">
         <Page
           :total="totalteacher"
           show-elevator
-          style="margin-bottom:40px;"
+          style="margin-bottom:40px;padding-top:15px;"
           @on-change="cutaway"
           :page-size="12"
         />
       </Col>
       <Col span="2"></Col>
     </Row>
-    
+   
     <Row>
       <Modal v-model="modal1" :closable="false" width="50%" :styles="{top: '40px'}">
         <Card>
@@ -193,7 +172,6 @@
               <span class="expand-key">地址:</span>
               <span class="expand-value">{{ item.building }}</span>
             </Col>
-        
           </Row>
           <Divider class="spider"></Divider>
 
@@ -223,6 +201,7 @@
         v-model="essaymodal"
         class-name="vertical-center-modal"
         width="30"
+        :mask-closable="false"
         :styles="{top: '20px'}"
       >
         <p slot="header" style="color:#000;text-align:center;height:30px;">
@@ -270,24 +249,41 @@
                 </div>
               </Upload>
             </div>
-            <div style="position:relative;font-size:12px;font-weight:lighter;left:3%;diaplay:flex">
+            <div
+              style="position:relative;font-size:15px;font-weight:normal;left:3%;diaplay:flex;top:5px;"
+            >
               上传的文件名:
               <span
-                style="position:relative;font-size:12px;font-weight:normal;top:5%;"
+                style="position:relative;font-size:15px;font-weight:bold;top:5%;"
               >{{ article.essayfile.name }}</span>
             </div>
           </div>
+          <Divider style="position:relative;margin-top:18px;margin-bottom:15px"></Divider>
+          <Row type="flex" class="code-row-bg">
+            <Col span="17">
+              <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
+            </Col>
+            <Col span="4" offset="1">
+              <Button
+                type="primary"
+                size="large"
+                @click="captcha()"
+                style="margin-left:10px;position:relative"
+                :disabled="article.emailSubmit"
+              >邮箱验证</Button>
+            </Col>
+          </Row>
         </div>
 
         <div slot="footer" style="text-align:center">
           <Button
             type="primary"
             size="large"
-            @click="hang()"
+            @click="hangbefore()"
             style="margin-right:1vh;"
             :disabled="article.essaySubmit"
             :loading="loading"
-          >预约申请</Button>
+          >确认预约</Button>
           <Button
             type="primary"
             size="large"
@@ -308,13 +304,17 @@ export default {
   data() {
     return {
       browser: "",
+      captchamodal: false,
+
       article: {
         essayname: "", //论文题目
         description: "", //论文介绍
         essaysrc: "", //论文地址
         essaySubmit: true, //是否提交了论文
         essayfile: "", //论文文件
-        time: ""
+        emailSubmit: true,
+        time: "",
+        captchacode: ""
       },
       totalteacher: 0,
       tag: false,
@@ -338,14 +338,55 @@ export default {
     };
   },
   methods: {
-    // mouse() {
-    //   this.ghost = !this.ghost;
-    // },
+    captcha() {
+      let URL = `${apiPath}/user/sendSsmCode`;
+      axios({
+        url: URL,
+        method: "get"
+      })
+        .then(res => {
+          console.log(res);
+          if (res.data.code === 200) {
+            this.$Message.success({
+              content: "验证码已发出，请注意查收"
+            });
+          } else {
+            this.$Message.warning({
+              content: `请正确填写填写邮箱信息，否则无法发送邮件`
+            });
+          }
+        })
+        .catch(err => {
+          this.$Notice.warning({ title: `出错，提示：${err}` });
+        });
+    },
+    hangbefore() {
+      let URL = `${apiPath}/user/checkMsgCode`;
+      axios({
+        url: URL,
+        method: "get",
+        params: {
+          msgCode: this.article.captchacode
+        }
+      })
+        .then(res => {
+          if (res.data.code === 200) {
+            this.hang();
+          } else {
+            this.$Message.warning({
+              content: `${res.data.msg}`
+            });
+          }
+        })
+        .catch(err => {
+          this.$Notice.warning({ title: `出错，提示：${err}` });
+        });
+    },
     hang() {
       let URL = `${apiPath}/user/userConfirmsAppointment`;
       let teacherid = this.item.teacherid;
       let userID = localStorage.getItem("userID");
-    
+
       axios({
         url: URL,
         method: "post",
@@ -363,7 +404,8 @@ export default {
             this.$Notice.success({ title: `预约成功` });
             this.essaymodal = false;
           } else {
-            this.$Notice.warning({ title: `出错，提示：${res.data.msg}` });
+            this.$Notice.warning({ title: `${res.data.msg}` });
+            // this.essaymodal = false;
           }
         })
         .catch(err => {
@@ -378,7 +420,7 @@ export default {
       let URL = `${apiPath}/user/loadDataCampus`;
       let campus = this.choose.campus;
       let page = this.page;
-      
+
       if (this.tag) {
         return;
       } else {
@@ -395,6 +437,32 @@ export default {
               if (res.data.data != "暂时没有教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
+                for (let i = 0; i < this.data.length; i++) {
+                  this.data[i].satisfaction = parseFloat(
+                    this.data[i].satisfaction
+                  );
+                  for (let j = 0; j < this.data[i].timeList.length; j++) {
+                    var reg = /-/;
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "年");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "月");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(/\s/, "日 ");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "年");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "月");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(/\s/, "日 ");
+                  }
+                }
               } else {
                 this.data = "";
                 this.totalteacher = 0;
@@ -405,8 +473,7 @@ export default {
               });
             }
           })
-          .catch(err => {
-          });
+          .catch(err => {});
       }
     },
     loadDataAcademy() {
@@ -431,6 +498,32 @@ export default {
               if (res.data.data != "暂时没有教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
+                for (let i = 0; i < this.data.length; i++) {
+                  this.data[i].satisfaction = parseFloat(
+                    this.data[i].satisfaction
+                  );
+                  for (let j = 0; j < this.data[i].timeList.length; j++) {
+                    var reg = /-/;
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "年");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(reg, "月");
+                    this.data[i].timeList[j].startTime = this.data[i].timeList[
+                      j
+                    ].startTime.replace(/\s/, "日 ");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "年");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(reg, "月");
+                    this.data[i].timeList[j].endTime = this.data[i].timeList[
+                      j
+                    ].endTime.replace(/\s/, "日 ");
+                  }
+                }
               } else {
                 this.data = "";
                 this.totalteacher = 0;
@@ -461,14 +554,37 @@ export default {
           if (res.data.code === 200) {
             this.data = res.data.data;
             this.tag = true;
-            this.choose.campus = this.data[0].campus;
-            this.choose.academy = this.data[0].academy;
+            this.choose.campus = "全部";
+            this.choose.academy = "";
             this.totalteacher = 1;
-            this.teacherName = "";
-
-            this.$Notice.success({ title: `搜索成功` });
+            for (let i = 0; i < this.data.length; i++) {
+              this.data[i].satisfaction = parseFloat(this.data[i].satisfaction);
+              for (let j = 0; j < this.data[i].timeList.length; j++) {
+                var reg = /-/;
+                this.data[i].timeList[j].startTime = this.data[i].timeList[
+                  j
+                ].startTime.replace(reg, "年");
+                this.data[i].timeList[j].startTime = this.data[i].timeList[
+                  j
+                ].startTime.replace(reg, "月");
+                this.data[i].timeList[j].startTime = this.data[i].timeList[
+                  j
+                ].startTime.replace(/\s/, "日 ");
+                this.data[i].timeList[j].endTime = this.data[i].timeList[
+                  j
+                ].endTime.replace(reg, "年");
+                this.data[i].timeList[j].endTime = this.data[i].timeList[
+                  j
+                ].endTime.replace(reg, "月");
+                this.data[i].timeList[j].endTime = this.data[i].timeList[
+                  j
+                ].endTime.replace(/\s/, "日 ");
+              }
+            }
           } else {
-            this.$Notice.warning({ title: `出错，提示：${res.data.msg}` });
+            this.$Notice.warning({ title: `查无此老师` });
+            this.data = null;
+            this.teacherName = "";
           }
         })
         .catch(err => {
@@ -481,16 +597,27 @@ export default {
     specifics(item) {
       this.item = item;
       this.modal1 = true;
-
     },
     precontract(item) {
-      this.item = item;
-      this.essaymodal = true;
+      if (item.timeList.length == 0) {
+        this.$Message.warning("老师还没做好准备，请稍后再来亲");
+        return;
+      }
+      let email = localStorage.getItem("email");
+      if (email != "") {
+        this.item = item;
+        this.essaymodal = true;
+      } else {
+        this.$Notice.warning({
+          title: "未填邮箱",
+          desc: "请先进入个人信息页面填写个人信息，再进行预约"
+        });
+      }
     },
     handleBeforeUpload(file) {
-      const extension1 = file.name.split(".")[1] === "pdf";
-      const extension2 = file.name.split(".")[1] === "doc";
-      const extension3 = file.name.split(".")[1] === "docx";
+      const extension1 = /.pdf/.test(file.name);
+      const extension2 = /.doc/.test(file.name);
+      const extension3 = /.docx/.test(file.name);
       const isLt5M = file.size / 1024 / 1024 < 5;
       if (!extension1 && !extension2 && !extension3) {
         this.$Notice.warning({
@@ -515,14 +642,14 @@ export default {
       this.loading = true;
       // this.$Loading.start();
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
           // this.$Loading.finish();
           this.loading = false;
           this.$Message.success("论文上传成功");
-          this.article.essaysrc = "http://114.55.93.118/" + res.data;
+          this.article.essaysrc = "http://202.120.117.43/" + res.data;
         });
       return false;
     }
@@ -540,6 +667,7 @@ export default {
     choose: {
       handler(newVal, oldVal) {
         this.page = 0;
+
         if (this.campusitem != this.choose.campus) {
           this.campusitem = this.choose.campus;
           if (!this.tag) {
@@ -566,8 +694,10 @@ export default {
         this.article.description = "";
         this.article.essayfile = "";
         this.article.essaySubmit = false;
+        this.article.emailSubmit = false;
         this.article.essaysrc = "";
         this.article.time = "";
+        this.article.captchacode = "";
       }
     },
     article: {
@@ -576,14 +706,30 @@ export default {
           this.article.essayname != "" &&
           this.article.essaysrc != "" &&
           this.article.description != "" &&
-          this.article.time != ""
+          this.article.time != "" &&
+          this.article.captchacode != ""
         ) {
           this.article.essaySubmit = false;
         } else {
           this.article.essaySubmit = true;
         }
+        if (
+          this.article.essayname != "" &&
+          this.article.essaysrc != "" &&
+          this.article.description != "" &&
+          this.article.time != ""
+        ) {
+          this.article.emailSubmit = false;
+        } else {
+          this.article.emailSubmit = true;
+        }
       },
       deep: true
+    },
+    teacherName(val, oldVal) {
+      if (val != "") {
+        this.loadDataName();
+      }
     }
   },
   mounted() {
@@ -594,5 +740,35 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "ie";
-</style>>
+</style>
+<style lang="scss">
+.ivu-select-selected-value {
+  color: #000;
+}
+.expand-value {
+  color: #000;
+}
 
+.ivu-select-item {
+  padding: 7px 6.8px;
+}
+</style>
+
+<style lang="scss">
+.exhibit {
+  li {
+    .list:hover {
+      .ivu-btn-ghost.ivu-btn-dashed,
+      .ivu-btn-ghost.ivu-btn-default {
+        border-color: rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+}
+ul li .ivu-btn-ghost.ivu-btn-dashed,
+.ivu-btn-ghost.ivu-btn-default {
+  border-color: rgb(131, 131, 131);
+  color: rgb(121, 120, 120);
+}
+</style>

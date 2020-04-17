@@ -12,7 +12,7 @@ var router = new Router({
     {
       path: '/',
       name: 'root',
-      redirect: {path:'manager/Header'}
+      redirect: {path:'user/login'}
     }, {
       path: '/logout',
       name: 'logout',
@@ -29,12 +29,12 @@ var router = new Router({
         {
           path:'login',
           name:'login',
-          component:resolve=>require(['@/pages/user/login/login.vue'],resolve)
+          component:resolve=>require(['@/pages/user/login/choose.vue'],resolve)
         },
         {
           path:'homepage',
           name:'homepage',
-          component:resolve => require(['@/pages/user/homepage/homepage.vue'], resolve),
+          component:resolve => require(['@/pages/user/homepage/choose.vue'], resolve),
         },{
           path:'precontract',
           name:'precontract',
@@ -123,11 +123,7 @@ var router = new Router({
           name: 'Manager',
           component:resolve => require(['@/components/user/Manager-Manager.vue'], resolve),
         },
-        {
-          path: 'Header',
-          name: 'Header',
-          component:resolve => require(['@/mobile/introduce/introduce.vue'], resolve),
-        },
+ 
       ]
     },
   ]

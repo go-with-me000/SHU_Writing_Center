@@ -131,7 +131,7 @@
             <div
               class="uppage"
               :style="{margin: '0px', minHeight: '220px',
-              backgroundImage:'url(http://114.55.93.118/group1/M00/00/00/rBA7015h37CAf9jGAAItI9WGwp8717.jpg)',
+              backgroundImage:'url(http://202.120.117.43/group1/M00/00/00/ynh1K16YWCuAPaTKAAItI9WGwp8345.jpg)',
               backgroundRepeat:'no-repeat',backgroundSize:'100% 100%',
           }"
             >
@@ -146,8 +146,14 @@
                   </p>
                 </Col>
                 <Col span="8" style="text-align:center">
-                  <img src="@/common/img/logo3.png" style="margin-top:10px " />
-                  <img src="@/common/img/logo4.png" style="position:relative;margin-top:-30px " />
+                  <img
+                    src="@/common/img/logo3.png"
+                    style="margin-top:10px;position:relative;left:-30px "
+                  />
+                  <img
+                    src="@/common/img/logo4.png"
+                    style="position:relative;margin-top:-30px;left:-30px "
+                  />
                 </Col>
                 <Col span="7" style="height:65px;left:10px">
                   <Row type="flex">
@@ -255,45 +261,82 @@
         </div>
       </Sider>
     </Layout>
-    <Modal v-model="modal" width="400" :styles="{top: '200px'}" :mask-closable="false">
-      <p slot="header" style="color:#000;text-align:center;height:40px;">
-        <span style="position:relative;font-size:30px;font-weight:bold;top:20%">登录</span>
-      </p>
-      <div style="text-align:center">
-        <div class="login-box">
-          <form>
-            <Input
-              v-model="username"
-              style="margin-bottom: 10px"
-              size="large"
-              prefix="md-person"
-              placeholder="学/工号"
-            />
-            <Input
-              v-model="password"
-              type="password"
-              style="margin-bottom: 7px"
-              prefix="md-lock"
-              size="large"
-              placeholder="密码"
-            />
-          </form>
+    <Modal
+      v-model="modal"
+      width="525"
+      :styles="{top: '100px'}"
+      :closable="false"
+      class="loginmodal"
+    >
+      <div class="jq22-container">
+        <div class="login-wrap">
+          <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked />
+            <label for="tab-1" class="tab">登录</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" />
+            <label for="tab-2" class="tab"></label>
+            <div class="login-form">
+              <form>
+                <div class="sign-in-htm">
+                  <div class="group">
+                    <label for="user" class="label">用户名</label>
+
+                    <input
+                      v-model="username"
+                      id="username"
+                      name="username"
+                      placeholder="学/工号"
+                      type="text"
+                      class="input"
+                    />
+                  </div>
+                  <div class="group">
+                    <label for="pass" class="label">密码</label>
+                    <input
+                      v-model="password"
+                      type="password"
+                      class="input"
+                      data-type="password"
+                      id="password"
+                      placeholder="密码"
+                    />
+                  </div>
+
+                  <div class="group">
+                    <div class="container">
+                      <div id="captcha" style="position: relative" data-type="password"></div>
+                      <div id="msg"></div>
+                    </div>
+                  </div>
+                  <div class="group" id="buttonlogin">
+                    <input
+                      type="button"
+                      class="button"
+                      value="登录"
+                      @click="handleOnClickLogin()"
+                      @keyup.enter="handleOnClickLogin()"
+                      style="cursor:pointer"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-      <div slot="footer">
-        <Button
-          size="large"
-          type="primary"
-          long
-          @click="handleOnClickLogin()"
-          @keyup.enter="handleOnClickLogin()"
-          ghost
-        >登录</Button>
-      </div>
+      <div slot="footer" class="footers"></div>
     </Modal>
-    <Modal v-model="modal1" fullscreen title="Fullscreen Modal" :closable="false">
+
+    <Modal
+      v-model="modal1"
+      width="100"
+      :closable="false"
+      :mask-closable="false"
+      :styles="{height: '100vh',top:'0px'}"
+    >
       <p slot="header" id="questionheader">
         <Icon type="md-create" />
+
         <span v-if="position==0">老师评估问卷</span>
         <span v-else>学生评估问卷</span>
       </p>
@@ -322,12 +365,7 @@
               <Radio label="0">否</Radio>
             </RadioGroup>
           </FormItem>
-          <FormItem
-            label="对老师评分:"
-            style="text-align:left"
-            v-if="position==0"
-            prop="person_rate"
-          >
+          <FormItem label="对老师评分:" style="text-align:left" v-if="position==0" prop="person_rate">
             <Rate show-text allow-half v-model="questionnaire.person_rate">
               <span style="color: #f5a623"></span>
             </Rate>
@@ -337,12 +375,7 @@
               <span style="color: #f5a623"></span>
             </Rate>
           </FormItem>
-          <FormItem
-            label="对辅导内容评分:"
-            style="text-align:left"
-            prop="content_rate"
-            v-if="position==0"
-          >
+          <FormItem label="对辅导内容评分:" style="text-align:left" prop="content_rate" v-if="position==0">
             <Rate show-text allow-half v-model="questionnaire.content_rate ">
               <span style="color: #f5a623"></span>
             </Rate>
@@ -356,6 +389,14 @@
             ></Input>
           </FormItem>
         </Form>
+      </div>
+      <div class="questioncode" v-if="position==0">
+        <p style="font-weight:bold;font-size:16px;margin-left:20px">服务回访-线上论文辅导</p>
+        <img src="@/common/img/questioncode.jpg">
+        <p style="font-weight:bold;font-size:14px;margin-left:32px">想要更优质的辅导吗？</p>
+        <p style="font-weight:bold;font-size:12px;margin-left:50px">欢迎填写内容问卷</p>
+        <p style="font-weight:bold;font-size:12px;margin-left:22px">帮助我们实现更为优质的辅导</p>
+        
       </div>
       <div slot="footer" class="questionfoot">
         <Button type="success" size="large" long @click="submitNaire('questionnaire')">提交问卷</Button>
@@ -438,6 +479,7 @@ export default {
   },
   created() {
     this.keyupSubmit();
+    
   },
   mounted() {
     this.initMenuActive();
@@ -445,12 +487,12 @@ export default {
     let userID = sessionStorage.getItem("userID");
 
     if (userID != null) {
-      
       this.loadDataq();
 
       this.identity = localStorage.getItem("authority");
       this.isLogout = false;
     }
+    
   },
   methods: {
     keyupSubmit() {
@@ -487,10 +529,16 @@ export default {
     handleOnClickLogin() {
       // this.loading = true;
       var params = new URLSearchParams();
+      if (this.username == "" || this.password == "") {
+        this.$Message.warning({
+          content: `请填写完整的登录信息`
+        });
+        return;
+      }
       params.append("username", this.username);
       params.append("password", this.password);
       axios
-        .post("http://202.120.117.43:8080/login", params)
+        .post(`http:${apiPath}/login`, params)
         .then(res => {
           if (res.status == 200) {
             localStorage.setItem("authority", res.data.data[0].authority);
@@ -524,7 +572,6 @@ export default {
       })
         .then(res => {
           if (res.data.code === 200) {
-            
             localStorage.setItem("email", res.data.data.email);
             localStorage.setItem("phone", res.data.data.phone);
           } else {
@@ -600,7 +647,6 @@ export default {
       })
         .then(res => {
           if (res.data.code === 200) {
-           
             localStorage.setItem("duty", res.data.data.duty);
             this.questionnaires = res.data.data.list;
             this.questionnaires2 = res.data.data.educatedList;
@@ -612,7 +658,6 @@ export default {
             }
             if (this.questionnaires2) {
               for (let i = 0; i < this.questionnaires2.length; i++) {
-                
                 this.modal1 = true;
                 this.loadData3(i);
               }
@@ -784,6 +829,16 @@ export default {
 
 <style lang="scss">
 @import "../group";
+@import "./common/css/styles.css";
+.loginmodal .ivu-modal-footer {
+  padding: 0px 0px 0px 0px !important;
+  border-top: 0px;
+}
+.loginmodal {
+  .ivu-modal-body {
+    padding: 0px 0px 0px 0px !important;
+  }
+}
 </style>
 <style scoped lang="scss">
 .questionfoot {
@@ -835,3 +890,4 @@ export default {
   font-size: 16px;
 }
 </style>
+

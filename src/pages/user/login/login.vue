@@ -3,7 +3,7 @@
     <Layout
       style="height: calc(100vh - 60px);"
       :style="{margin: '0px', background: '#fff', minHeight: '220px',
-         backgroundImage:'url(http://114.55.93.118/group1/M00/00/00/rBA7015hBzqATVEgAAGCweLpcpo381.jpg)',
+         backgroundImage:'url(http://202.120.117.43/group1/M00/00/00/ynh1K16YWOSAZ_dbAAGCweLpcpo664.jpg)',
          backgroundRepeat:'no-repeat',backgroundSize:'100% 100%',
           }"
     >
@@ -16,12 +16,12 @@
       </div>
     
       <div class="texts">
-        <p style="position: relative; font-size:50px;">上海大学写作中心</p>
+        <p style="position: relative; font-size:65px;">上海大学写作中心</p>
         <!-- <p style=" position: relative;font-size:50px;">国际学术交流写作中心</p> -->
         <p
-          style=" position: relative;font-size:30px;margin-top:10px"
+          style=" position: relative;font-size:45px;margin-top:10px"
         >SHU Writing Center</p>
-        <p style="  position: relative;top:30px;font-size:20px;">一站式写作教学、写作服务、写作科研的平台</p>
+        <p style="  position: relative;top:30px;font-size:30px;">一站式写作教学、写作服务、写作科研的平台</p>
         <!-- <p style ="position: relative; font-size:50px;top:50px">上海大学</p>
           <p style=" position: relative;top:95px;font-size:50px;">国际学术交流写作中心</p>
           <p style=" position: relative;top:135px;font-size:23px;">Writing Lab for International Academic Exchange</p>

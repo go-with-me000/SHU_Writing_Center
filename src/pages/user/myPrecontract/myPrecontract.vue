@@ -783,7 +783,7 @@ export default {
             this.$Message.error({
               content: `您已拒绝${this.data2[this.index].studentName}的预约`
             });
-            this.captcha(this.data2[index].studentid,userId,1)
+            this.captcha(this.data2[this.index].studentid,userId,1)
             this.modal3 = false;
             if (this.duty == "学生教师") {
               this.loadData3();
@@ -850,12 +850,12 @@ export default {
       formData.append("uploadfile", file);
       this.loading = true;
       axios
-        .post("http://114.55.93.118:8080/uploadfile", formData, {
+        .post(`http:${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
           this.loading = false;
-          this.article.essaysrc = "http://114.55.93.118/" + res.data;
+          this.article.essaysrc = "http://202.120.117.43/" + res.data;
           this.$Message.success("论文上传成功");
         });
       return false;
