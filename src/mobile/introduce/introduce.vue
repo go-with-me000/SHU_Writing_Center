@@ -67,4 +67,24 @@ export default {};
   }
 }
 
+@media screen and (max-width: 480px) {
+  .texts .title1 {
+    font-size:20px;
+  }
+
+    .texts .title2 {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .texts .title1 {
+    font-size:14px;
+  }
+
+    .texts .title2 {
+    font-size: 10px;
+  }
+}
+
 </style>
