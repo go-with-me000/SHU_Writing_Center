@@ -126,7 +126,7 @@ var router = new Router({
         {
           path: 'Header',
           name: 'Header',
-          component:resolve => require(['@/mobile/introduce/Header.vue'], resolve),
+          component:resolve => require(['@/mobile/introduce/introduce.vue'], resolve),
         },
       ]
     },
