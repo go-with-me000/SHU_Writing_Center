@@ -33,7 +33,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       'process.env': env,
    
       'apiPath':"'//202.120.117.43:8443'",
-     
+      'apiPath2':"'//202.120.117.43:8080'",
     }),
     new UglifyJsPlugin({
       uglifyOptions: {
