@@ -12,7 +12,7 @@ var router = new Router({
     {
       path: '/',
       name: 'root',
-      redirect: {path:'user/login'}
+      redirect: {path:'manager/Header'}
     }, {
       path: '/logout',
       name: 'logout',
@@ -123,7 +123,11 @@ var router = new Router({
           name: 'Manager',
           component:resolve => require(['@/components/user/Manager-Manager.vue'], resolve),
         },
- 
+        {
+          path: 'Header',
+          name: 'Header',
+          component:resolve => require(['@/mobile/introduce/Header.vue'], resolve),
+        },
       ]
     },
   ]
