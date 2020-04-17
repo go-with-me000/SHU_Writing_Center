@@ -31,15 +31,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env,
-<<<<<<< Updated upstream
-      // 'apiPath':"'//114.55.93.118:8080'",
-      'apiPath':"'//202.120.117.43:8080'",
-=======
 
-      'apiPath':"'//202.120.117.43:8443'",
-      'apiPath2':"'//202.120.117.43:8080'",
-
->>>>>>> Stashed changes
+      'apiPath':"'http://202.120.117.43:8443'",
+      'apiPath2':"'http://202.120.117.43:8080'",
     }),
     new UglifyJsPlugin({
       uglifyOptions: {
