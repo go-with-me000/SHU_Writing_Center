@@ -53,12 +53,12 @@ var router = new Router({
           name:'myInfo',
           component:resolve => require(['@/pages/user/myInfo/myInfo.vue'], resolve),
         },{
-          path:'newsFront',
-          name:'newsFront',
+          path:'mobileNewsFront',
+          name:'mobileNewsFront',
           component:resolve => require(['@/pages/mobile/newsPage/newsFront.vue'], resolve),
         },{
-          path:'newsPage',
-          name:'newsPage',
+          path:'mobileNewsPage',
+          name:'mobileNewsPage',
           component:resolve => require(['@/pages/mobile/newsPage/newsPage.vue'], resolve),
         },
       ],

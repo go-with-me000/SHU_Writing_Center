@@ -1,6 +1,6 @@
 <template>
   <div class="template" v-if="mark">
-    
+   
     <Row style="padding:15px">
       <Col span="23" >
         <div class="page">

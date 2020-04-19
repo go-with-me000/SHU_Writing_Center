@@ -25,6 +25,7 @@
               <Col span="18" style="text-align:center;">
                 <Page
                   :total="totalnews"
+
                   style="margin-bottom:40px;"
                   @on-change="cutaway"
                 />
@@ -65,7 +66,7 @@ export default {
     textnews(index) {
       localStorage.setItem("newsid", this.news[index].newsid);
       this.$router.push({
-        name: "newsPage",
+        name: "mobileNewsPage",
         params: { newsid: this.news[index].newsid }
       });
     },

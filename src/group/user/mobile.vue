@@ -42,7 +42,7 @@
             <ul class="childUl">
               <li>
                 <a href="javascript:;">
-                  <router-link :to="{ path: 'newsFront' }">
+                  <router-link :to="{ path: 'mobileNewsFront' }">
                     <Icon type="md-git-network" size="17" />新闻首页
                   </router-link>
                 </a>
