@@ -538,7 +538,7 @@ export default {
       params.append("username", this.username);
       params.append("password", this.password);
       axios
-        .post(`http:${apiPath}/login`, params)
+        .post(`${apiPath}/login`, params)
         .then(res => {
           if (res.status == 200) {
             localStorage.setItem("authority", res.data.data[0].authority);
