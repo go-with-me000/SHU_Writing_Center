@@ -49,9 +49,9 @@ var router = new Router({
           name:'myPrecontract',
           component:resolve => require(['@/pages/user/myPrecontract/myPrecontract.vue'], resolve),
         },{
-          path:'myInfo',
-          name:'myInfo',
-          component:resolve => require(['@/pages/user/myInfo/myInfo.vue'], resolve),
+          path:'mobileMyInfo',
+          name:'mobileMyInfo',
+          component:resolve => require(['@/pages/mobile/myInfo/myInfo.vue'], resolve),
         },{
           path:'mobileNewsFront',
           name:'mobileNewsFront',

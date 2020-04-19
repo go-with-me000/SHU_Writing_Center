@@ -83,7 +83,7 @@
           </li>
           <li name="news">
             <a href="javascript:;">
-              <router-link :to="{ path: 'homepage' }">
+              <router-link :to="{ path: 'mobileMyInfo' }">
                 <Icon type="ios-person" size="17"></Icon>个人信息
               </router-link>
             </a>
