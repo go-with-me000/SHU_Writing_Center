@@ -1,5 +1,5 @@
 <template>
-  <div id="background">
+  <div id="background" v-if="isLoading==true">
     <div class="bigpic">
       <img src="@/common/img/libary.jpg" style="width:100%;height:100%" />
     </div>
@@ -325,6 +325,7 @@ export default {
         time: "",
         captchacode: ""
       },
+      isLoading:false,
       questionnaires: [],
       questionnaire: {
         questionId: "",
@@ -430,6 +431,10 @@ export default {
       this.teachermodal = true;
     },
     precontract(item) {
+      if(item.timeList.length==0){
+        this.$Message.warning("老师还没做好准备，请稍后再来亲");
+        return;
+      }
       if (this.identity != null) {
         let email = localStorage.getItem("email");
         if (email != "") {
@@ -513,6 +518,7 @@ export default {
         .then(res => {
           if (res.data.code === 200) {
             if (res.data.data != null) {
+              this.isLoading=true;
               this.teachers = res.data.data;
               for (let i = 0; i < this.teachers.length; i++) {
                 this.teachers[i].satisfaction = parseFloat(

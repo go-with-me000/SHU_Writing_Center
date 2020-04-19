@@ -56,12 +56,12 @@
 
 .newstitle a:hover {
 
-  transform: scale(1.5);
+  // transform: scale(1.5);
   color: rgb(0, 0, 0);
   position: relative;
   font-weight: bold;
   color: rgb(8, 8, 8);
-
+  transition: all 0.5s;
 }
 
 .context {

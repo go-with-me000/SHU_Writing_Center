@@ -1,0 +1,271 @@
+@media screen and (max-width:768px) {
+  .top {
+    height: 32px;
+    line-height: 32px;
+  }
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  background: rgb(221, 10, 10);
+  box-shadow: 0 0 10px #999
+}
+
+header .header {
+  width: 1290px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  position: relative;
+  line-height: 100px
+}
+
+header .header .img {
+  height: 100px;
+  line-height: 100px;
+  float: left;
+  position: relative
+}
+
+header .header .logo img {
+  vertical-align: middle;
+  display: inline-block;
+  height: 80px;
+}
+
+header .header>ul {
+  float: right;
+  height: 100px;
+  line-height: 100px
+}
+
+header .header ul li {
+  float: left;
+  text-align: center;
+  line-height: 100px;
+  position: relative
+}
+
+header .header ul li.actvie>a {
+  color: #000001
+}
+
+header .header ul li a {
+  font-size: 14px;
+  display: block;
+  position: relative;
+  padding: 0 25px
+}
+
+header .header ul li a i {
+  font-size: 10px;
+  padding-left: 2px;
+  color: #aaa;
+  transition: all .4s ease
+}
+
+header .header ul li a:hover,
+header .header ul li.active a {
+  color: #000001
+}
+
+header .header ul li a:hover i,
+header .header ul li.active a i {
+  color: #000001;
+  ;
+  transition: all .4s ease
+}
+
+header .header .childUl {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 0 1px #ccc;
+  padding: 8px 0;
+  min-width: 120px;
+  z-index: 999
+}
+
+header .header ul.childUl li {
+  width: 100%;
+  height: auto
+}
+
+header .header ul.childUl li a {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  overflow: hidden;
+  padding: 0 10px
+}
+
+header .header ul.childUl li a:hover {
+  color: #000;
+  background: rgba(255, 255, 255, 0.2);
+  transition: none
+}
+
+header .header .nav {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  top: 25px;
+  box-sizing: border-box;
+  padding: 9px 0;
+  cursor: pointer;
+  float: right;
+  display: none
+}
+
+header .header .nav:hover span {
+  background: #000001
+}
+
+header .header .nav span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  position: absolute;
+  top: 9px;
+  transition: all .5s
+}
+
+header .header .nav span.active:nth-child(1) {
+  transform: translateY(7px);
+  transition: all .5s
+}
+
+header .header .nav span.active:nth-child(3) {
+  transform: translateY(-9px);
+  transition: all .5s
+}
+
+header .header .nav span:nth-child(2) {
+  top: 23px
+}
+
+header .header .nav span:nth-child(3) {
+  top: 36px
+}
+
+video {
+  background-color: #000;
+}
+
+@media screen and (max-width:1290px) {
+  header {
+    height: 60px
+  }
+
+  header .header {
+    width: 100%;
+    height: 60px;
+    line-height: 60px
+  }
+
+  header .header>ul {
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 20px;
+    top: 60px;
+    left: 0;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    float: unset;
+    box-shadow: 0 3px 10px inset #eee;
+    z-index: 9999
+  }
+
+  header .header ul li {
+    width: 100%;
+    line-height: 40px;
+    text-align: left;
+    position: relative
+  }
+
+  header .header ul li a {
+    border-bottom: 1px solid #ccc
+  }
+
+  header .header ul li a::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: #000001;
+    transition: width .5s
+  }
+
+  header .header ul li a:hover {
+    border-color: #fff
+  }
+
+  header .header ul li a:hover::after {
+    width: 100%
+  }
+
+  header .header .childUl {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    text-indent: 25px
+  }
+
+  header .header ul.childUl li a {
+    width: 100%
+  }
+
+  header .header .nav {
+    display: block;
+    top: 0;
+    width: 30px;
+    height: 60px;
+    padding: 20px 0
+  }
+
+  header .header .img {
+    height: 60px;
+    line-height: 60px
+  }
+
+  header .header .logo img {
+    height: 50px;
+  }
+
+  header .header .nav span {
+    top: 20px
+  }
+
+  header .header .nav span:nth-child(2) {
+    top: 28px
+  }
+}
+
+.uppage {
+  background-color: rgba(62, 115, 189, 0.8);
+  position: relative;
+  height: 100px;
+  width: 100%;
+
+  
+
+  .wxing {
+    color: #fff;
+    font-size: 18px;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+    margin-top: 85px;
+  }
+}
