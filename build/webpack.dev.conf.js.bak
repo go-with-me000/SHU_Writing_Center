@@ -49,12 +49,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env'),
-
-     
+<<<<<<< Updated upstream
+      // 'apiPath':"'//127.0.0.1:8081/api'",
+      // 'apiPath':"'//114.55.93.118:8080'",
       'apiPath':"'http://202.120.117.43:8443'",
       'apiPath2':"'http://202.120.117.43:8080'",
      
-
+=======
+      'apiPath':"'http://202.120.117.43:8443'",
+      'apiPath2':"'http://202.120.117.43:8080'",
+>>>>>>> Stashed changes
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.

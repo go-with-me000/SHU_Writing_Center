@@ -224,7 +224,7 @@ export default {
     var nowDate = new Date();
 
     axios({
-      url: "http://202.120.117.43:8080/monitor/searchNewsName",
+      url: `${apiPath}/monitor/searchNewsName`,
       method: "get"
     })
       .then(res => {
@@ -266,7 +266,7 @@ export default {
         title: "确定上传轮播图吗？",
         onOk: () => {
           axios({
-            url: "http://202.120.117.43:8080/monitor/uploadFamPic",
+            url: `${apiPath}/monitor/uploadFamPic`,
             method: "post",
             data: {
               "picNum": this.selectedNum,
@@ -310,7 +310,7 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", file);
       axios
-        .post("http://202.120.117.43:8080/uploadfile", formData, {
+        .post(`${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
@@ -323,7 +323,7 @@ export default {
       editor = new E("#editor");
 
       editor.customConfig.uploadImgServer =
-        "http://202.120.117.43:8080/WangUploadfile";
+        `${apiPath}/WangUploadfile`;
       editor.customConfig.uploadFileName = "uploadfile";
       editor.customConfig.withCredentials = true;
       editor.customConfig.customAlert = function(info) {
@@ -448,7 +448,7 @@ export default {
         //});
 
         var newPage = window.open();
-        newPage.location.href = "http://202.120.117.43:8081/#/manager/preView";
+        newPage.location.href = `${apiPath2}/#/manager/preView`;
       }
     },
 
@@ -458,7 +458,7 @@ export default {
         this.publishLoading = true;
         this.htmla = editor.txt.html();
         axios({
-          url: "http://202.120.117.43:8080/monitor/uploadNews",
+          url:`${apiPath}/monitor/uploadNews`,
           method: "post",
           data: {
             newsname: this.articleTitle,

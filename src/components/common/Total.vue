@@ -1,8 +1,7 @@
 <template>
   <div>
 
-
-    <Head></Head>
+  <Head></Head>
     <table>
       <tr>
         <td class="td">
@@ -16,6 +15,7 @@
  
   </div>
 </template>
+  
   
  
 <script>
