@@ -42,15 +42,8 @@
             <ul class="childUl">
               <li>
                 <a href="javascript:;">
-                  <router-link :to="{ path: 'homepage' }">
+                  <router-link :to="{ path: 'newsFront' }">
                     <Icon type="md-git-network" size="17" />新闻首页
-                  </router-link>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  <router-link :to="{ path: 'homepage' }">
-                    <Icon type="ios-ribbon" size="17" />具体新闻
                   </router-link>
                 </a>
               </li>

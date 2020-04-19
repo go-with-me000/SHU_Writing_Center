@@ -55,11 +55,11 @@ var router = new Router({
         },{
           path:'newsFront',
           name:'newsFront',
-          component:resolve => require(['@/pages/user/news/newsFront.vue'], resolve),
+          component:resolve => require(['@/pages/mobile/newsPage/newsFront.vue'], resolve),
         },{
           path:'newsPage',
           name:'newsPage',
-          component:resolve => require(['@/pages/user/news/newsPage.vue'], resolve),
+          component:resolve => require(['@/pages/mobile/newsPage/newsPage.vue'], resolve),
         },
       ],
       // meta: {
