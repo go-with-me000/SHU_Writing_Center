@@ -1,7 +1,7 @@
 <template>
   <div id="background" v-if="isLoading==true">
     <div class="bigpic">
-      <img src="@/common/img/libary.jpg" style="width:100%;height:100%" />
+      <img src="@/common/img/mlibary.jpg" style="width:100%;height:100%" />
     </div>
     <div class="box">
       <p id="news" style="margin-bottom:12px;">
@@ -14,13 +14,13 @@
         <span @click="moreNews()">
           更多
           <Icon type="ios-arrow-forward" />
-          <Icon type="ios-arrow-forward" />
+          
         </span>
       </div>
 
       <Carousel v-model="newspicture" loop autoplay id="carousel" dots="inside" radius-dot>
         <CarouselItem v-for="(item,index) in imgs" :key="index">
-          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;height:360px" />
+          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;" />
         </CarouselItem>
         <div class="back"></div>
       </Carousel>
@@ -57,7 +57,7 @@
         <span @click="moreteachers()">
           更多
           <Icon type="ios-arrow-forward" />
-          <Icon type="ios-arrow-forward" />
+          
         </span>
       </div>
       <div id="display">
@@ -69,16 +69,16 @@
                   <swiper
                     :options="swiperOption"
                     class="swiper-pagination1"
-                    style="width:90%;left:0%;position:relative"
+                    style="width:100%;position:relative;"
                     ref="mySwiper"
                     v-if="teachers.length"
                   >
-                    <swiper-slide v-for="(item,index) in teachers" :key="index">
-                      <a class="swiper-slide">
-                        <div class="img">
+                    <swiper-slide v-for="(item,index) in teachers" :key="index" style="width:50%;">
+                      <a class="swiper-slide" >
+                        <div style="position:absolute;width:100%;height:100%;z-index:1">
                           <img style="width:100%;height:100%" :src="item.imagesrc" alt="name" />
                         </div>
-                        <div class="content">
+                        <div class="content" style="z-index:2;position:relative">
                           <h4>{{item.teachername}}</h4>
                           <p class="helpintention">研究方向:{{item.helpintention}}</p>
                           <div class="intro">
@@ -107,7 +107,7 @@
                       </a>
                     </swiper-slide>
 
-                    <!-- Optional controls -->
+                   
                     <div class="swiper-pagination" slot="pagination"></div>
                   </swiper>
                   <div class="swiper-button-prev" slot="button-prev"></div>
@@ -296,8 +296,8 @@ export default {
       isLoading:false,
       swiperOption: {
         pagination: ".swiper-pagination1",
-        slidesPerView: 3,
-        spaceBetween: 50,
+        slidesPerView: 2,
+        spaceBetween: 20,
         // centeredSlides: false,
 
         onSlideChangeEnd: swiper => {

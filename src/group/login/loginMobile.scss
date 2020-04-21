@@ -1,0 +1,20 @@
+.loginMobile{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background: url("../../common/img/img/shu.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+
+.login-box{
+  text-align: center;
+  width: 80vw !important;
+  margin-left: 10vw;
+  margin-top: 5vh;
+}
+
+.van-button{
+  background-color: #275085;
+  border-radius: 10px;
+}

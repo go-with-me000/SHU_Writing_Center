@@ -16,6 +16,24 @@
             />
           </div>
         </a>
+           <div id="loginbutton">
+            <Button
+              type="info"
+              ghost
+              size="large"
+              style=""
+              @click="enterLogin()"
+              v-if="identity==''"
+            >登录</Button>
+            <Button
+              type="info"
+              ghost
+              size="large"
+              @click="logout()"
+              style="margin-right:15px;margin-left:15px"
+              v-else
+            >注销</Button>
+          </div>
         <ul id="nav" >
           <li name="index">
             <a href="javascript:;">
@@ -26,7 +44,7 @@
           </li>
           <li name="index">
             <a href="javascript:;">
-              <router-link :to="{ path: 'login' }">
+              <router-link :to="{ path: 'homepage' }">
                 <Icon type="ios-mail" size="19" style="top:1px;position:relative"></Icon>首页
               </router-link>
             </a>
@@ -83,7 +101,7 @@
           </li>
           <li name="support">
             <a href="javascript:;">
-              <router-link :to="{ path: 'homepage' }">
+              <router-link :to="{ path: 'myPrecontract' }">
                 <Icon type="md-attach" size="17" />我的预约
               </router-link>
             </a>
@@ -104,7 +122,7 @@
       </div>
     </header>
 
-    <div>
+    <div style="min-height: calc(100vh - 310px)">
       <router-view></router-view>
     </div>
     <div
@@ -115,7 +133,7 @@
           }"
     >
       <Row class="code-row-bg">
-        <Col span="24" style="height:65px;left:10px">
+        <Col span="24" style="height:65px;">
           <Row type="flex">
             <Col span="8" offset="4">
               <p class="wxing">
@@ -216,9 +234,7 @@ export default {
       }
     }
   },
-  created() {
-    this.keyupSubmit();
-  },
+  
   mounted() {
     this.initMenuActive();
     this.computedWidth();
@@ -232,15 +248,6 @@ export default {
     }
   },
   methods: {
-    keyupSubmit() {
-      let that = this;
-      document.onkeydown = e => {
-        let _key = window.event.keyCode;
-        if (_key === 13 && that.modal) {
-          this.handleOnClickLogin();
-        }
-      };
-    },
     computedWidth() {
       if (window.innerWidth < 1220) {
         this.colla = true;
@@ -263,64 +270,12 @@ export default {
     collapsedSider() {
       this.$refs.side1.toggleCollapse();
     },
-    handleOnClickLogin() {
-      // this.loading = true;
-      var params = new URLSearchParams();
-      if (this.username == "" || this.password == "") {
-        this.$Message.warning({
-          content: `请填写完整的登录信息`
-        });
-        return;
-      }
-      params.append("username", this.username);
-      params.append("password", this.password);
-      axios
-        .post(`${apiPath}/login`, params)
-        .then(res => {
-          if (res.status == 200) {
-            localStorage.setItem("authority", res.data.data[0].authority);
-            localStorage.setItem("username", res.data.data[0].username);
-            localStorage.setItem("userID", this.username);
-            localStorage.setItem("email", res.data.data[0].email);
-            sessionStorage.setItem("userID", this.username);
-            this.identity = res.data.data[0].authority;
-            this.modal = false;
-            this.loginmessage();
-            this.$router.go(0);
-            this.$Message.success({
-              content: `登陆成功`
-            });
-          } else {
-          }
-        })
-        .catch(err => {
-          this.$Message.warning({ content: `账号或密码出错` });
-        });
+    enterLogin(){
+       this.$router.push('/mobilelogin');
+       this.identity = localStorage.getItem("authority");
     },
-    loginmessage() {
-      let URL = `${apiPath}/user/getEmailAndPhone`;
-      let userId = localStorage.getItem("userID");
-      axios({
-        url: URL,
-        method: "get",
-        params: {
-          userId: userId
-        }
-      })
-        .then(res => {
-          if (res.data.code === 200) {
-            localStorage.setItem("email", res.data.data.email);
-            localStorage.setItem("phone", res.data.data.phone);
-          } else {
-            this.$Message.warning({
-              content: `出错，提示：${res.data.msg}`
-            });
-          }
-        })
-        .catch(err => {
-          // this.$Message.warning({ title: `出错，提示：${err}` });
-        });
-    },
+    
+    
     initMenuActive() {
       this.activeName = this.$route.name;
       this.UserName = localStorage.getItem("username");
@@ -354,7 +309,7 @@ export default {
       })
         .then(res => {
           if (res.data.code === 406) {
-            this.$router.push({ path: "/user/login" });
+            this.$router.push({ path: "/mobile/login" });
 
             this.$Message.success({
               content: `登出成功`

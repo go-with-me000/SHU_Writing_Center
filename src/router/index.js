@@ -21,6 +21,11 @@ var router = new Router({
         localStorage.clear();
         next({name: 'login'})
       }
+    },
+    {
+      path: '/mobilelogin',
+      name: 'mobilelogin',
+      component:resolve => require(['@/group/login/loginMobile'], resolve),
     },{
       path:'/mobile',
       name:'mobile',
@@ -35,7 +40,7 @@ var router = new Router({
         {
           path:'homepage',
           name:'homepage',
-          component:resolve => require(['@/pages/user/homepage/choose.vue'], resolve),
+          component:resolve => require(['@/pages/mobile/homepage/homepage.vue'], resolve),
         },{
           path:'precontract',
           name:'precontract',
@@ -47,7 +52,7 @@ var router = new Router({
         },{
           path:'myPrecontract',
           name:'myPrecontract',
-          component:resolve => require(['@/pages/user/myPrecontract/myPrecontract.vue'], resolve),
+          component:resolve => require(['@/pages/mobile/myPrecontract/myPrecontract.vue'], resolve),
         },{
           path:'myInfo',
           name:'myInfo',
