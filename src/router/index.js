@@ -54,17 +54,17 @@ var router = new Router({
           name:'myPrecontract',
           component:resolve => require(['@/pages/mobile/myPrecontract/myPrecontract.vue'], resolve),
         },{
-          path:'myInfo',
-          name:'myInfo',
-          component:resolve => require(['@/pages/user/myInfo/myInfo.vue'], resolve),
+          path:'mobileMyInfo',
+          name:'mobileMyInfo',
+          component:resolve => require(['@/pages/mobile/myInfo/myInfo.vue'], resolve),
         },{
-          path:'newsFront',
-          name:'newsFront',
-          component:resolve => require(['@/pages/user/news/newsFront.vue'], resolve),
+          path:'mobileNewsFront',
+          name:'mobileNewsFront',
+          component:resolve => require(['@/pages/mobile/newsPage/newsFront.vue'], resolve),
         },{
-          path:'newsPage',
-          name:'newsPage',
-          component:resolve => require(['@/pages/user/news/newsPage.vue'], resolve),
+          path:'mobileNewsPage',
+          name:'mobileNewsPage',
+          component:resolve => require(['@/pages/mobile/newsPage/newsPage.vue'], resolve),
         },
       ],
       // meta: {
