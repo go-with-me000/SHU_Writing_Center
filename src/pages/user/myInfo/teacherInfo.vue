@@ -758,7 +758,7 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", file);
       axios
-        .post(`http:${apiPath}/uploadfile`, formData, {
+        .post(`${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {

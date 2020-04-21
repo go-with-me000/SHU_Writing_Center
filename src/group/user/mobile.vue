@@ -14,9 +14,19 @@
               src="@/common/img/logo4.png"
               style="height:45px;top:13px;position:absolute;left:30px"
             />
+              <Button
+              type="info"
+              ghost
+              size="large"
+              style=""
+              @click="enterLogin()"
+              v-if="identity==''"
+            >登录</Button>
+    
           </div>
         </a>
-           <div id="loginbutton">
+      
+        <!--   <div id="loginbutton">
             <Button
               type="info"
               ghost
@@ -34,6 +44,8 @@
               v-else
             >注销</Button>
           </div>
+        -->
+          
         <ul id="nav" >
           <li name="index">
             <a href="javascript:;">
@@ -114,6 +126,8 @@
         </div>
       </div>
     </header>
+
+
 
     <div style="min-height: calc(100vh - 310px)">
       <router-view></router-view>

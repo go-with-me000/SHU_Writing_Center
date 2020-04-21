@@ -1,148 +1,117 @@
 <template>
-  <div class="wrapper">
-    <Row type="flex" justify="center" class="code-row-bg">
-      <Col span="16">
-        <div class="content">
-          <Form
-            ref="person_info"
-            :model="person_info"
-            :rules="rulesx"
-            :label-width="120"
-            class="formEx"
-            style="width: 500px"
-            size="large"
-          >
-            <FormItem label="姓名" prop="name">
-              <Input v-model="person_info.teachername" placeholder="请输入您的名字" disabled></Input>
-            </FormItem>
-            <FormItem label="工号" prop="teacherid">
-              <Input v-model="person_info.teacherid" placeholder="请输入您的工号" disabled></Input>
-            </FormItem>
-            <FormItem label="学院" prop="academy">
-              <Input v-model="person_info.academy" placeholder="请输入您的学院" disabled></Input>
-            </FormItem>
-            <FormItem label="您的评分">
-              <Rate disabled v-model="person_info.satisfaction" allow-half show-text>
-                <span style="color: #f5a623">{{ person_info.satisfaction }}</span>
-              </Rate>
-            </FormItem>
-            <Divider class="spider"></Divider>
+  <div>
+    <Form
+      ref="person_info"
+      :model="person_info"
+      :rules="rulesx"
+      class="formEx"
+      style="width: 260px"
+    >
+      <FormItem label="姓名" prop="name" >
+        <Input v-model="person_info.teachername" placeholder="请输入您的名字" disabled></Input>
+      </FormItem>
+      <FormItem label="工号" prop="teacherid">
+        <Input v-model="person_info.teacherid" placeholder="请输入您的工号" disabled></Input>
+      </FormItem>
+      <FormItem label="学院" prop="academy">
+        <Input v-model="person_info.academy" placeholder="请输入您的学院" disabled></Input>
+      </FormItem>
 
-            <FormItem label="职位" prop="job">
-              <Input v-model="person_info.job" placeholder="请输入您的职位" :disabled="disable_impl"></Input>
-            </FormItem>
+      <Divider class="spider"></Divider>
+      <FormItem label="职位" prop="job">
+        <Input v-model="person_info.job" placeholder="请输入您的职位" :disabled="disable_impl"></Input>
+      </FormItem>
 
-            <FormItem label="组织" prop="organization">
-              <Input
-                v-model="person_info.organization"
-                placeholder="请输入您的组织"
-                :disabled="disable_impl"
-              ></Input>
-            </FormItem>
-            <FormItem label="专业" prop="major">
-              <Input v-model="person_info.major" placeholder="请输入您的专业" :disabled="disable_impl"></Input>
-            </FormItem>
-            <FormItem label="辅导方向" prop="helpintention">
-              <Input
-                v-model="person_info.helpintention"
-                placeholder="请输入辅导方向"
-                :disabled="disable_impl"
-              ></Input>
-            </FormItem>
-            <FormItem label="在线状态" prop="online">
-              <RadioGroup v-model="person_info.online">
-                <Radio label="是" :disabled="disable_impl">是</Radio>
-                <Radio label="否" :disabled="disable_impl">否</Radio>
-              </RadioGroup>
-            </FormItem>
-            <FormItem label="校区" prop="campus">
-              <RadioGroup v-model="person_info.campus">
-                <Radio label="宝山校区" :disabled="disable_impl">宝山校区</Radio>
-                <Radio label="延长校区" :disabled="disable_impl">延长校区</Radio>
-                <Radio label="嘉定校区" :disabled="disable_impl">嘉定校区</Radio>
-              </RadioGroup>
-            </FormItem>
+      <FormItem label="组织" prop="organization">
+        <Input v-model="person_info.organization" placeholder="请输入您的组织" :disabled="disable_impl"></Input>
+      </FormItem>
+      <FormItem label="专业" prop="major">
+        <Input v-model="person_info.major" placeholder="请输入您的专业" :disabled="disable_impl"></Input>
+      </FormItem>
+      <FormItem label="辅导方向" prop="helpintention">
+        <Input v-model="person_info.helpintention" placeholder="请输入辅导方向" :disabled="disable_impl"></Input>
+      </FormItem>
+      <FormItem label="在线状态" prop="online">
+        <RadioGroup v-model="person_info.online">
+          <Radio label="是" :disabled="disable_impl">是</Radio>
+          <Radio label="否" :disabled="disable_impl">否</Radio>
+        </RadioGroup>
+      </FormItem>
+      <FormItem label="校区" prop="campus">
+        <RadioGroup v-model="person_info.campus">
+          <Radio label="宝山校区" :disabled="disable_impl">宝山校区</Radio>
+          <Radio label="延长校区" :disabled="disable_impl">延长校区</Radio>
+          <Radio label="嘉定校区" :disabled="disable_impl">嘉定校区</Radio>
+        </RadioGroup>
+      </FormItem>
 
-            <FormItem label="地址" prop="building">
-              <Input
-                v-model="person_info.building"
-                placeholder="请输入您所在的教学楼"
-                :disabled="disable_impl"
-              ></Input>
-            </FormItem>
-            <FormItem label="手机" prop="phone">
-              <Input v-model="person_info.phone" placeholder="请输入你的手机号码" :disabled="disable_impl"></Input>
-            </FormItem>
-            <FormItem label="邮箱" prop="email">
-              <Input v-model="person_info.email" placeholder="请输入您的邮箱" :disabled="disable_impl"></Input>
-            </FormItem>
-            <FormItem label="个人简介">
-              <Input
-                v-model="person_info.description"
-                type="textarea"
-                :autosize="{minRows: 2,maxRows: 5}"
-                :disabled="disable_impl"
-                placeholder="简单介绍一下自己"
-              ></Input>
-            </FormItem>
-          </Form>
+      <FormItem label="地址" prop="building">
+        <Input v-model="person_info.building" placeholder="请输入您所在的教学楼" :disabled="disable_impl"></Input>
+      </FormItem>
+      <FormItem label="手机" prop="phone">
+        <Input v-model="person_info.phone" placeholder="请输入你的手机号码" :disabled="disable_impl"></Input>
+      </FormItem>
+      <FormItem label="邮箱" prop="email">
+        <Input v-model="person_info.email" placeholder="请输入您的邮箱" :disabled="disable_impl"></Input>
+      </FormItem>
+      <FormItem label="个人简介">
+        <Input
+          v-model="person_info.description"
+          type="textarea"
+          :autosize="{minRows: 2,maxRows: 5}"
+          :disabled="disable_impl"
+          placeholder="简单介绍一下自己"
+        ></Input>
+      </FormItem>
+    </Form>
+    
 
-          <div class="autos">
-            <Button
-              type="info"
-              size="large"
-              v-if="disable_impl"
-              style="margin-left: 50px"
-              ghost
-              @click="checkTime()"
-            >查看辅导时间</Button>
-            <Button
-              type="primary"
-              size="large"
-              v-if="disable_impl"
-              style="margin-left: 25px"
-              ghost
-              @click="Change()"
-            >修改信息</Button>
-            <Button
-              size="large"
-              style="margin-left: 100px"
-              v-if="!disable_impl"
-              @click="cancel('person_info')"
-            >取消</Button>
-            <Button
-              type="success"
-              size="large"
-              style="margin-left: 20px"
-              :loading="loading"
-              v-if="!disable_impl"
-              ghost
-              @click="updatePersonInfo('person_info')"
-            >保存</Button>
-          </div>
-        </div>
-      </Col>
+<div>
+      <Button
+        type="info"
+        size="large"
+        v-if="disable_impl"
+        style="margin:15px 0 15px 50px"
+        ghost
+        @click="checkTime()"
+      >查看辅导时间</Button>
+        
+      <Button
+        type="primary"
+        size="large"
+        v-if="disable_impl"
+        style="margin-left: 25px"
+        ghost
+        @click="Change()"
+      >修改信息</Button>
+   
+      <Button
+        size="large"
+        style="margin:15px 0 15px 85px"
+        v-if="!disable_impl"
+        @click="cancel('person_info')"
+      >取消</Button>
+      <Button
+        type="success"
+        size="large"
+        style="margin-left: 20px"
+        :loading="loading"
+        v-if="!disable_impl"
+        ghost
+        @click="updatePersonInfo('person_info')"
+      >保存</Button>
+    </div>
 
-      <Col span="2" style="text-align:center;">
-        <div class="displayimg">
-          <Upload
-            :before-upload="handleBeforeUpload"
-            action="//jsonplaceholder.typicode.com/posts/"
-            style="margin-top:10px;width:100%"
-          >
-            <Button icon="ios-cloud-upload-outline" type="primary" ghost long>点击此处上传照片</Button>
-          </Upload>
-          <div class="display">
-            <img :src="person_info.imagesrc" style="width: 95%;height:100%;" />
-          </div>
-          <div class="qrcode">
-            <img src="@/common/img/public.jpg" />
-            <p style="font-weight:bold;font-size:14px;">请老师扫码二维码，关注公众号</p>
-            <p style="font-weight:bold;font-size:16px;">更快获取最新预约信息</p>
-          </div>
-        </div>
-      </Col>
-    </Row>
+    <div >
+      <Upload
+        :before-upload="handleBeforeUpload"
+        action="//jsonplaceholder.typicode.com/posts/"
+        style="margin-top:20px;margin-left:91px;"
+      >
+        <Button icon="ios-cloud-upload-outline" type="success" ghost long>点击此处上传照片</Button>
+      </Upload>
+    </div>
+
     <Modal v-model="modal1" width="56" :styles="{top: '20px'}">
       <p slot="header" style="color:#000;text-align:center;height:30px;">
         <span style="position:relative;font-size:24px;font-weight:bold;top:20%">辅导时间段</span>
@@ -214,6 +183,7 @@
         <Form ref="theCourse" :model="theCourse" :label-width="80">
           <FormItem label="开始时间">
             <DatePicker
+               placement="top"
               type="datetime"
               placeholder="选择时间"
               :value="theCourse.startTime"
@@ -226,6 +196,7 @@
           </FormItem>
           <FormItem label="结束时间">
             <DatePicker
+               placement="top"
               type="datetime"
               placeholder="选择时间"
               :value="theCourse.endTime"
@@ -390,18 +361,14 @@ export default {
 
       columns: [
         {
-          type: "index",
-          width: 70,
-          align: "center",
-          title: "序号"
-        },
-        {
           title: "开始时间",
-          key: "startTime"
+          key: "startTime",
+           width: 110,
         },
         {
           title: "结束时间",
-          key: "endTime"
+          key: "endTime",
+              width: 110,
         },
         {
           title: "预约状态",
@@ -486,12 +453,12 @@ export default {
           // let free = true ? false : this.person_info.free == "是";
           let online = 1 ? 0 : this.person_info.online == "是";
           this.loading = true;
-          if(this.person_info.phone.length>=11){
+          if (this.person_info.phone.length >= 11) {
             this.$Message.warning({
-                  content: `请输入正确的手机位数`
-                });
-                this.loading = false;
-                return;
+              content: `请输入正确的手机位数`
+            });
+            this.loading = false;
+            return;
           }
           axios({
             url: URL,
@@ -758,7 +725,7 @@ export default {
       let formData = new FormData();
       formData.append("uploadfile", file);
       axios
-        .post(`http:${apiPath}/uploadfile`, formData, {
+        .post(`${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
