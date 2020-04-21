@@ -8,14 +8,16 @@
             <Row type="flex" justify="space-between" class="code-row-bg">
               <Col span="25" class="displaynews">
                 <ul>
-                  <li v-for="(theNew,index) in newseven" :key="index">
+                  <li v-for="(theNew,index) in news" :key="index">
                     <span class="spantime">{{theNew.newsTime}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span
                       class="spantype"
                     >{{theNew.newstype}}</span>
                     <br />
                     <Divider style="margin-top:10px;margin-bottom:15px;" />
-                    <span class="spanname" @click="textnews(index*2)">{{theNew.newsname}}</span>
+                  
+                      <a class="spanname" @click="textnews(index)">{{theNew.newsname}}</a>
+              
                   </li>
                 </ul>
               </Col>
@@ -23,12 +25,7 @@
             <Row type="flex" justify="space-between" class="code-row-bg">
               <Col span="2"></Col>
               <Col span="18" style="text-align:center;">
-                <Page
-                  :total="totalnews"
-
-                  style="margin-bottom:40px;"
-                  @on-change="cutaway"
-                />
+                <Page :total="totalnews" style="margin-bottom:40px;" @on-change="cutaway" />
               </Col>
               <Col span="2"></Col>
             </Row>
@@ -50,25 +47,14 @@ export default {
       page: 0
     };
   },
-  computed: {
-    newsodd() {
-      return this.news.filter(function(theNew) {
-        return theNew.id % 2 == 0;
-      });
-    },
-    newseven() {
-      return this.news.filter(function(theNew) {
-        return theNew.id % 2 == 1;
-      });
-    }
-  },
+
   methods: {
     textnews(index) {
       localStorage.setItem("newsid", this.news[index].newsid);
       this.$router.push({
-        name: "mobileNewsPage",
-        params: { newsid: this.news[index].newsid }
-      });
+         path: `mobileNewsPage`
+        })
+
     },
     cutaway(index) {
       this.loadData(index);
