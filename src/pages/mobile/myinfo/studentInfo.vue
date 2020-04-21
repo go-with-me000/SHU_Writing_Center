@@ -7,7 +7,7 @@
         :rules="rulesx"
         :label-width="70"
         class="formEx"
-        style="width: 500px"
+        style="width: 240px"
         size="large"
       >
         <FormItem label="姓名">
@@ -44,21 +44,21 @@
         <Button
           type="primary"
           size="large"
+          style="display:block;margin:0 0 0 25%"
           v-if="disable_impl"
-          style="margin-left: 175px"
           ghost
           @click="Change()"
         >修改</Button>
         <Button
           size="large"
-          style="margin-left: 120px"
+         style="margin-left:12px"
           v-if="!disable_impl"
           @click="cancel('person_info')"
         >取消</Button>
         <Button
           type="success"
           size="large"
-          style="margin-left: 20px"
+        style="margin-left:8%"
           :loading="loading"
           v-if="!disable_impl"
           ghost
@@ -227,14 +227,6 @@ export default {
 <style lang="scss" scoped>
 @import "myInfo";
 </style>
-<style scoped lang="scss">
-.wrapper {
-  margin-top: 0px;
-  margin-left: 0px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  right: 10%;
-}
+<style scoped>
+
 </style>

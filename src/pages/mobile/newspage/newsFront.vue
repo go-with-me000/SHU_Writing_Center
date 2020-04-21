@@ -93,8 +93,3 @@ export default {
 <style lang="scss" scoped>
 @import "newsFront";
 </style>
-<style>
-.ivu-tabs-nav .ivu-tabs-tab {
-  /* width: 100px; */
-}
-</style>
