@@ -44,11 +44,12 @@ var router = new Router({
         },{
           path:'precontract',
           name:'precontract',
-          component:resolve => require(['@/pages/user/precontract/precontract.vue'], resolve),
-        },{
+          component:resolve => require(['@/pages/mobile/precontract/precontract.vue'], resolve),
+        },
+        {
           path:'precontract2',
           name:'precontract2',
-          component:resolve => require(['@/pages/user/precontract2/precontract.vue'], resolve),
+          component:resolve => require(['@/pages/mobile/precontract2/precontract.vue'], resolve),
         },{
           path:'myPrecontract',
           name:'myPrecontract',

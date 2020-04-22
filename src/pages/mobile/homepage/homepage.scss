@@ -214,9 +214,17 @@
     // top: -10px;
     left:48%;
     transform: translate(-50%, 0%);
-    .sectTwo .swiper-container a .content .intro .black {
+    .sectTwo .swiper-container a .content .black {
       opacity: 1;
       color: #fff;
+      margin-top:10px;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      white-space: normal !important;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
     }
 
     .sectTwo .swiper-container a .content .intro .white {
@@ -233,8 +241,15 @@
 
       p{
         color:#fff;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        white-space: normal !important;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
       }
     }
    

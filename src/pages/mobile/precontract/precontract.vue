@@ -2,98 +2,66 @@
   <div class="main">
     <Row class="head" :style="{'--headHeight':this.headHeight}">
       <div class="search">
-        <div id="campus">
-          <span class="choose_title">校区:</span>
-
-          <RadioGroup v-model="choose.campus" class="choose">
-            <Radio label="全部"></Radio>
-            <Radio label="宝山校区"></Radio>
-            <Radio label="嘉定校区"></Radio>
-            <Radio label="延长校区"></Radio>
-          </RadioGroup>
-        </div>
-
-        <div id="college">
-          <span class="choose_title">学院:</span>
-          <RadioGroup v-model="choose.academy" :class="{choose:academyactive}" class="choosetrue">
-            <Radio label="理学院"></Radio>
-            
-            <Radio label="文学院"></Radio>
-            <Radio label="法学院"></Radio>
-            <Radio label="外国语学院"></Radio>
-            <Radio label="社会学院"></Radio>
-            <Radio label="马克思主义学院"></Radio>
-            <Radio label="新闻传播学院"></Radio>
-            <Radio label="计算机工程与科学学院"></Radio>
-            <Radio label="机电工程与自动化学院"></Radio>
-            <Radio label="通信与信息工程学院"></Radio>
-            <Radio label="环境与化学工程学院"></Radio>
-            <Radio label="材料科学与工程学院"></Radio>
-            <Radio label="材料基因组工程研究院"></Radio>
-            <Radio label="中欧工程技术学院"></Radio>
-            <Radio label="土木工程系"></Radio>
-            <Radio label="力学所"></Radio>
-            <Radio label="纳米科学与技术中心"></Radio>
-            <Radio label="经济学院"></Radio>
-            <Radio label="管理学院"></Radio>
-            <Radio label="图书情报档案系"></Radio>
-            <Radio label="悉尼工商学院"></Radio>
-            <Radio label="MBA中心"></Radio>
-            <Radio label="医学院"></Radio>
-            <Radio label="上海电影学院"></Radio>
-            <Radio label="上海美术学院"></Radio>
-            <Radio label="上海研究院"></Radio>
-            <Radio label="生命科学学院"></Radio>
-            <Radio label="音乐学院"></Radio>
-            <Radio label="数码艺术学院"></Radio>
-            <Radio label="上海温哥华电影学院"></Radio>
-            <Radio label="社区学院"></Radio>
-            <Radio label="社会科学学部"></Radio>
-            <Radio label="钱伟长学院"></Radio>
-            <Radio label="体育学院"></Radio>
-            <Radio label="人才学院"></Radio>
-            <Radio label="微电子中心"></Radio>
-            <Radio label="国际教育学院"></Radio>
-          </RadioGroup>
-          <div>
-            <Button
-              type="info"
-              ghost
-              style="position:relative;float:right; flex-grow: 0;;
-        flex-shrink: 0;"
-              @click="academyactive = !academyactive;"
-            >
-              <div v-if="this.academyactive">
-                <Icon
-                  type="ios-arrow-down"
-                  style="margin-left:-10px;padding:0px;position:relative"
-                />
-                <span style="margin-right:-10px;position:relative">展开</span>
-              </div>
-              <div v-else>
-                <Icon type="ios-arrow-up" style="margin-left:-10px;padding:0px;position:relative" />
-                <span style="margin-right:-10px;position:relative">收起</span>
-              </div>
-            </Button>
-          </div>
-        </div>
-
-        <div id="name">
-          <span class="choose_title">姓名:</span>
-          <Input v-model="teacherName" placeholder="请输入老师的姓名查找" style="width: 500px" />
-          <!-- <Button type="info" ghost style="margin-left:10px;font-size:宋体" @click="loadDataName()">查询</Button> -->
-        </div>
+        <van-row>
+          <van-col span="4" offset="1">
+            <van-field
+              readonly
+              clickable
+              style="border:1px solid #E8E8E8;border-radius:5%;font-size:18px;"
+              :value="choose.campus"
+              placeholder="选择校区"
+              @click="showCampus=true"
+            />
+            <van-popup v-model="showCampus" position="bottom">
+              <van-picker
+                show-toolbar
+                :columns="campusList"
+                title="选择校区"
+                clearable
+                @cancel="showCampus=false"
+                @confirm="onConfirm"
+              />
+            </van-popup>
+          </van-col>
+          <van-col style="margin-left:5px">
+            <van-field
+              readonly
+              clickable
+              style="border:1px solid #E8E8E8;border-radius:5%;font-size:18px;"
+              :value="choose.academy"
+              placeholder="请选择学院"
+              @click="showAcademy = true"
+            />
+            <van-popup v-model="showAcademy" position="bottom">
+              <van-picker
+                show-toolbar
+                :columns="academyList"
+                title="选择学院"
+                @cancel="showAcademy = false"
+                @confirm="onConfirmAcademy"
+              />
+            </van-popup>
+          </van-col>
+        </van-row>
+        <van-row style="margin-top:5px">
+          <van-col span="21" offset="1">
+            <van-field
+              v-model="teacherName"
+              style="border:1px solid #E8E8E8;border-radius:5%"
+              placeholder="请输入老师的姓名查找"
+            />
+          </van-col>
+        </van-row>
       </div>
     </Row>
+    <van-divider />
 
-    <!-- <div class="lines"></div> -->
-
-    <Row class="exhibit">
-      <ul>
+    <Row>
+      <ul class="exhibit">
         <li style="display:block;" v-for="(item,index) in data" :key="index">
           <div class="list">
             <div class="img">
-              <img :src="item.imagesrc" alt="name" style="width:270px;height:198px;" />
+              <img :src="item.imagesrc" alt="name" style="width:40vw;height:29vw" />
             </div>
             <div class="introduce">
               <h3>{{item.teachername}}</h3>
@@ -104,6 +72,7 @@
                   <Button
                     @click="specifics(item)"
                     ghost
+                    size="small"
                     type="default"
                     style="margin-top:-10px;margin-left:13px;"
                   >详情</Button>
@@ -112,7 +81,8 @@
                   <Button
                     ghost
                     type="default"
-                    style="margin-top:-10px;margin-right:66px;position:absolute"
+                    size="small"
+                    style="margin-top:-5.5px;position:absolute"
                     @click="precontract(item)"
                   >预约</Button>
                 </li>
@@ -132,13 +102,14 @@
           style="margin-bottom:40px;padding-top:15px;"
           @on-change="cutaway"
           :page-size="12"
+          simple
         />
       </Col>
       <Col span="2"></Col>
     </Row>
-  
+
     <Row>
-      <Modal v-model="modal1" :closable="false" width="50%" :styles="{top: '40px'}">
+      <Modal v-model="modal1" :closable="false" width="50%" :styles="{top: '10px'}">
         <Card>
           <Row class="stitle">
             <span style="font-weight:normal">教师ID:</span>
@@ -148,48 +119,48 @@
               <Rate disabled v-model="item.satisfaction" />
             </div>
           </Row>
-          <Divider size="small" />
+          <Divider size="small" class="spider" />
           <Row class="expand-row">
             <Col span="12">
-              <span class="expand-key">职位:</span>
+              <span class="expand-key">职位:<br></span>
               <span class="expand-value">{{ item.job }}</span>
             </Col>
 
             <Col span="12">
-              <span class="expand-key">组织:</span>
+              <span class="expand-key">组织:<br></span>
               <span class="expand-value">{{ item.organization }}</span>
             </Col>
           </Row>
           <Divider class="spider"></Divider>
           <Row class="expand-row">
             <Col span="12">
-              <span class="expand-key">学院:</span>
+              <span class="expand-key">学院:<br></span>
               <span class="expand-value">{{ item.academy }}</span>
             </Col>
             <Col span="12">
-              <span class="expand-key">专业:</span>
+              <span class="expand-key">专业:<br></span>
               <span class="expand-value">{{ item.major }}</span>
             </Col>
           </Row>
           <Divider class="spider"></Divider>
           <Row>
             <Col span="12">
-              <span class="expand-key">电话:</span>
+              <span class="expand-key">电话:<br></span>
               <span class="expand-value">{{ item.phone }}</span>
             </Col>
             <Col span="12">
-              <span class="expand-key">邮箱:</span>
+              <span class="expand-key">邮箱:<br></span>
               <span class="expand-value">{{ item.email }}</span>
             </Col>
           </Row>
           <Divider class="spider"></Divider>
           <Row>
             <Col span="12">
-              <span class="expand-key">校区:</span>
+              <span class="expand-key">校区:<br></span>
               <span class="expand-value">{{ item.campus }}</span>
             </Col>
             <Col span="12">
-              <span class="expand-key">地址:</span>
+              <span class="expand-key">地址:<br></span>
               <span class="expand-value">{{ item.building }}</span>
             </Col>
           </Row>
@@ -283,12 +254,12 @@
             <Col span="17">
               <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
             </Col>
-            <Col span="4" offset="1">
+            <Col span="4" >
               <Button
                 type="primary"
                 size="large"
                 @click="captcha()"
-                style="margin-left:10px;position:relative"
+                style="float:right;position:relative;left:45px"
                 :disabled="article.emailSubmit"
               >邮箱验证</Button>
             </Col>
@@ -314,6 +285,7 @@
         </div>
       </Modal>
     </Row>
+  
   </div>
 </template>
 
@@ -323,16 +295,57 @@ import axios from "axios";
 export default {
   data() {
     return {
+      showCampus: false,
+      showAcademy: false,
       browser: "",
       captchamodal: false,
-
+      campusList: ["全部", "宝山", "嘉定", "延长"],
+      academyList: [
+        "理学院",
+        "文学院",
+        "法学院",
+        "外国语学院",
+        "社会学院",
+        "马克思主义学院",
+        "新闻传播学院",
+        "计算机工程与科学学院",
+        "机电工程与自动化学院",
+        "通信与信息工程学院",
+        "环境与化学工程学院",
+        "材料科学与工程学院",
+        "材料基因组工程研究院",
+        "中欧工程技术学院",
+        "土木工程系",
+        "力学所",
+        "纳米科学与技术中心",
+        "经济学院",
+        "管理学院",
+        "图书情报档案系",
+        "悉尼工商学院",
+        "MBA中心",
+        "医学院",
+        "上海电影学院",
+        "上海美术学院",
+        "上海研究院",
+        "生命科学学院",
+        "音乐学院",
+        "数码艺术学院",
+        "上海温哥华电影学院",
+        "社区学院",
+        "社会科学学部",
+        "钱伟长学院",
+        "体育学院",
+        "微电子中心",
+        "人才学院",
+        "国际教育学院"
+      ],
       article: {
         essayname: "", //论文题目
         description: "", //论文介绍
         essaysrc: "", //论文地址
         essaySubmit: true, //是否提交了论文
         essayfile: "", //论文文件
-         emailSubmit:true,
+        emailSubmit: true,
         time: "",
         captchacode: ""
       },
@@ -358,6 +371,15 @@ export default {
     };
   },
   methods: {
+   
+    onConfirm(value) {
+      this.choose.campus = value;
+      this.showCampus = false;
+    },
+    onConfirmAcademy(value) {
+      this.choose.academy = value;
+      this.showAcademy = false;
+    },
     captcha() {
       let URL = `${apiPath}/user/sendSsmCode`;
       axios({
@@ -365,13 +387,12 @@ export default {
         method: "get"
       })
         .then(res => {
-          console.log(res)
+          console.log(res);
           if (res.data.code === 200) {
             this.$Message.success({
               content: "验证码已发出，请注意查收"
             });
           } else {
-           
             this.$Message.warning({
               content: `请正确填写填写邮箱信息，否则无法发送邮件`
             });
@@ -439,7 +460,10 @@ export default {
 
     loadDataCampus() {
       let URL = `${apiPath}/user/loadDataCampus`;
-      let campus = this.choose.campus;
+      let campus =
+        this.choose.campus != "全部"
+          ? this.choose.campus + "校区"
+          : this.choose.campus;
       let page = this.page;
 
       if (this.tag) {
@@ -620,7 +644,7 @@ export default {
       this.modal1 = true;
     },
     precontract(item) {
-      if(item.timeList.length==0){
+      if (item.timeList.length == 0) {
         this.$Message.warning("老师还没做好准备，请稍后再来亲");
         return;
       }
@@ -629,16 +653,14 @@ export default {
         this.item = item;
         this.essaymodal = true;
       } else {
-        
         this.$Notice.warning({
           title: "未填邮箱",
-          desc:
-            "请先进入个人信息页面填写个人信息，再进行预约"
+          desc: "请先进入个人信息页面填写个人信息，再进行预约"
         });
       }
     },
     handleBeforeUpload(file) {
-         const extension1 = /.pdf/.test(file.name)
+      const extension1 = /.pdf/.test(file.name);
       const extension2 = /.doc/.test(file.name);
       const extension3 = /.docx/.test(file.name);
       const isLt5M = file.size / 1024 / 1024 < 5;
@@ -762,7 +784,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "chrome";
+@import "precontract";
 </style>
 <style lang="scss">
 .ivu-select-selected-value {
@@ -778,7 +800,6 @@ export default {
 </style>
 
 <style lang="scss">
-
 .exhibit {
   li {
     .list:hover {

@@ -23,7 +23,7 @@
         placeholder="请输入密码/Password"
       />
       <br />
-      <van-button round type="info" block @click="handleOnClickLogin()" >登录</van-button>
+      <van-button round type="info" block @click="handleOnClickLogin()" >登录/login</van-button>
     </div>
   </div>
 </template>

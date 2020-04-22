@@ -14,24 +14,23 @@
               src="@/common/img/logo4.png"
               style="height:45px;top:13px;position:absolute;left:30px"
             />
-              <Button
+            <!-- <Button
               type="info"
               ghost
               size="large"
-              style=""
+              style="position:relative;left:100px;top:-15px;"
               @click="enterLogin()"
               v-if="identity==''"
-            >登录</Button>
-    
+            >登录</Button> -->
           </div>
         </a>
-      
-        <!--   <div id="loginbutton">
+
+          <div id="loginbutton">
             <Button
               type="info"
               ghost
               size="large"
-              style=""
+              style="margin-right:30px;margin-left:15px"
               @click="enterLogin()"
               v-if="identity==''"
             >登录</Button>
@@ -40,13 +39,13 @@
               ghost
               size="large"
               @click="logout()"
-              style="margin-right:15px;margin-left:15px"
+              style="margin-right:30px;margin-left:15px"
               v-else
             >注销</Button>
           </div>
-        -->
-          
-        <ul id="nav" >
+       
+
+        <ul id="nav">
           <li name="index">
             <a href="javascript:;">
               <router-link :to="{ path: 'login' }">
@@ -90,14 +89,14 @@
             <ul class="childUl">
               <li>
                 <a href="javascript:;">
-                  <router-link :to="{ path: 'homepage' }">
+                  <router-link :to="{ path: 'precontract' }">
                     <Icon type="ios-rose-outline" size="17" />名师预约
                   </router-link>
                 </a>
               </li>
               <li>
                 <a href="javascript:;">
-                  <router-link :to="{ path: 'homepage' }">
+                  <router-link :to="{ path: 'precontract2' }">
                     <Icon type="ios-rose" size="17" />同伴预约
                   </router-link>
                 </a>
@@ -119,15 +118,13 @@
             </a>
           </li>
         </ul>
-        <div class="nav" >
+        <div class="nav">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
     </header>
-
-
 
     <div style="min-height: calc(100vh - 310px)">
       <router-view></router-view>
@@ -241,7 +238,7 @@ export default {
       }
     }
   },
-  
+
   mounted() {
     this.initMenuActive();
     this.computedWidth();
@@ -277,12 +274,11 @@ export default {
     collapsedSider() {
       this.$refs.side1.toggleCollapse();
     },
-    enterLogin(){
-       this.$router.push('/mobilelogin');
-       this.identity = localStorage.getItem("authority");
+    enterLogin() {
+      this.$router.push("/mobilelogin");
+      this.identity = localStorage.getItem("authority");
     },
-    
-    
+
     initMenuActive() {
       this.activeName = this.$route.name;
       this.UserName = localStorage.getItem("username");

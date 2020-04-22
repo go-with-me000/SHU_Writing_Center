@@ -10,13 +10,7 @@
         </span>
         /news
       </p>
-      <div class="more">
-        <span @click="moreNews()">
-          更多
-          <Icon type="ios-arrow-forward" />
-          
-        </span>
-      </div>
+     
 
       <Carousel v-model="newspicture" loop autoplay id="carousel" dots="inside" radius-dot>
         <CarouselItem v-for="(item,index) in imgs" :key="index">
@@ -53,13 +47,7 @@
           <Icon type="ios-arrow-forward" />推荐教师
         </span>
       </p>
-      <div class="more">
-        <span @click="moreteachers()">
-          更多
-          <Icon type="ios-arrow-forward" />
-          
-        </span>
-      </div>
+     
       <div id="display">
         <div id="content">
           <div id="sectTwo">
@@ -80,28 +68,12 @@
                         </div>
                         <div class="content" style="z-index:2;position:relative">
                           <h4>{{item.teachername}}</h4>
-                          <p class="helpintention">研究方向:{{item.helpintention}}</p>
-                          <div class="intro">
+                          <p class="helpintention">{{item.helpintention}}</p>
+                          <div >
                             <div class="black">
-                              <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.description}}</div>
+                              <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.description}}</div>
                             </div>
-                            <div class="white">
-                              <div v-html="item.introductions"></div>
-                              <div class="action">
-                                <Button
-                                  type="info"
-                                  ghost
-                                  style="margin-left:6%;"
-                                  @click="specifics(item)"
-                                >详情</Button>
-                                <Button
-                                  type="success"
-                                  ghost
-                                  style="margin-left:6%;"
-                                  @click="precontract(item)"
-                                >预约</Button>
-                              </div>
-                            </div>
+                           
                           </div>
                         </div>
                       </a>
