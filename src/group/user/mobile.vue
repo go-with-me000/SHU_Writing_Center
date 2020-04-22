@@ -17,7 +17,9 @@
           </div>
         </a>
 
-          <div id="loginbutton">
+
+    <div id="loginbutton">
+
             <Button
               type="info"
               ghost
@@ -35,7 +37,7 @@
               v-else
             >注销</Button>
           </div>
-       
+
 
         <ul id="nav">
           <li name="index">
