@@ -14,14 +14,6 @@
               src="@/common/img/logo4.png"
               style="height:45px;top:13px;position:absolute;left:30px"
             />
-            <!-- <Button
-              type="info"
-              ghost
-              size="large"
-              style="position:relative;left:100px;top:-15px;"
-              @click="enterLogin()"
-              v-if="identity==''"
-            >登录</Button> -->
           </div>
         </a>
 
