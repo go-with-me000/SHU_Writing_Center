@@ -391,11 +391,11 @@
         </Form>
       </div>
       <div class="questioncode" v-if="position==0">
-        <p style="font-weight:bold;font-size:16px;margin-left:20px">服务回访-线上论文辅导</p>
+        <p style="font-weight:bold;font-size:16px;margin-left:0px">服务回访-线上论文辅导</p>
         <img src="@/common/img/questioncode.jpg" />
-        <p style="font-weight:bold;font-size:14px;margin-left:32px">想要更优质的辅导吗？</p>
-        <p style="font-weight:bold;font-size:12px;margin-left:50px">欢迎填写内容问卷</p>
-        <p style="font-weight:bold;font-size:12px;margin-left:22px">帮助我们实现更为优质的辅导</p>
+        <p style="font-weight:bold;font-size:14px;margin-left:12px">想要更优质的辅导吗？</p>
+        <p style="font-weight:bold;font-size:12px;margin-left:10px">欢迎填写内容问卷</p>
+        <p style="font-weight:bold;font-size:12px;margin-left:7px">帮助我们实现更为优质的辅导</p>
       </div>
       <div slot="footer" class="questionfoot">
         <Button type="success" size="large" long @click="submitNaire('questionnaire')">提交问卷</Button>
@@ -773,6 +773,11 @@ export default {
             let requestId = this.questionnaire.requestId;
             let id = this.questionnaire.id;
             let onTime = this.questionnaire.onTime;
+            if(onTime ==0){
+              onTime =1;
+            }else{
+              onTime = 0;
+            }
             let person_rate = this.questionnaire.person_rate;
             let suggestion = this.questionnaire.suggestion;
             axios({

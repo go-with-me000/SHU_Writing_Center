@@ -23,7 +23,7 @@
               />
             </van-popup>
           </van-col>
-          <van-col style="margin-left:5px">
+          <van-col style="margin-left:5px" span="18">
             <van-field
               readonly
               clickable
@@ -44,7 +44,7 @@
           </van-col>
         </van-row>
         <van-row style="margin-top:5px">
-          <van-col span="21" offset="1">
+          <van-col span="22" offset="1">
             <van-field
               v-model="teacherName"
               style="border:1px solid #E8E8E8;border-radius:5%"
@@ -66,23 +66,22 @@
             <div class="introduce">
               <h3>{{item.teachername}}</h3>
               <h4>教职工</h4>
-              <p>{{item.helpintention}}</p>
+              <p v-if="item.helpintention==''">研究方向：无</p>
+              <p v-else>{{item.helpintention}}</p>
               <ul>
-                <li>
+                <li style="display:flex">
                   <Button
                     @click="specifics(item)"
                     ghost
                     size="small"
                     type="default"
-                    style="margin-top:-10px;margin-left:13px;"
+                    style="margin-top:0px;margin-left:13px;"
                   >详情</Button>
-                </li>
-                <li>
                   <Button
                     ghost
                     type="default"
                     size="small"
-                    style="margin-top:-5.5px;position:absolute"
+                    style="margin-top:0px;position:relative;margin-left:10px;"
                     @click="precontract(item)"
                   >预约</Button>
                 </li>
@@ -112,55 +111,61 @@
       <Modal v-model="modal1" :closable="false" width="50%" :styles="{top: '10px'}">
         <Card>
           <Row class="stitle">
-            <span style="font-weight:normal">教师ID:</span>
-            {{item.teacherid}}
+           
             <div id="rate">
               评分：
               <Rate disabled v-model="item.satisfaction" />
             </div>
           </Row>
-          <Divider size="small" class="spider" />
-          <Row class="expand-row">
-            <Col span="12">
-              <span class="expand-key">职位:<br></span>
-              <span class="expand-value">{{ item.job }}</span>
-            </Col>
-
-            <Col span="12">
-              <span class="expand-key">组织:<br></span>
-              <span class="expand-value">{{ item.organization }}</span>
-            </Col>
-          </Row>
+        
           <Divider class="spider"></Divider>
           <Row class="expand-row">
             <Col span="12">
-              <span class="expand-key">学院:<br></span>
+              <span class="expand-key">
+                学院:
+                <br />
+              </span>
               <span class="expand-value">{{ item.academy }}</span>
             </Col>
             <Col span="12">
-              <span class="expand-key">专业:<br></span>
+              <span class="expand-key">
+                专业:
+                <br />
+              </span>
               <span class="expand-value">{{ item.major }}</span>
             </Col>
           </Row>
           <Divider class="spider"></Divider>
           <Row>
             <Col span="12">
-              <span class="expand-key">电话:<br></span>
+              <span class="expand-key">
+                电话:
+                <br />
+              </span>
               <span class="expand-value">{{ item.phone }}</span>
             </Col>
             <Col span="12">
-              <span class="expand-key">邮箱:<br></span>
+              <span class="expand-key">
+                邮箱:
+                <br />
+              </span>
               <span class="expand-value">{{ item.email }}</span>
             </Col>
           </Row>
           <Divider class="spider"></Divider>
           <Row>
             <Col span="12">
-              <span class="expand-key">校区:<br></span>
+              <span class="expand-key">
+                校区:
+                <br />
+              </span>
               <span class="expand-value">{{ item.campus }}</span>
             </Col>
             <Col span="12">
-              <span class="expand-key">地址:<br></span>
+              <span class="expand-key">
+                地址:
+                <br />
+              </span>
               <span class="expand-value">{{ item.building }}</span>
             </Col>
           </Row>
@@ -254,7 +259,7 @@
             <Col span="17">
               <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
             </Col>
-            <Col span="4" >
+            <Col span="4">
               <Button
                 type="primary"
                 size="large"
@@ -285,7 +290,6 @@
         </div>
       </Modal>
     </Row>
-  
   </div>
 </template>
 
@@ -371,7 +375,6 @@ export default {
     };
   },
   methods: {
-   
     onConfirm(value) {
       this.choose.campus = value;
       this.showCampus = false;
@@ -800,17 +803,6 @@ export default {
 </style>
 
 <style lang="scss">
-.exhibit {
-  li {
-    .list:hover {
-      .ivu-btn-ghost.ivu-btn-dashed,
-      .ivu-btn-ghost.ivu-btn-default {
-        border-color: rgb(255, 255, 255);
-        color: rgb(255, 255, 255);
-      }
-    }
-  }
-}
 ul li .ivu-btn-ghost.ivu-btn-dashed,
 .ivu-btn-ghost.ivu-btn-default {
   border-color: rgb(131, 131, 131);

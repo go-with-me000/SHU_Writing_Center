@@ -11,7 +11,8 @@ axios.interceptors.request.use((config) => {
     switch (error.response.status) {
       case 405:
         localStorage.clear()
-        Router.replace('/user/login');
+        const path =  window.innerWidth<=500?'mobile':'user';
+        Router.replace(`/${path}/login`);
         setTimeout(() => {
           context.$Notice.error({
             title: "您没有访问权限",
@@ -36,8 +37,8 @@ axios.interceptors.response.use((res) => {
     switch (error.response.status) {
       case 405:
         localStorage.clear()
-        // Router.replace('/login');
-        Router.replace('/user/login');
+        const path =  window.innerWidth<=500?'mobile':'user';
+        Router.replace(`/${path}/login`);
         setTimeout(() => {
           context.$Notice.error({
             title: "您没有访问权限",

@@ -17,6 +17,7 @@
           </div>
         </a>
 
+<<<<<<< Updated upstream
 
     <div id="loginbutton">
 
@@ -116,6 +117,28 @@
           <span></span>
           <span></span>
           <span></span>
+=======
+        <div id="loginbutton">
+          <Button
+            type="info"
+            ghost
+            size="large"
+            style="margin-right:10px;margin-left:15px"
+            @click="enterLogin()"
+            v-if="identity==''"
+          >登录</Button>
+          <Button
+            type="info"
+            ghost
+            size="large"
+            @click="logout()"
+            style="margin-right:10px;margin-left:15px"
+            v-else
+          >注销</Button>
+          <div style="position:relative;top:-10px;">
+            <Icon @click.native="menuDrawer=true" type="md-menu" size="40" id="ver" color="#000"></Icon>
+          </div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </header>
@@ -156,6 +179,124 @@
    "
       >版权所有：上海大学写作中心 &nbsp;&nbsp;&nbsp;&nbsp; 邮编：201900</p>
     </div>
+    <Drawer title="Basic Drawer" :closable="false" v-model="menuDrawer" width="50" id="horizonta">
+      <p slot="header" style="background:#245086;height:100%"></p>
+      <Menu :active-name="activeName" @on-select="push" width="50">
+        <MenuItem name="login" @click.native="warning3();">
+          <Icon type="md-cube" />
+          <span>介绍</span>
+        </MenuItem>
+        <MenuItem name="homepage" @click.native="warning3();">
+          <Icon type="ios-mail"></Icon>
+          <span>首页</span>
+        </MenuItem>
+
+        <MenuItem name="mobileNewsFront" @click.native="warning3();">
+          <Icon type="ios-people" />
+          <span>新闻</span>
+        </MenuItem>
+
+        <Submenu name="meeting">
+          <template slot="title">
+            <Icon type="ios-create-outline" />预约
+          </template>
+          <MenuItem name="mobilePrecontract" :disabled="isLogout" @click.native="warning2();">
+            <Icon type="ios-rose-outline" />
+            <span>名师预约</span>
+          </MenuItem>
+          <MenuItem name="mobilePrecontract2" :disabled="isLogout" @click.native="warning2();">
+            <Icon type="ios-rose" />
+            <span>同伴预约</span>
+          </MenuItem>
+        </Submenu>
+        <MenuItem name="mobileMyPrecontract" :disabled="isLogout" @click.native="warning2()">
+          <Icon type="md-attach" />
+          <span>我的预约</span>
+        </MenuItem>
+
+        <MenuItem name="mobileMyInfo" :disabled="isLogout" @click.native="warning2()">
+          <Icon type="ios-person"></Icon>
+          <span>个人信息</span>
+        </MenuItem>
+      </Menu>
+    </Drawer>
+    <Modal
+      v-model="modal1"
+      width="100"
+      :closable="false"
+      :mask-closable="false"
+      :styles="{height: '100vh',top:'0px'}"
+    >
+      <p slot="header" id="questionheader">
+        <Icon type="md-create" />
+
+        <span v-if="position==0">老师评估问卷</span>
+        <span v-else>学生评估问卷</span>
+      </p>
+      <div style="text-align:center;position:relative;width:98%;left:2%">
+        <Form
+          :model="questionnaire"
+          label-position="left"
+          :label-width="200"
+          :rules="rulesx"
+          ref="questionnaire"
+        >
+          <FormItem label="订单号:" style="text-align:left;">{{questionnaire.requestId}}</FormItem>
+          <FormItem
+            label="老师姓名:"
+            style="text-align:left;"
+            v-if="position==0"
+          >{{questionnaire.person_name}}</FormItem>
+          <FormItem label="学生姓名:" style="text-align:left;" v-else>{{questionnaire.person_name}}</FormItem>
+          <FormItem label="辅导方向:" style="text-align:left;">{{questionnaire.helpintention}}</FormItem>
+          <FormItem label="辅导开始时间:" style="text-align:left;">{{questionnaire.startTime}}</FormItem>
+          <FormItem label="辅导结束时间:" style="text-align:left;">{{questionnaire.endTime}}</FormItem>
+          <Divider></Divider>
+          <FormItem label="对方是否准时:" style="text-align:left" prop="onTime">
+            <RadioGroup v-model="questionnaire.onTime">
+              <Radio label="1">是</Radio>
+              <Radio label="0">否</Radio>
+            </RadioGroup>
+          </FormItem>
+          <FormItem label="对老师评分:" style="text-align:left" v-if="position==0" prop="person_rate">
+            <Rate show-text allow-half v-model="questionnaire.person_rate">
+              <span style="color: #f5a623"></span>
+            </Rate>
+          </FormItem>
+          <FormItem label="对学生评分:" style="text-align:left" v-else prop="person_rate">
+            <Rate show-text allow-half v-model="questionnaire.person_rate">
+              <span style="color: #f5a623"></span>
+            </Rate>
+          </FormItem>
+          <FormItem label="对辅导内容评分:" style="text-align:left" prop="content_rate" v-if="position==0">
+            <Rate show-text allow-half v-model="questionnaire.content_rate ">
+              <span style="color: #f5a623"></span>
+            </Rate>
+          </FormItem>
+          <FormItem label="建议:">
+            <Input
+              v-model="questionnaire.suggestion"
+              type="textarea"
+              :autosize="{minRows: 5,maxRows: 7}"
+              placeholder="欢迎提出建议"
+            ></Input>
+          </FormItem>
+          <FormItem style="text-align:center">
+            <div style="text-align:center" v-if="position==0">
+              <p style="font-weight:bold;font-size:16px;margin-left:-110%">服务回访-线上论文辅导</p>
+              <img src="@/common/img/questioncode.jpg" style="margin-left:-110%" />
+              <p style="font-weight:bold;font-size:14px;margin-left:-110%">想要更优质的辅导吗？</p>
+              <p style="font-weight:bold;font-size:12px;margin-left:-110%">欢迎填写内容问卷</p>
+              <p style="font-weight:bold;font-size:12px;margin-left:-110%">帮助我们实现更为优质的辅导</p>
+            </div>
+          </FormItem>
+        </Form>
+      </div>
+
+      <div slot="footer" class="questionfoot">
+        <Button type="success" size="large" long @click="submitNaire('questionnaire')">提交问卷</Button>
+      </div>
+    </Modal>
   </div>
 </template>
 <script>
@@ -165,6 +306,7 @@ export default {
   name: "user",
   data() {
     return {
+      menuDrawer: false,
       isCollapsed: false,
       isHome: true,
       activeName: "",
@@ -280,22 +422,19 @@ export default {
     push(name) {
       this.$router.push(name);
     },
-    warning() {
-      this.$Message.warning({
-        content: "请从首页进入此页"
-      });
+    warning3() {
+      this.menuDrawer = false;
     },
     warning2() {
       if (this.isLogout) {
         this.$Message.warning({
           content: "请先登录"
         });
+      } else {
+        this.menuDrawer = false;
       }
     },
-    goAnchor() {
-      var element = document.getElementById("main");
-      element.scrollIntoView(true);
-    },
+
     logout() {
       localStorage.clear();
       sessionStorage.clear();
@@ -336,6 +475,7 @@ export default {
       })
         .then(res => {
           if (res.data.code === 200) {
+            console.log(res);
             localStorage.setItem("duty", res.data.data.duty);
             this.questionnaires = res.data.data.list;
             this.questionnaires2 = res.data.data.educatedList;
@@ -465,6 +605,11 @@ export default {
             let requestId = this.questionnaire.requestId;
             let id = this.questionnaire.id;
             let onTime = this.questionnaire.onTime;
+             if(onTime ==0){
+              onTime =1;
+            }else{
+              onTime = 0;
+            }
             let person_rate = this.questionnaire.person_rate;
             let suggestion = this.questionnaire.suggestion;
             axios({

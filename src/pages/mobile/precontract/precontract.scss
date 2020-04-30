@@ -123,26 +123,7 @@
       flex-grow: 0;
       flex-shrink: 0;
 
-      .list:hover {
-        translate: 1s;
-        transition: all 0.3s ease-in;
-
-        .introduce {
-          background: #009e96;
-          color: #fff !important;
-
-          h3,
-          h4,
-          p {
-            color: #fff;
-          }
-        }
-      }
-
-      .list:hover .img img {
-        translate: 0.5s;
-        transition: all 0.3s ease-in;
-      }
+     
 
       .list {
         background-color: #f1f1f1;
@@ -156,7 +137,7 @@
 
         .introduce {
           padding: 10%;
-          height: 50px;
+          height: 150px;
           background: #EFEFEF;
           transition: background .7s;
           // transition:color .7s;

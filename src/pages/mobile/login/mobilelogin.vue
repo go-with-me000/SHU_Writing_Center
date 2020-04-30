@@ -25,8 +25,8 @@
     </Layout>
     <div>
       <div id="section1">
-        <h3>上海大学写作中心</h3>
-        <h3 style="font-size: 28px; color: rgb(36, 80, 134); ">SHU Writing Center</h3>
+        <h3 style="font-size: 24px; color: rgb(36, 80, 134);margin-top:15px;">上海大学写作中心</h3>
+        <h3 style="font-size: 24px; color: rgb(36, 80, 134); ">SHU Writing Center</h3>
         <p style="text-align: left; text-indent: 2em; color: #333;">{{introduce}}</p>
         <p style="text-align: left; text-indent: 2em; color: #333;">
           <em style="font-weight:bold">{{introduce1}}</em>
@@ -36,7 +36,9 @@
       <div class="section2">
         <h3>服务内容/服务体系</h3>
         <h3>service content / service system</h3>
-        <p style="text-align: left; text-indent: 2em; color: #fff;">{{introduce2}}</p>
+        <p
+          style="text-align: left; text-indent: 2em; color: #fff;margin-bottom:25px "
+        >{{introduce2}}</p>
 
         <div id="works">
           <div class="container">
@@ -185,40 +187,67 @@
               <ul class="solution-wrapper">
                 <li class="solution-slide">
                   <span>
-                    <h3>策划部</h3>
-                    <p>调研师生需求，形成活动策划；对接其他部门，了解现有资源和限制条件，推进策划实现。</p>
+                    <h3>
+                      策划部
+                      <br />
+                      <h5
+                        style="font-size:14px;margin-top:10px;margin-left:16%;margin-right:16%"
+                      >调研师生需求，形成活动策划；对接其他部门,推进策划实现</h5>
+                    </h3>
                   </span>
                   <img src="../../../common/img/img/cehua.jpg" />
                 </li>
 
                 <li class="solution-slide">
                   <span>
-                    <h3>联络部</h3>
-                    <p>联合师生，构建桥梁，优化预约服务，推进网站预约建设。</p>
+                    <h3>
+                      联络部
+                      <br />
+                         <h5
+                        style="font-size:14px;margin-top:10px;margin-left:16%;margin-right:16%"
+                      >联合师生，构建桥梁，优化预约服务，推进网站预约建设。</h5>
+                    </h3>
                   </span>
                   <img src="../../../common/img/img/lianluo.jpg" />
                 </li>
 
                 <li class="solution-slide">
                   <span>
-                    <h3>宣传部</h3>
-                    <p>抓好中心品牌建设，实时撰写新闻稿和微信推送，发布有效信息，提升写作中心的知名度和影响力。</p>
+                    <h3>
+                      宣传部
+                      <br />
+                       <h5
+                        style="font-size:14px;margin-top:10px;margin-left:16%;margin-right:16%"
+                      >抓好中心品牌建设，实时撰写新闻稿和微信推送，发布有效信息，提升写作中心的知名度和影响力。</h5>
+                    </h3>
                   </span>
                   <img src="../../../common/img/img/xuanchuan.jpg" />
                 </li>
 
                 <li class="solution-slide">
                   <span>
-                    <h3>执行部</h3>
-                    <p>对接各部门的策划方案，根据实际情况执行线下活动，监控活动质量。</p>
+                    <h3>
+                      执行部
+                      <br />
+                       <h5
+                        style="font-size:14px;margin-top:10px;margin-left:16%;margin-right:16%"
+                      >  对接各部门的策划方案，根据实际情况执行线下活动，监控活动质量。</h5>
+                    
+                    </h3>
                   </span>
                   <img src="../../../common/img/img/action.jpg" />
                 </li>
 
                 <li class="solution-slide">
                   <span>
-                    <h3>视觉部</h3>
-                    <p>利用图片、视频等新媒体方式，辅助建设微信公众号平台，提升写作中心的受众参与度。</p>
+                    <h3>
+                      视觉部
+                      <br />
+                      <h5
+                        style="font-size:14px;margin-top:10px;margin-left:16%;margin-right:16%"
+                      >   利用图片、视频等新媒体方式，辅助建设微信公众号平台，提升写作中心的受众参与度。</h5>
+                   
+                    </h3>
                   </span>
                   <img src="../../../common/img/img/eye.jpg" />
                 </li>
@@ -232,7 +261,7 @@
         <h3>写作交流</h3>
         <h3>communication</h3>
         <Row>
-          <Col  span="6" offset="2">
+          <Col span="6" offset="2">
             <img src="@/common/images/q1.jpg" style="width:80%;height:100%;" />
             <h4>调动师生写作热情</h4>
           </Col>
@@ -246,7 +275,7 @@
           </Col>
         </Row>
       </div>
-      
+
       <div class="section4">
         <h3>写作预约</h3>
         <h3>appointment</h3>

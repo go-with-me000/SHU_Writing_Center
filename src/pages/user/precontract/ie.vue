@@ -128,18 +128,7 @@
               <Rate disabled v-model="item.satisfaction" />
             </div>
           </Row>
-          <Divider size="small" />
-          <Row class="expand-row">
-            <Col span="12">
-              <span class="expand-key">职位:</span>
-              <span class="expand-value">{{ item.job }}</span>
-            </Col>
-
-            <Col span="12">
-              <span class="expand-key">组织:</span>
-              <span class="expand-value">{{ item.organization }}</span>
-            </Col>
-          </Row>
+        
           <Divider class="spider"></Divider>
           <Row class="expand-row">
             <Col span="12">

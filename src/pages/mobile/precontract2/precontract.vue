@@ -23,7 +23,7 @@
               />
             </van-popup>
           </van-col>
-          <van-col style="margin-left:5px">
+          <van-col style="margin-left:5px" span="17">
             <van-field
               readonly
               clickable
@@ -67,23 +67,22 @@
             <div class="introduce">
               <h3>{{item.stteachername}}</h3>
               <h4>同伴辅导者</h4>
-              <p>{{item.helpintention}}</p>
-              <ul>
-                <li>
+              <p v-if="item.helpintention==''">研究方向：无</p>
+              <p v-else>{{item.helpintention}}</p>
+            <ul>
+                <li style="display:flex">
                   <Button
                     @click="specifics(item)"
                     ghost
                     size="small"
                     type="default"
-                    style="margin-top:-10px;margin-left:13px;"
+                    style="margin-top:0px;margin-left:13px;"
                   >详情</Button>
-                </li>
-                <li>
                   <Button
                     ghost
                     type="default"
                     size="small"
-                    style="margin-top:-5.5px;position:absolute"
+                    style="margin-top:0px;position:relative;margin-left:10px;"
                     @click="precontract(item)"
                   >预约</Button>
                 </li>
@@ -113,26 +112,14 @@
       <Modal v-model="modal1" :closable="false" width="50%" :styles="{top: '10px'}">
         <Card>
           <Row class="stitle">
-            <span style="font-weight:normal">教师ID:</span>
-            {{item.stteacherid}}
+         
             <div id="rate">
               评分：
               <Rate disabled v-model="item.satisfaction" />
             </div>
           </Row>
           <Divider size="small" class="spider" />
-          <Row class="expand-row">
-            <Col span="12">
-              <span class="expand-key">职位:<br></span>
-              <span class="expand-value">{{ item.job }}</span>
-            </Col>
-
-            <Col span="12">
-              <span class="expand-key">组织:<br></span>
-              <span class="expand-value">{{ item.organization }}</span>
-            </Col>
-          </Row>
-          <Divider class="spider"></Divider>
+        
           <Row class="expand-row">
             <Col span="12">
               <span class="expand-key">学院:<br></span>
@@ -458,7 +445,10 @@ export default {
 
     loadDataCampus() {
       let URL = `${apiPath}/user/loadDataCampusStt`;
-      let campus = this.choose.campus;
+       let campus =
+        this.choose.campus != "全部"
+          ? this.choose.campus + "校区"
+          : this.choose.campus;
       let page = this.page;
 
       if (this.tag) {
@@ -473,8 +463,8 @@ export default {
           }
         })
           .then(res => {
-            console.log(res)
             if (res.data.code === 200) {
+              console.log(res)
               if (res.data.data != "暂时没有教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
@@ -535,8 +525,9 @@ export default {
           }
         })
           .then(res => {
+            console.log(res)
             if (res.data.code === 200) {
-              if (res.data.data != "暂时没有教师") {
+              if (res.data.data != "暂时没有小教师") {
                 this.data = res.data.data;
                 this.totalteacher = res.data.count;
                 for (let i = 0; i < this.data.length; i++) {
@@ -795,17 +786,6 @@ export default {
 </style>
 <style lang="scss">
 
-.exhibit {
-  li {
-    .list:hover {
-      .ivu-btn-ghost.ivu-btn-dashed,
-      .ivu-btn-ghost.ivu-btn-default {
-        border-color: rgb(255, 255, 255);
-        color: rgb(255, 255, 255);
-      }
-    }
-  }
-}
 ul li .ivu-btn-ghost.ivu-btn-dashed,
 .ivu-btn-ghost.ivu-btn-default {
   border-color: rgb(131, 131, 131);

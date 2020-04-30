@@ -10,11 +10,10 @@
         </span>
         /news
       </p>
-     
 
       <Carousel v-model="newspicture" loop autoplay id="carousel" dots="inside" radius-dot>
         <CarouselItem v-for="(item,index) in imgs" :key="index">
-          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;" />
+          <img :src="item.picturesrc" @click="imgnews(index)" style="width:100%;height:200px" />
         </CarouselItem>
         <div class="back"></div>
       </Carousel>
@@ -47,7 +46,7 @@
           <Icon type="ios-arrow-forward" />推荐教师
         </span>
       </p>
-     
+
       <div id="display">
         <div id="content">
           <div id="sectTwo">
@@ -62,24 +61,39 @@
                     v-if="teachers.length"
                   >
                     <swiper-slide v-for="(item,index) in teachers" :key="index" style="width:50%;">
-                      <a class="swiper-slide" >
+                      <a class="swiper-slide">
                         <div style="position:absolute;width:100%;height:100%;z-index:1">
                           <img style="width:100%;height:100%" :src="item.imagesrc" alt="name" />
                         </div>
                         <div class="content" style="z-index:2;position:relative">
                           <h4>{{item.teachername}}</h4>
-                          <p class="helpintention">{{item.helpintention}}</p>
-                          <div >
-                            <div class="black">
-                              <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.description}}</div>
-                            </div>
-                           
+                          <p class="helpintention" style="minHeight:110px">
+                            研究方向：
+                            <br />
+                            {{item.helpintention}}
+                          </p>
+                          <div class="action3">
+                            <Button
+                              type="info"
+                              ghost
+                              size="small"
+                             
+                              @click="specifics(item)"
+                            >详情</Button>
+                          </div>
+                          <div class="action2">
+                            <Button
+                              type="success"
+                              ghost
+                              size="small"
+                             
+                              @click="precontract(item)"
+                            >预约</Button>
                           </div>
                         </div>
                       </a>
                     </swiper-slide>
 
-                   
                     <div class="swiper-pagination" slot="pagination"></div>
                   </swiper>
                   <div class="swiper-button-prev" slot="button-prev"></div>
@@ -91,166 +105,187 @@
         </div>
       </div>
     </div>
-    <Modal v-model="teachermodal" :closable="false" width="50%" :styles="{top: '40px'}">
-      <Card>
-        <Row class="stitle">
-          详情：
-          <div id="rate">
-            评分：
-            <Rate disabled v-model="item.satisfaction" />
+    <Modal v-model="teachermodal" :closable="false" width="50%" :styles="{top: '10px'}">
+        <Card>
+          <Row class="stitle">
+           
+            <div id="rate">
+              评分：
+              <Rate disabled v-model="item.satisfaction" />
+            </div>
+          </Row>
+        
+          <Divider class="spider" style="position:relative;margin-top:10px;margin-"></Divider>
+          <Row class="expand-row">
+            <Col span="12">
+              <span class="expand-key">
+                学院:
+                <br />
+              </span>
+              <span class="expand-value">{{ item.academy }}</span>
+            </Col>
+            <Col span="12">
+              <span class="expand-key">
+                专业:
+                <br />
+              </span>
+              <span class="expand-value">{{ item.major }}</span>
+            </Col>
+          </Row>
+          <Divider class="spider"></Divider>
+          <Row>
+            <Col span="12">
+              <span class="expand-key">
+                电话:
+                <br />
+              </span>
+              <span class="expand-value">{{ item.phone }}</span>
+            </Col>
+            <Col span="12">
+              <span class="expand-key">
+                邮箱:
+                <br />
+              </span>
+              <span class="expand-value">{{ item.email }}</span>
+            </Col>
+          </Row>
+          <Divider class="spider"></Divider>
+          <Row>
+            <Col span="12">
+              <span class="expand-key">
+                校区:
+                <br />
+              </span>
+              <span class="expand-value">{{ item.campus }}</span>
+            </Col>
+            <Col span="12">
+              <span class="expand-key">
+                地址:
+                <br />
+              </span>
+              <span class="expand-value">{{ item.building }}</span>
+            </Col>
+          </Row>
+          <Divider class="spider"></Divider>
+
+          <Row>
+            <span class="expand-key">
+              个人简介:
+              <br />
+              <br />
+            </span>
+            <span
+              class="expand-value"
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.description }}</span>
+          </Row>
+        </Card>
+        <div slot="footer" style="width:100%;position:relative;left:0%">
+          <Button
+            type="primary"
+            size="large"
+            @click="teachermodal=false"
+            long
+            style="margin-right:1vh;"
+          >确定</Button>
+        </div>
+      </Modal>
+    <Modal
+      title="上传论文"
+      v-model="essaymodal"
+      class-name="vertical-center-modal"
+      width="30"
+      :mask-closable="false"
+      :styles="{top: '20px'}"
+    >
+      <p slot="header" style="color:#000;text-align:center;height:30px;">
+        <span style="position:relative;font-size:24px;font-weight:bold;top:20%">上传论文</span>
+      </p>
+      <div style="width:100%;position:relative">
+        <Form ref="article" :model="article" :label-width="80">
+          <FormItem label="论文题目" class="formitem">
+            <Input v-model="article.essayname" placeholder="请输入论文题目" />
+          </FormItem>
+          <FormItem label="论文介绍" class="formitem">
+            <Input
+              v-model="article.description"
+              type="textarea"
+              :autosize="{minRows: 3,maxRows: 5}"
+              placeholder="请写下对论文的介绍（200字之内）"
+            />
+          </FormItem>
+          <FormItem label="选择时段" class="formitem">
+            <Select v-model="article.time" placeholder="请选择时段">
+              <Option
+                v-for="it in item.timeList"
+                :value="it.id"
+                :key="it.id"
+                v-if="it.occupy==0"
+              >{{ it.startTime }}--{{it.endTime}}</Option>
+            </Select>
+          </FormItem>
+        </Form>
+
+        <div>
+          <div style="position:relative;width:100%;right:0%">
+            <Upload
+              ref="upload"
+              type="drag"
+              action="//jsonplaceholder.typicode.com/posts/"
+              :before-upload="handleBeforeUpload"
+            >
+              <div style="padding: 10px 0">
+                <Icon type="ios-cloud-upload" size="30" style="color: #3399ff"></Icon>
+                <p>
+                  请选择你要上传的论文
+                  <br />（pdf格式或者word格式）
+                </p>
+              </div>
+            </Upload>
           </div>
-        </Row>
-        <Divider size="small" />
-        <Row class="expand-row">
-          <Col span="12">
-            <span class="expand-key">职位:</span>
-            <span class="expand-value">{{ item.job }}</span>
+          <div
+            style="position:relative;font-size:15px;font-weight:normal;left:3%;diaplay:flex;top:5px;"
+          >
+            上传的文件名:
+            <span
+              style="position:relative;font-size:15px;font-weight:bold;top:5%;"
+            >{{ article.essayfile.name }}</span>
+          </div>
+        </div>
+        <Divider style="position:relative;margin-top:18px;margin-bottom:15px"></Divider>
+        <Row type="flex" class="code-row-bg">
+          <Col span="17">
+            <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
           </Col>
-          <Col span="12">
-            <span class="expand-key">组织:</span>
-            <span class="expand-value">{{ item.organization }}</span>
-          </Col>
-        </Row>
-        <Divider class="spider"></Divider>
-        <Row class="expand-row">
-          <Col span="12">
-            <span class="expand-key">学院:</span>
-            <span class="expand-value">{{ item.academy }}</span>
-          </Col>
-          <Col span="12">
-            <span class="expand-key">专业:</span>
-            <span class="expand-value">{{ item.major }}</span>
-          </Col>
-        </Row>
-        <Divider class="spider"></Divider>
-        <Row>
-          <Col span="12">
-            <span class="expand-key">电话:</span>
-            <span class="expand-value">{{ item.phone }}</span>
-          </Col>
-          <Col span="12">
-            <span class="expand-key">邮箱:</span>
-            <span class="expand-value">{{ item.email }}</span>
+          <Col span="4">
+            <Button
+              type="primary"
+              size="large"
+              @click="captcha()"
+              style="float:right;position:relative;left:45px"
+              :disabled="article.emailSubmit"
+            >邮箱验证</Button>
           </Col>
         </Row>
-        <Divider class="spider"></Divider>
-        <Row>
-          <Col span="12">
-            <span class="expand-key">校区:</span>
-            <span class="expand-value">{{ item.campus }}</span>
-          </Col>
-          <Col span="12">
-            <span class="expand-key">地址:</span>
-            <span class="expand-value">{{ item.building }}</span>
-          </Col>
-        </Row>
-      </Card>
-      <div slot="footer" style="width:100%;position:relative;left:0%">
+      </div>
+
+      <div slot="footer" style="text-align:center">
         <Button
           type="primary"
           size="large"
-          @click="teachermodal=false"
-          long
+          @click="hangbefore()"
           style="margin-right:1vh;"
-        >确定</Button>
+          :disabled="article.essaySubmit"
+          :loading="loading"
+        >确认预约</Button>
+        <Button
+          type="primary"
+          size="large"
+          ghost
+          @click="essaymodal=false"
+          style="margin-right:1vh;"
+        >取消</Button>
       </div>
     </Modal>
-    <Modal
-        title="上传论文"
-        v-model="essaymodal"
-        class-name="vertical-center-modal"
-        width="30"
-        :mask-closable="false"
-        :styles="{top: '20px'}"
-      >
-        <p slot="header" style="color:#000;text-align:center;height:30px;">
-          <span style="position:relative;font-size:24px;font-weight:bold;top:20%">上传论文</span>
-        </p>
-        <div style="width:100%;position:relative">
-          <Form ref="article" :model="article" :label-width="80">
-            <FormItem label="论文题目" class="formitem">
-              <Input v-model="article.essayname" placeholder="请输入论文题目" />
-            </FormItem>
-            <FormItem label="论文介绍" class="formitem">
-              <Input
-                v-model="article.description"
-                type="textarea"
-                :autosize="{minRows: 3,maxRows: 5}"
-                placeholder="请写下对论文的介绍（200字之内）"
-              />
-            </FormItem>
-            <FormItem label="选择时段" class="formitem">
-              <Select v-model="article.time" placeholder="请选择时段">
-                <Option
-                  v-for="it in item.timeList"
-                  :value="it.id"
-                  :key="it.id"
-                  v-if="it.occupy==0"
-                >{{ it.startTime }}--{{it.endTime}}</Option>
-              </Select>
-            </FormItem>
-          </Form>
-
-          <div>
-            <div style="position:relative;width:100%;right:0%">
-              <Upload
-                ref="upload"
-                type="drag"
-                action="//jsonplaceholder.typicode.com/posts/"
-                :before-upload="handleBeforeUpload"
-              >
-                <div style="padding: 10px 0">
-                  <Icon type="ios-cloud-upload" size="30" style="color: #3399ff"></Icon>
-                  <p>
-                    请选择你要上传的论文
-                    <br />（pdf格式或者word格式）
-                  </p>
-                </div>
-              </Upload>
-            </div>
-            <div
-              style="position:relative;font-size:15px;font-weight:normal;left:3%;diaplay:flex;top:5px;"
-            >
-              上传的文件名:
-              <span
-                style="position:relative;font-size:15px;font-weight:bold;top:5%;"
-              >{{ article.essayfile.name }}</span>
-            </div>
-          </div>
-          <Divider style="position:relative;margin-top:18px;margin-bottom:15px"></Divider>
-          <Row type="flex" class="code-row-bg">
-            <Col span="17">
-              <Input v-model="article.captchacode" placeholder="请输入验证码" size="large" />
-            </Col>
-            <Col span="4" offset="1">
-              <Button
-                type="primary"
-                size="large"
-                @click="captcha()"
-                style="margin-left:20px;position:relative"
-              >邮箱验证</Button>
-            </Col>
-          </Row>
-        </div>
-
-        <div slot="footer" style="text-align:center">
-          <Button
-            type="primary"
-            size="large"
-            @click="hangbefore()"
-            style="margin-right:1vh;"
-            :disabled="article.essaySubmit"
-            :loading="loading"
-          >确认预约</Button>
-          <Button
-            type="primary"
-            size="large"
-            ghost
-            @click="essaymodal=false"
-            style="margin-right:1vh;"
-          >取消</Button>
-        </div>
-      </Modal>
   </div>
 </template>
 
@@ -265,7 +300,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      isLoading:false,
+      isLoading: false,
       swiperOption: {
         pagination: ".swiper-pagination1",
         slidesPerView: 2,
@@ -314,7 +349,8 @@ export default {
         essaySubmit: true, //是否提交了论文
         essayfile: "", //论文文件
         time: "",
-        captchacode: ""
+        captchacode: "",
+        emailSubmit: true
       },
       questionnaires: [],
       questionnaire: {
@@ -402,7 +438,7 @@ export default {
           this.$Notice.warning({ title: `出错，提示：${err}` });
         });
     },
-    
+
     moreNews() {
       this.$router.push({ name: "newsFront" });
     },
@@ -421,7 +457,7 @@ export default {
       this.teachermodal = true;
     },
     precontract(item) {
-      if(item.timeList.length==0){
+      if (item.timeList.length == 0) {
         this.$Message.warning("老师还没做好准备，请稍后再来亲");
         return;
       }
@@ -508,7 +544,7 @@ export default {
         .then(res => {
           if (res.data.code === 200) {
             if (res.data.data != null) {
-              this.isLoading=true;
+              this.isLoading = true;
               this.teachers = res.data.data;
               for (let i = 0; i < this.teachers.length; i++) {
                 this.teachers[i].satisfaction = parseFloat(
@@ -534,22 +570,22 @@ export default {
     imgnews(index) {
       localStorage.setItem("newsid", this.imgs[index].newId);
       this.$router.push({
-        name: "newsPage",
+        name: "mobileNewsPage",
         params: { newsid: this.imgs[index].newId }
       });
     },
     textnews(index) {
       localStorage.setItem("newsid", this.news[index].newsId);
       this.$router.push({
-        name: "newsPage",
+        name: "mobileNewsPage",
         params: { newsid: this.news[index].newsId }
       });
     },
     hang() {
       let URL = `${apiPath}/user/userConfirmsAppointment`;
-      let userID = localStorage.getItem("userID")
+      let userID = localStorage.getItem("userID");
       let teacherid = this.item.teacherId;
-     
+
       axios({
         url: URL,
         method: "post",
@@ -575,8 +611,7 @@ export default {
         });
     },
     handleBeforeUpload(file) {
-      
-      const extension1 = /.pdf/.test(file.name)
+      const extension1 = /.pdf/.test(file.name);
       const extension2 = /.doc/.test(file.name);
       const extension3 = /.docx/.test(file.name);
       const isLt5M = file.size / 1024 / 1024 < 5;
@@ -602,7 +637,7 @@ export default {
       formData.append("uploadfile", file);
       this.loading = true;
       axios
-        .post(`http:${apiPath}/uploadfile`, formData, {
+        .post(`${apiPath}/uploadfile`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
@@ -634,7 +669,8 @@ export default {
         this.article.essaySubmit = false;
         this.article.essaysrc = "";
         this.article.time = "";
-        this.article.captchacode = ""
+        this.article.captchacode = "";
+        this.article.emailSubmit = false;
       }
     },
     article: {
@@ -643,12 +679,22 @@ export default {
           this.article.essayname != "" &&
           this.article.essayfile != "" &&
           this.article.description != "" &&
-          this.article.time != ""&&
+          this.article.time != "" &&
           this.article.captchacode != ""
         ) {
           this.article.essaySubmit = false;
         } else {
           this.article.essaySubmit = true;
+        }
+        if (
+          this.article.essayname != "" &&
+          this.article.essaysrc != "" &&
+          this.article.description != "" &&
+          this.article.time != ""
+        ) {
+          this.article.emailSubmit = false;
+        } else {
+          this.article.emailSubmit = true;
         }
       },
       deep: true
@@ -709,14 +755,26 @@ export default {
   width: 50px;
 }
 
-.action {
-  position: relative;
-  top: 20px;
-  text-align: center;
+.action3 {
+  position: absolute;
+  top: 65%;
+  margin-left: 0%;
+  left: 8%;
   .ivu-btn {
-    font-size: 20px;
-    width: 70px;
-    height: 34px;
+    font-size: 15px;
+    width: 50px;
+    height: 24px;
+  }
+}
+.action2 {
+  position: absolute;
+  top: 78%;
+  margin-left: 0%;
+  left: 8%;
+  .ivu-btn {
+    font-size: 15px;
+    width: 50px;
+    height: 24px;
   }
 }
 .books {
@@ -731,12 +789,12 @@ export default {
 .ivu-select-item {
   padding: 7px 6.8px;
 }
-.formitem{
-  position:relative;
-  margin-bottom:15px;
+.formitem {
+  position: relative;
+  margin-bottom: 15px;
 }
-.ivu-btn-large{
-  padding-left:15px;
-  padding-right:15px;
+.ivu-btn-large {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 </style>

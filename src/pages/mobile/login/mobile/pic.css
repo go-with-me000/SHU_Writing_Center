@@ -156,7 +156,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    top: 53%;
+    top: 40%;
     transition: 0.3s;
   }
   .solution-box ul li p {
@@ -193,7 +193,7 @@
     width: 100%;
   }
   .solution-box ul li:hover span {
-    background: rgba(48, 113, 255, 0.85);
+    background: rgba(58, 87, 150, 0.85);
   }
   .solution-box ul li:hover i {
     bottom: 63%;

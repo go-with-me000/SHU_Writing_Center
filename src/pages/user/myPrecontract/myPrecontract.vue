@@ -707,7 +707,6 @@ export default {
             this.$Message.success({
               content: `您已同意${this.data2[index].studentName}同学的预约`
             });
-            this.captcha(this.data2[index].studentid,userId,0)
             if (this.duty == "学生教师") {
               this.loadData3();
             } else {
@@ -783,7 +782,6 @@ export default {
             this.$Message.error({
               content: `您已拒绝${this.data2[this.index].studentName}的预约`
             });
-            this.captcha(this.data2[this.index].studentid,userId,1)
             this.modal3 = false;
             if (this.duty == "学生教师") {
               this.loadData3();
