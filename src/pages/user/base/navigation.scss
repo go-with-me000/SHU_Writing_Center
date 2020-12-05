@@ -1,0 +1,131 @@
+// #erection2{
+  
+//     .ivu-menu-light {
+//       background-color: #fff;
+//     }
+    
+//     .ivu-menu-horizontal.ivu-menu-light:after {
+//       background-color: #245086;
+//     }
+    
+//     .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item,
+//     .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu {
+//       color: #000;
+//     }
+    
+//     .ivu-menu-item {
+//       display: flex;
+//       background: #fff;
+//       font-size: 14px;
+//       font-weight: normal;
+    
+//       justify-content: center;
+//       font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+//       color: rgb(7, 7, 7);
+    
+    
+//       i {
+//         display: flex;
+//         align-items: center;
+//       }
+//     }
+    
+//     .ivu-menu-horizontal .ivu-menu-item,
+//     .ivu-menu-horizontal .ivu-menu-submenu {
+//       padding: 0px;
+//     }
+    
+//     .ivu-menu-submenu-title {
+//       display: flex;
+//       background: #fff;
+//       font-size: 14px;
+//       font-weight: normal;
+//       justify-content: center;
+//       font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+      
+    
+//       i {
+//         display: flex;
+//         align-items: center;
+//       }
+//     }
+    
+//     .ivu-menu-item,
+//     .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu {
+//       background-color: #fff;
+//     }
+    
+//     .ivu-menu-submenu-title:hover {
+//       color: #667a99 !important;
+//     }
+    
+//     .ivu-select-dropdown {
+//       padding: 0px;
+//     }
+    
+//     .ivu-menu-horizontal .ivu-menu-submenu .ivu-select-dropdown .ivu-menu-item {
+//       color: rgb(7, 7, 7);
+//       background-color: #fff;
+//     }
+    
+//     .ivu-menu-horizontal .ivu-menu-submenu .ivu-select-dropdown .ivu-menu-item:hover {
+//       color: rgb(253, 253, 253);
+//     }
+    
+//     .ivu-menu-item:hover {
+//       // color: #124a9c !important;
+//       background-color: #a6b9eb;
+//     }
+    
+//     .ivu-menu-item-selected {
+//       background-color: #f0faff !important;
+//       color: #000000 !important;
+    
+//       font-size: 14px;
+//       font-weight: bold;
+//       align-content: center !important;
+//       font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    
+//     }
+    
+//     .ivu-menu-item-selected:hover {
+//       background-color: #98b1d6 !important;
+//       color: #000000 !important;
+//       font-size: 14px;
+//       font-weight: bold;
+//       align-content: center !important;
+//       font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    
+//     }
+    
+//     .ivu-menu-item-selected:after {
+//       background-color: #516cb8 !important;
+//     }
+//   }
+
+#erection2{
+    .ivu-menu-vertical .ivu-menu-item-group-title{
+        color:rgb(112, 111, 111);
+        font-weight:bold;
+        font-size: 23px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding-top:10px;
+
+        
+    }
+    .ivu-menu-vertical .ivu-menu-item{
+        margin-left:0px;
+        font-size:17px;
+        color:rgb(66, 66, 66);
+        border-bottom-style:solid; 
+        border-color:white;
+        border-width:1px;
+        .icons{
+            margin-left:15px;
+        }
+        
+    }
+    .ivu-menu-vertical{
+        background: #e9e8e8;
+    }
+}
